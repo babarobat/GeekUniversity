@@ -29,6 +29,10 @@ namespace Asteroids
         /// Высота экрана
         /// </summary>
         public static int Height {get;set;}
+        /// <summary>
+        /// Массив объектов, которые будут инициализированы и отрисованы
+        /// </summary>
+        private static BaseObject[] _objects;
 
         static GameGraphics() { }
 
@@ -43,16 +47,57 @@ namespace Asteroids
             Width = form.ClientSize.Width;
             Height = form.ClientSize.Height;
             Buffer = _context.Allocate(graphics, new Rectangle(0, 0, Width, Height));
+            Load();
+            Timer timer = new Timer { Interval = 50};
+            timer.Start();
+            timer.Tick += Timer_Tick;
         }
         /// <summary>
-        /// Отрисовка графики
+        /// Отрисовка кадра
         /// </summary>
-        public static void Draw()
+        public static void DrawGraphics()
         {
             Buffer.Graphics.Clear(Color.Black);
-            Buffer.Graphics.DrawRectangle(Pens.White, new Rectangle(100, 100, 200, 200));
-            Buffer.Graphics.FillEllipse(Brushes.Wheat, new Rectangle(100, 100, 200, 200));
+            foreach (var obj in _objects)
+            {
+                obj.Draw();
+            }
             Buffer.Render();
+        }
+        /// <summary>
+        /// Смена кадра
+        /// </summary>
+        public static void UpdateGraphics()
+        {
+            foreach (var obj in _objects)
+            {
+                obj.Update();
+            }
+        }
+       /// <summary>
+       /// 
+       /// </summary>
+        public static void Load()
+        {
+            _objects = new BaseObject[30];
+            for (int i = 0; i < _objects.Length; i++)
+            {
+                var tmpPos = new Point(600, i * 20);
+                var tmpDir = new Point(15-i, 15 -i);
+                var tmpSize = new Size(20, 20);
+                _objects[i] = new BaseObject(tmpPos, tmpDir, tmpSize);
+            }
+        }
+        /// <summary>
+        /// Событие для таймера
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void Timer_Tick(object sender, EventArgs e)
+        {
+            DrawGraphics();
+            UpdateGraphics();
+            
         }
     }
 }

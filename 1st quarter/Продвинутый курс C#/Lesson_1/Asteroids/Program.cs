@@ -17,7 +17,7 @@ namespace Asteroids
                 Height = Screen.PrimaryScreen.Bounds.Height
             };
             GameGraphics.Init(GameForm);
-            GameGraphics.Draw();
+            GameGraphics.DrawGraphics();
             GameForm.Show();
             Application.Run(GameForm);
 
