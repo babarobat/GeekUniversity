@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Asteroids
 {
     /// <summary>
     /// Базовый класс для обьектов в игре
     /// </summary>
-    class BaseObject
+    abstract class BaseObject
     {
         /// <summary>
         /// Положение обьекта на сцене в координатах X,Y в пикселях
@@ -36,21 +31,15 @@ namespace Asteroids
             _dir = dir;
             _size = size;
         }
-
-        public void Draw()
-        {
-            GameGraphics.Buffer.Graphics.DrawEllipse(Pens.White, _pos.X, _pos.Y, _size.Width, _size.Height);
-        }
-
-        public void Update()
-        {
-            _pos.X += _dir.X;
-            _pos.Y += _dir.Y;
-
-            if (_pos.X < 0) _dir.X = -_dir.X;
-            if (_pos.X > GameGraphics.Width) _dir.X = -_dir.X;
-            if (_pos.Y < 0) _dir.Y = -_dir.Y;
-            if (_pos.Y > GameGraphics.Height) _dir.Y = -_dir.Y;
-        }
+        /// <summary>
+        /// Рисует обьект обьект на сцене
+        /// </summary>
+        public abstract void Draw();
+        
+        /// <summary>
+        /// Обновляет положение обьекта на сцене
+        /// </summary>
+        public abstract void Update();
+        
     }
 }

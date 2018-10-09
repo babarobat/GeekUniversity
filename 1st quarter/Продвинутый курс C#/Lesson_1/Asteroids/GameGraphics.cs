@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -22,11 +18,11 @@ namespace Asteroids
         /// </summary>
         public static BufferedGraphics Buffer;
         /// <summary>
-        /// Ширина экрана
+        /// Ширина экрана c игрой
         /// </summary>
         public static int Width { get; set;}
         /// <summary>
-        /// Высота экрана
+        /// Высота экрана c игрой
         /// </summary>
         public static int Height {get;set;}
         /// <summary>
@@ -37,7 +33,7 @@ namespace Asteroids
         static GameGraphics() { }
 
         /// <summary>
-        /// Инициализация графики
+        /// Инициализирует графику
         /// </summary>
         /// <param name="form">Форма для инициализации</param>
         public static void Init(Form form)
@@ -53,7 +49,7 @@ namespace Asteroids
             timer.Tick += Timer_Tick;
         }
         /// <summary>
-        /// Отрисовка кадра
+        /// Отривсовывает кадр
         /// </summary>
         public static void DrawGraphics()
         {
@@ -75,17 +71,20 @@ namespace Asteroids
             }
         }
        /// <summary>
-       /// 
+       /// Создает обьекты на сцене
        /// </summary>
         public static void Load()
         {
+           // сделать рандомное заполнение списка разными обьектами
+
+
             _objects = new BaseObject[30];
             for (int i = 0; i < _objects.Length; i++)
             {
                 var tmpPos = new Point(600, i * 20);
                 var tmpDir = new Point(15-i, 15 -i);
                 var tmpSize = new Size(20, 20);
-                _objects[i] = new BaseObject(tmpPos, tmpDir, tmpSize);
+                _objects[i] = new Star(tmpPos, tmpDir, tmpSize);
             }
         }
         /// <summary>
