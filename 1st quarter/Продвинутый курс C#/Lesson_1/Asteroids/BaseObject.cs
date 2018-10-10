@@ -31,6 +31,7 @@ namespace Asteroids
             _dir = dir;
             _size = size;
         }
+        
         /// <summary>
         /// Рисует обьект обьект на сцене
         /// </summary>

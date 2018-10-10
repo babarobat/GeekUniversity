@@ -44,7 +44,7 @@ namespace Asteroids
             Height = form.ClientSize.Height;
             Buffer = _context.Allocate(graphics, new Rectangle(0, 0, Width, Height));
             Load();
-            Timer timer = new Timer { Interval = 50};
+            Timer timer = new Timer { Interval = 17};
             timer.Start();
             timer.Tick += Timer_Tick;
         }
@@ -75,16 +75,16 @@ namespace Asteroids
        /// </summary>
         public static void Load()
         {
-           // сделать рандомное заполнение списка разными обьектами
-
-
-            _objects = new BaseObject[30];
+            // сделать рандомное заполнение списка разными обьектами
+            
+            _objects = new BaseObject[1];
             for (int i = 0; i < _objects.Length; i++)
             {
-                var tmpPos = new Point(600, i * 20);
-                var tmpDir = new Point(15-i, 15 -i);
-                var tmpSize = new Size(20, 20);
-                _objects[i] = new Star(tmpPos, tmpDir, tmpSize);
+                var tmpPos = new Point(0,0);
+            var tmpDir = new Point(0, 0);
+            var tmpSize = new Size(1920, 1080);
+             
+                _objects[i] = new BackGround(tmpPos, tmpDir, tmpSize);
             }
         }
         /// <summary>

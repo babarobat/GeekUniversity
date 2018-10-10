@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackGround.cs" />
     <Compile Include="BaseObject.cs" />
     <Compile Include="GameGraphics.cs" />
     <Compile Include="Program.cs" />
