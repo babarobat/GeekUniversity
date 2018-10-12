@@ -11,10 +11,23 @@ namespace Asteroids
                 Width = Screen.PrimaryScreen.Bounds.Width,
                 Height = Screen.PrimaryScreen.Bounds.Height
             };
-            GameGraphics.Init(GameForm);
+            SplashScreen sc = new SplashScreen()
+            {
+                Width = Screen.PrimaryScreen.Bounds.Width,
+                Height = Screen.PrimaryScreen.Bounds.Height
+            };
+
+            GameGraphics.Init(sc);
             GameGraphics.DrawGraphics();
-            GameForm.Show();
-            Application.Run(GameForm);
+            sc.Show();
+
+            Application.Run(sc);
+
+            //GameGraphics.Init(GameForm);
+            //GameGraphics.DrawGraphics();
+            //GameForm.Show();
+
+            //Application.Run(GameForm);
 
         }
     }

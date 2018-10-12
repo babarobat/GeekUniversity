@@ -29,7 +29,17 @@ namespace Asteroids
         /// Массив объектов, которые будут инициализированы и отрисованы
         /// </summary>
         private static BaseObject[] _objects;
-
+        /// <summary>
+        /// Желаемый FPS
+        /// </summary>
+        public const int TargetFPS = 60;
+        /// <summary>
+        /// Как часто нужно вызывать срабатывание события Timer_tick для поддержания требуемого FPS? Округлено до int
+        /// </summary>
+        private static int _getTargetUpdatePerSecCount(int tragetUpdatePerSecCount)
+        {
+            return 1000 / tragetUpdatePerSecCount;
+        }
         static GameGraphics() { }
 
         /// <summary>
@@ -44,7 +54,7 @@ namespace Asteroids
             Height = form.ClientSize.Height;
             Buffer = _context.Allocate(graphics, new Rectangle(0, 0, Width, Height));
             Load();
-            Timer timer = new Timer { Interval = 17};
+            Timer timer = new Timer { Interval = _getTargetUpdatePerSecCount(TargetFPS) };
             timer.Start();
             timer.Tick += Timer_Tick;
         }
@@ -77,15 +87,12 @@ namespace Asteroids
         {
             // сделать рандомное заполнение списка разными обьектами
             
-            _objects = new BaseObject[1];
-            for (int i = 0; i < _objects.Length; i++)
-            {
-                var tmpPos = new Point(0,0);
-            var tmpDir = new Point(0, 0);
-            var tmpSize = new Size(1920, 1080);
-             
-                _objects[i] = new BackGround(tmpPos, tmpDir, tmpSize);
-            }
+            _objects = new BaseObject[4];
+            _objects[0] = new BackGround(50, "Resources/BG_Stars.png");
+            _objects[1] = new BackGround(100, "Resources/BG_Stars1.png");
+            _objects[2] = new BackGround(800, "Resources/BG_Stars2.png");
+            _objects[3] = new BackGround(60, "Resources/BG_Stars3.png");
+
         }
         /// <summary>
         /// Событие для таймера

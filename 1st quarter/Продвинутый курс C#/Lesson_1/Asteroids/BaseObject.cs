@@ -10,11 +10,12 @@ namespace Asteroids
         /// <summary>
         /// Положение обьекта на сцене в координатах X,Y в пикселях
         /// </summary>
-        protected Point _pos;
+        protected PointF _pos;
         /// <summary>
-        /// Напрваление движения обьекта на сцене в координатах X,Y в пикселях
+        /// Напрваление движения и скорость обьекта на сцене в координатах X,Y в пикселях.
+        /// (В каком месте окажется обьект при следующем Timer_tick)
         /// </summary>
-        protected Point _dir;
+        protected PointF _dir;
         /// <summary>
         /// Размер обьекта на сцене в велечинах Width и Height в пикселях
         /// </summary>
@@ -25,13 +26,15 @@ namespace Asteroids
         /// <param name="pos">Положение обьекта на сцене в координатах X,Y в пикселях</param>
         /// <param name="dir">Напрваление движения обьекта на сцене в координатах X,Y в пикселях</param>
         /// <param name="size">Размер обьекта на сцене в велечинах Width и Height в пикселях</param>
-        public BaseObject(Point pos, Point dir, Size size)
+        public BaseObject(PointF pos, PointF dir, Size size)
         {
             _pos = pos;
             _dir = dir;
             _size = size;
         }
-        
+        public BaseObject()
+        {
+        }
         /// <summary>
         /// Рисует обьект обьект на сцене
         /// </summary>
