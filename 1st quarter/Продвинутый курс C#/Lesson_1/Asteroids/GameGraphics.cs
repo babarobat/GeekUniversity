@@ -33,15 +33,8 @@ namespace Asteroids
         /// Желаемый FPS
         /// </summary>
         public const int TargetFPS = 60;
-        /// <summary>
-        /// Как часто нужно вызывать срабатывание события Timer_tick для поддержания требуемого FPS? Округлено до int
-        /// </summary>
-        private static int _getTargetUpdatePerSecCount(int tragetUpdatePerSecCount)
-        {
-            return 1000 / tragetUpdatePerSecCount;
-        }
+        
         static GameGraphics() { }
-
         /// <summary>
         /// Инициализирует графику
         /// </summary>
@@ -85,14 +78,10 @@ namespace Asteroids
        /// </summary>
         public static void Load()
         {
-            // сделать рандомное заполнение списка разными обьектами
-            
-            _objects = new BaseObject[4];
-            _objects[0] = new BackGround(50, "Resources/BG_Stars.png");
-            _objects[1] = new BackGround(100, "Resources/BG_Stars1.png");
-            _objects[2] = new BackGround(800, "Resources/BG_Stars2.png");
-            _objects[3] = new BackGround(60, "Resources/BG_Stars3.png");
-
+            _objects = new BaseObject[3];
+            _objects[0] = new BackGround(20, "Resources/Bg_Stars_1.png");
+            _objects[1] = new BackGround(70, "Resources/Bg_Stars_2.png");
+            _objects[2] = new BackGround(450, "Resources/Bg_Stars_3.png");
         }
         /// <summary>
         /// Событие для таймера
@@ -101,9 +90,19 @@ namespace Asteroids
         /// <param name="e"></param>
         private static void Timer_Tick(object sender, EventArgs e)
         {
-            DrawGraphics();
-            UpdateGraphics();
-            
+            if (!FormManager.IsPaused)
+            {
+                DrawGraphics();
+                UpdateGraphics();
+            }                       
+        }
+        /// <summary>
+        /// Как часто нужно вызывать срабатывание события Timer_tick для поддержания требуемого FPS?
+        /// Округлено до int
+        /// </summary>
+        private static int _getTargetUpdatePerSecCount(int tragetUpdatePerSecCount)
+        {
+            return 1000 / tragetUpdatePerSecCount;
         }
     }
 }

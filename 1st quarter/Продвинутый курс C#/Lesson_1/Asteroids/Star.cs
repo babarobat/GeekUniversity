@@ -25,9 +25,7 @@ namespace Asteroids
 
             var secondLinePoint1 = new PointF(_pos.X + _size.Width, _pos.Y);
             var secondLinePoint2 = new PointF(_pos.X, _pos.Y + _size.Height);
-            GameGraphics.Buffer.Graphics.DrawLine(Pens.White, secondLinePoint1, secondLinePoint2);
-
-            
+            GameGraphics.Buffer.Graphics.DrawLine(Pens.White, secondLinePoint1, secondLinePoint2);   
         }
         /// <summary>
         /// Обновление позиции звезды
