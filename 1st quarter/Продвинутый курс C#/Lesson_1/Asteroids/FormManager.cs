@@ -1,10 +1,20 @@
-﻿namespace Asteroids
+﻿using System.IO;
+using System.Drawing.Text;
+namespace Asteroids
 {
     /// <summary>
     /// Отвечает за взаимодействие форм
     /// </summary>
     static class FormManager
     {
+        /// <summary>
+        /// Ссылка на шрифт для кнопок
+        /// </summary>
+        private static PrivateFontCollection _buttonsFont;
+        /// <summary>
+        /// Ссылка на шрифт для названия игры
+        /// </summary>
+        private static PrivateFontCollection _gameNameFont;
         /// <summary>
         /// Ширина формы
         /// </summary>
@@ -34,7 +44,17 @@
             {
                 Width = _screenWidth,
                 Height = _screenHeight
-            };            
+            };
+            _buttonsFont = new PrivateFontCollection();
+            _gameNameFont = new PrivateFontCollection();
+            _buttonsFont.AddFontFile(Path.GetFullPath("Resources/joystix monospace.ttf"));
+            _gameNameFont.AddFontFile(Path.GetFullPath("Resources/BACKTO1982.ttf"));
+            System.Drawing.Font buttonsFont = new  System.Drawing.Font(_buttonsFont.Families[0], 14f);
+            SplashScreen.NewGame.Font = buttonsFont;
+            SplashScreen.Records.Font = buttonsFont;
+            SplashScreen.Exit.Font = buttonsFont;
+            SplashScreen.About.Font = new System.Drawing.Font(_buttonsFont.Families[0], 8f);
+            SplashScreen.GameName.Font = new System.Drawing.Font(_gameNameFont.Families[0], 30f);
             if (GameForm != null)
             {
                 GameForm.Close();
@@ -52,6 +72,7 @@
                 Height = _screenHeight
             };
             IsPaused = false;
+            GameForm.MenuButton.Font = new System.Drawing.Font(_buttonsFont.Families[0], 14f);
             GameForm.MenuButton.Hide();
             GameGraphics.Init(GameForm);
             GameGraphics.DrawGraphics();

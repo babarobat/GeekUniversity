@@ -9,3 +9,14 @@ D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\As
 D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.SplashScreen.resources
 D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.csproj.GenerateResource.cache
 D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.Game.resources
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\bin\Debug\Asteroids.exe.config
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\bin\Debug\Asteroids.exe
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\bin\Debug\Asteroids.pdb
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.csprojAssemblyReference.cache
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.Game.resources
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.Properties.Resources.resources
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.SplashScreen.resources
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.csproj.GenerateResource.cache
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.csproj.CoreCompileInputs.cache
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.exe
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Asteroids\obj\Debug\Asteroids.pdb
