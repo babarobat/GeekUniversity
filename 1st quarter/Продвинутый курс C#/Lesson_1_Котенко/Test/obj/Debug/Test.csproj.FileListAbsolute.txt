@@ -1,7 +1,0 @@
-D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Test\bin\Debug\Test.exe.config
-D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Test\bin\Debug\Test.exe
-D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Test\bin\Debug\Test.pdb
-D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Test\obj\Debug\Test.csprojAssemblyReference.cache
-D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
-D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Test\obj\Debug\Test.exe
-D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_1\Test\obj\Debug\Test.pdb
