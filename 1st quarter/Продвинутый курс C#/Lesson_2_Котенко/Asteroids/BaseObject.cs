@@ -10,7 +10,7 @@ namespace Asteroids
         /// <summary>
         /// Скорость движения. Измеряется в пикселях в секунду.
         /// </summary>
-        public float Speed { get; set; }
+        public float Speed { get; protected set; }
         /// <summary>
         /// Положение обьекта на сцене в координатах X,Y в пикселях
         /// </summary>
@@ -24,6 +24,7 @@ namespace Asteroids
         /// Размер обьекта на сцене в велечинах Width и Height в пикселях
         /// </summary>
         protected SizeF _size;
+
         /// <summary>
         /// Создает экземпляр класса BaseObject 
         /// </summary>

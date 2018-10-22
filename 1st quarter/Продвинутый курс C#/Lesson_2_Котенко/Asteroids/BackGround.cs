@@ -41,7 +41,7 @@ namespace Asteroids
 
         /// <summary>
         /// Создает экземпляр класса BackGround. 
-        /// направление движение по умолчанию _dir = -1,0;
+        /// Направление движение по умолчанию слева направо: _dir = -1,0;
         /// </summary>
         /// <param name="speed">скорость движения фона</param>
         /// <param name="fileName">путь, либо имя файла в папке Debug</param>

@@ -7,7 +7,15 @@ namespace Asteroids
     /// Логика и параметры обьекта типа Asteroid
     /// </summary>
     class Asteroid : BaseObject
-    {        
+    {  
+        /// <summary>
+        /// Урон астероида
+        /// </summary>
+        public int Damage { get; private set; }
+        /// <summary>
+        /// Здоровье астероида
+        /// </summary>
+        public int Health { get; private set; }
         /// <summary>
         /// Направление движения по оси X по умолчанию
         /// </summary>
@@ -25,17 +33,9 @@ namespace Asteroids
         /// </summary>
         private Image _asteroidImg;
         /// <summary>
-        /// Минимальная скорость астеройда при создании
-        /// </summary>
-        private const int _minStartSpeed = 250;
-        /// <summary>
-        /// максимальная скорость астероида при содании 
-        /// </summary>
-        private const int _maxStartSpeed = 500;
-        /// <summary>
         /// Создает обьект Asteroid и распологает его в случайном месте справа от экрана.
-        /// Задает случайную скорость движения в пикселях в секунду
-        /// в пределах заданных констант _minStartSpeed = 250, _maxStartSpeed = 500.
+        /// Задает случайную скорость движения в пикселях в секунду в зависимости от размер
+        /// - чем больше астероид - тем меньше скорость
         /// По умолчанию направление движения - справа налево. _dirX = -1, _dirY =0;
         /// </summary>
         /// <param name="speed">скорость</param>
@@ -53,11 +53,9 @@ namespace Asteroids
         /// </summary>
         public override void Draw()
         {
-            var asteroidPos = _pos;
-            var asteroidSize = _size;  
             GameGraphics.Buffer.Graphics.DrawImage(_asteroidImg,
-                                                    asteroidPos.X, asteroidPos.Y,
-                                                    asteroidSize.Width,asteroidSize.Height);  
+                                                    _pos.X, _pos.Y,
+                                                    _size.Width, _size.Height);  
         }
         /// <summary>
         /// Обновление позиции обьекта
@@ -84,7 +82,6 @@ namespace Asteroids
             var rndPosX =Util.GetRandom( minRndX, maxRndX);
             var rndPosY = Util.GetRandom(minRndY, maxRndY);
             return new Point(rndPosX, rndPosY);
-
         }
         /// <summary>
         /// Возвращает случайный размер в пределах от половины заданного до двукратно увеличенного
@@ -103,15 +100,63 @@ namespace Asteroids
                    " _size = "+_size.Width.ToString()+","+_size.Height.ToString();
         }
         /// <summary>
-        /// Инициализация положения, размера и скорости астеродиа
+        /// Инициализация положения, размера, скорости, урона и жизней астеродиа
         /// </summary>
         private void InitAsteroidParams()
         {
             _size = GetRandomSize(_startSize);
-            _pos = GetRandomPos(GameGraphics.Width, GameGraphics.Width + (int)_size.Width,
+            _pos = GetRandomPos(GameGraphics.Width, GameGraphics.Width*2,
                                     0, GameGraphics.Height - (int)_size.Height);
             Speed = 12000 / _size.Width;
-            
+            CalculateHealth();
+        }
+        /// <summary>
+        /// Расчитывает здоровье и урон астеройда в зависимости от его размера
+        /// </summary>
+        private void CalculateHealth()
+        {
+            if (_size.Width <= 150)
+            {
+                Health = 1;
+                Damage = 1;
+                return;
+            }
+            if (_size.Width <= 250 && _size.Width > 150)
+            {
+                Health = 2;
+                Damage = 2;
+                return;
+            }
+            if (_size.Width <= 350 && _size.Width > 250)
+            {
+                Health = 3;
+                Damage = 3;
+                return;
+            }
+            if (_size.Width <= 450 && _size.Width > 350)
+            {
+                Health = 4;
+                Damage = 4;
+                return;
+            }
+            if (_size.Width <= 550 && _size.Width > 450)
+            {
+                Health = 5;
+                Damage = 5;
+                return;
+            }
+            if (_size.Width <= 650 && _size.Width > 550)
+            {
+                Health = 6;
+                Damage = 6;
+                return;
+            }
+            if (_size.Width > 650)
+            {
+                Health = 7;
+                Damage = 7;
+                return;
+            }
         }
         #endregion
 

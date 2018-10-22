@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -79,16 +80,15 @@ namespace Asteroids
         public static void Load()
         {
             _objects = new BaseObject[10];
-            _objects[0] = new BackGround(20, "Resources/Bg_Stars_1.png");
-            _objects[1] = new BackGround(70, "Resources/Bg_Stars_2.png");
-            _objects[2] = new BackGround(450, "Resources/Bg_Stars_3.png");
-            _objects[3] = new Asteroid("Resources/Asteroid.png");
-            _objects[4] = new Asteroid("Resources/Asteroid.png");
-            _objects[5] = new Asteroid("Resources/Asteroid.png");
-            _objects[6] = new Asteroid("Resources/Asteroid.png");
-            _objects[7] = new Asteroid("Resources/Asteroid.png");
-            _objects[8] = new Asteroid("Resources/Asteroid.png");
-            _objects[9] = new Asteroid("Resources/Asteroid.png");
+            List<string> bgAdresses = ResourcesLoader.GetImage(TypeOf.backGround);
+            _objects[0] = new BackGround(20, bgAdresses[0]);
+            _objects[1] = new BackGround(70, bgAdresses[1]);
+            _objects[2] = new BackGround(450, bgAdresses[2]);
+            for (int i = 3; i < 10; i++)
+            {
+                _objects[i] = new Asteroid(ResourcesLoader.GetImage(TypeOf.asteroid)[0]);
+            }
+            
         }
         /// <summary>
         /// Событие для таймера
