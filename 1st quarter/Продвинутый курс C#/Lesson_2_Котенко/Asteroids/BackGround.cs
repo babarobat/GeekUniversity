@@ -14,11 +14,6 @@ namespace Asteroids
     class BackGround : BaseObject
     {
         /// <summary>
-        /// Скорость движения. Измеряется в пикселях в секунду.
-        /// </summary>
-        public float Speed { get; set; }
-
-        /// <summary>
         /// Направление движения по оси X по умолчанию
         /// </summary>
         private const int _defaultDirectionX = -1;
@@ -55,7 +50,7 @@ namespace Asteroids
             Speed = speed;
             _pos = new PointF(_defaultpositionX, _defaultpositionY);
             _dir = new PointF(_defaultDirectionX, _defaultDirectionY);
-            _size = new Size(GameGraphics.Width, GameGraphics.Height);
+            _size = new SizeF(GameGraphics.Width, GameGraphics.Height);
             var starsBgPath = Path.GetFullPath(fileName);
             _starsBgImg1 = Image.FromFile(starsBgPath);
             _starsBgImg2 = Image.FromFile(starsBgPath);
@@ -71,7 +66,7 @@ namespace Asteroids
             GameGraphics.Buffer.Graphics.DrawImage(_starsBgImg2, img2PosPoint);
         }
         /// <summary>
-        /// Изменение позиции
+        /// Изменение позиции.
         /// </summary>
         public override void Update()
         {

@@ -8,6 +8,10 @@ namespace Asteroids
     abstract class BaseObject
     {
         /// <summary>
+        /// Скорость движения. Измеряется в пикселях в секунду.
+        /// </summary>
+        public float Speed { get; set; }
+        /// <summary>
         /// Положение обьекта на сцене в координатах X,Y в пикселях
         /// </summary>
         protected PointF _pos;
@@ -19,14 +23,14 @@ namespace Asteroids
         /// <summary>
         /// Размер обьекта на сцене в велечинах Width и Height в пикселях
         /// </summary>
-        protected Size _size;
+        protected SizeF _size;
         /// <summary>
         /// Создает экземпляр класса BaseObject 
         /// </summary>
         /// <param name="pos">Положение обьекта на сцене в координатах X,Y в пикселях</param>
         /// <param name="dir">Напрваление движения обьекта на сцене в координатах X,Y в пикселях</param>
         /// <param name="size">Размер обьекта на сцене в велечинах Width и Height в пикселях</param>
-        protected BaseObject(PointF pos, PointF dir, Size size)
+        protected BaseObject(PointF pos, PointF dir, SizeF size)
         {
             _pos = pos;
             _dir = dir;

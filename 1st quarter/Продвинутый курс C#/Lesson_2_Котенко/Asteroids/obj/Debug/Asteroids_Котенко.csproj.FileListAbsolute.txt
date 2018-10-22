@@ -20,3 +20,14 @@ D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_К
 D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids_Котенко.csproj.CoreCompileInputs.cache
 D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids.exe
 D:\Git\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids.pdb
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\bin\Debug\Asteroids.exe.config
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\bin\Debug\Asteroids.exe
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\bin\Debug\Asteroids.pdb
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids_Котенко.csprojAssemblyReference.cache
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids.Game.resources
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids.Properties.Resources.resources
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids.SplashScreen.resources
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids_Котенко.csproj.GenerateResource.cache
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids_Котенко.csproj.CoreCompileInputs.cache
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids.exe
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_2_Котенко\Asteroids\obj\Debug\Asteroids.pdb
