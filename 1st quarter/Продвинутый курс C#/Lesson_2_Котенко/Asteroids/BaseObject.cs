@@ -5,7 +5,7 @@ namespace Asteroids
     /// <summary>
     /// Базовый класс для обьектов в игре
     /// </summary>
-    abstract class BaseObject
+    public abstract class BaseObject
     {
         /// <summary>
         /// Скорость движения. Измеряется в пикселях в секунду.
@@ -24,7 +24,7 @@ namespace Asteroids
         /// Размер обьекта на сцене в велечинах Width и Height в пикселях
         /// </summary>
         protected SizeF _size;
-
+        
         /// <summary>
         /// Создает экземпляр класса BaseObject 
         /// </summary>

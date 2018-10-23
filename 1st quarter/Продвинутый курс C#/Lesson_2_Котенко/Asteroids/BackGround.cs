@@ -54,6 +54,7 @@ namespace Asteroids
             var starsBgPath = Path.GetFullPath(fileName);
             _starsBgImg1 = Image.FromFile(starsBgPath);
             _starsBgImg2 = Image.FromFile(starsBgPath);
+            SceneObjects.BackGrounds.Add(this);
         }
         /// <summary>
         /// Отрисовка элемнта заднего фона

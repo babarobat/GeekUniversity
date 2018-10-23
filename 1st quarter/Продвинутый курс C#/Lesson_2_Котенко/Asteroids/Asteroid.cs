@@ -6,7 +6,7 @@ namespace Asteroids
     /// <summary>
     /// Логика и параметры обьекта типа Asteroid
     /// </summary>
-    class Asteroid : BaseObject
+    class Asteroid : BaseObject,ICollision
     {  
         /// <summary>
         /// Урон астероида
@@ -16,6 +16,9 @@ namespace Asteroids
         /// Здоровье астероида
         /// </summary>
         public int Health { get; private set; }
+
+        public RectangleF Rect => new RectangleF(_pos,_size);
+
         /// <summary>
         /// Направление движения по оси X по умолчанию
         /// </summary>
@@ -46,7 +49,9 @@ namespace Asteroids
             var asteroidImgPath = Path.GetFullPath(fileName);
             _asteroidImg = Image.FromFile(asteroidImgPath);
             _startSize = _asteroidImg.Size;
-            InitAsteroidParams(); 
+            InitAsteroidParams();
+            SceneObjects.Asteroids.Add(this);
+            
         }
         /// <summary>
         /// Отрисовка обьекта
@@ -102,7 +107,7 @@ namespace Asteroids
         /// <summary>
         /// Инициализация положения, размера, скорости, урона и жизней астеродиа
         /// </summary>
-        private void InitAsteroidParams()
+        public void InitAsteroidParams()
         {
             _size = GetRandomSize(_startSize);
             _pos = GetRandomPos(GameGraphics.Width, GameGraphics.Width*2,
@@ -158,8 +163,42 @@ namespace Asteroids
                 return;
             }
         }
-        #endregion
 
+
+        #endregion
+        #region Реализация интерфейса ICollision
+
+        /// <summary>
+        /// Произошло ли столкновение с обьектом?
+        /// </summary>
+        /// <param name="obj">обьект</param>
+        /// <returns></returns>
+        public bool Collision(ICollision obj)
+        {
+            return obj.Rect.IntersectsWith(this.Rect);
+        }
+        /// <summary>
+        /// нанести урон
+        /// </summary>
+        /// <param name="obj">обьект, получающий урон</param>
+        /// <param name="damage">колличество урона</param>
+        public void SetDamage(ICollision obj, int damage)
+        {
+            obj.GetDamage(damage);
+        }
+        /// <summary>
+        /// Получить урон
+        /// </summary>
+        /// <param name="damage">колличество урона</param>
+        public void GetDamage(int damage)
+        {
+            this.Health -= damage;
+            if (Health<1)
+            {
+                InitAsteroidParams();
+            }
+        }
+        #endregion
     }
 }
 

@@ -29,7 +29,7 @@ namespace Asteroids
         /// <summary>
         /// Массив объектов, которые будут инициализированы и отрисованы
         /// </summary>
-        private static BaseObject[] _objects;
+        public static List< BaseObject> Objects;
         /// <summary>
         /// Желаемый FPS
         /// </summary>
@@ -58,7 +58,7 @@ namespace Asteroids
         public static void DrawGraphics()
         {
             Buffer.Graphics.Clear(Color.Black);
-            foreach (var obj in _objects)
+            foreach (var obj in Objects)
             {
                 obj.Draw();
             }
@@ -69,7 +69,7 @@ namespace Asteroids
         /// </summary>
         public static void UpdateGraphics()
         {
-            foreach (var obj in _objects)
+            foreach (var obj in Objects)
             {
                 obj.Update();
             }
@@ -79,16 +79,18 @@ namespace Asteroids
        /// </summary>
         public static void Load()
         {
-            _objects = new BaseObject[10];
+            
+            Objects = new List<BaseObject>();
             List<string> bgAdresses = ResourcesLoader.GetImage(TypeOf.backGround);
-            _objects[0] = new BackGround(20, bgAdresses[0]);
-            _objects[1] = new BackGround(70, bgAdresses[1]);
-            _objects[2] = new BackGround(450, bgAdresses[2]);
+
+            Objects.Add( new BackGround(20, bgAdresses[0]));
+            Objects.Add(new BackGround(70, bgAdresses[1]));
+            Objects.Add(new BackGround(450, bgAdresses[2]));
             for (int i = 3; i < 10; i++)
             {
-                _objects[i] = new Asteroid(ResourcesLoader.GetImage(TypeOf.asteroid)[0]);
+                Objects.Add(new Asteroid(ResourcesLoader.GetImage(TypeOf.asteroid)[0]));
             }
-            
+            Objects.Add(new Rocket(ResourcesLoader.GetImage(TypeOf.rocket)[0]));
         }
         /// <summary>
         /// Событие для таймера
@@ -111,5 +113,6 @@ namespace Asteroids
         {
             return 1000 / tragetUpdatePerSecCount;
         }
+       
     }
 }

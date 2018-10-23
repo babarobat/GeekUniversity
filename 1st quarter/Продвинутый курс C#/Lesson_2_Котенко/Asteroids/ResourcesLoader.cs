@@ -28,7 +28,7 @@ namespace Asteroids
                      "Resources/Bg_Stars_3.png"
                     };                    
                 case TypeOf.rocket:
-                     return new List<string>() { "" };
+                     return new List<string>() { "Resources/SpaceRocket.png" };
                 case TypeOf.asteroid:
                     return new List<string>() { "Resources/Asteroid.png" };                    
                 case TypeOf.playerShip:
