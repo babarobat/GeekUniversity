@@ -17,12 +17,15 @@ namespace Asteroids
         /// <summary>
         /// Ссылка на коллайдер ракеты
         /// </summary>
-        public RectangleF Collider => new RectangleF(_pos, _colliderSize);
+        public RectangleF Collider => new RectangleF(_pos, _size);
         /// <summary>
         /// Размер коллайдера ракеты
         /// </summary>
         private SizeF _colliderSize;
-
+        /// <summary>
+        /// Позиция коллайдера
+        /// </summary>
+        private PointF _colliderPos;
         /// <summary>
         /// Направление движения по оси X по умолчанию
         /// </summary>
@@ -60,7 +63,7 @@ namespace Asteroids
             _size = _rocketImg.Size;
             Speed = _startSpeed;
             Damage = _startDamage;
-            SetColliderSize(0.8f);
+           
             
             SceneObjects.Rockets.Add(this);
 
@@ -80,7 +83,7 @@ namespace Asteroids
         public override void Update()
         {
             _pos.X += _dir.X* Speed / GameGraphics.TargetFPS;
-
+            //SetColliderSizeAndPos(0.8f);
             foreach (ICollision asteroid  in SceneObjects.Asteroids)
             {
                 if (Collision(asteroid))
@@ -92,14 +95,18 @@ namespace Asteroids
             }
         }
         /// <summary>
-        /// Задает размер коллайдера относительно изображения
+        /// Определяет размер и позицию коллайдера относительно исходного размера изображения обьекта
         /// </summary>
-        /// <param name="sizeMultiplier"></param>
-        private void SetColliderSize(float sizeMultiplier)
+        /// <param name="sizeMultiplier">коээфициент, на который умножается размер изображения</param>
+        private void SetColliderSizeAndPos(float sizeMultiplier)
         {
             _colliderSize.Width = _size.Width * sizeMultiplier;
             _colliderSize.Height = _size.Height * sizeMultiplier;
+            _colliderPos.X = _pos.X + (_size.Width - _colliderSize.Width) / 2;
+            _colliderPos.Y = _pos.Y + (_size.Height - _colliderSize.Width) / 2;
+
         }
+        
         #region рeалbзация интерфейса ICollision
 
         /// <summary>
