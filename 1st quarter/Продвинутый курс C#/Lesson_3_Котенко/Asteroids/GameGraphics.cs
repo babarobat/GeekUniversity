@@ -34,6 +34,9 @@ namespace Asteroids
         /// Желаемый FPS
         /// </summary>
         public const int TargetFPS = 60;
+        /// <summary>
+        /// Ссылка на обьект типа Timer
+        /// </summary>
         public static Timer Timer { get; private set; } 
         static GameGraphics() { }
         /// <summary>
@@ -62,6 +65,7 @@ namespace Asteroids
             {
                 obj.Draw();
             }
+
             Buffer.Render();
         }
         /// <summary>
@@ -86,11 +90,14 @@ namespace Asteroids
             Objects.Add(new BackGround(20, bgAdresses[0]));
             Objects.Add(new BackGround(70, bgAdresses[1]));
             Objects.Add(new BackGround(450, bgAdresses[2]));
-            for (int i = 3; i < 10; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Objects.Add(new Asteroid(ResourcesLoader.GetImage(TypeOf.asteroid)[0]));
             }
-            Objects.Add(new Rocket(ResourcesLoader.GetImage(TypeOf.rocket)[0]));
+            for (int i = 0; i < 2; i++)
+            {
+                Objects.Add(new HealthPack(ResourcesLoader.GetImage(TypeOf.health)[0]));
+            }
             Objects.Add(new Ship(ResourcesLoader.GetImage(TypeOf.playerShip)[0]));
         }
         /// <summary>

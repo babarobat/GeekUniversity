@@ -24,6 +24,10 @@
         /// <summary>
         /// враг
         /// </summary>
-        enemy
+        enemy,
+        /// <summary>
+        /// Аптечка
+        /// </summary>
+        health
     }
 }

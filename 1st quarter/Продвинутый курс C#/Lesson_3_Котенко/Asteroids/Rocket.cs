@@ -1,8 +1,12 @@
 ﻿using System.IO;
+using System;
 using System.Drawing;
 
 namespace Asteroids
 {
+      /// <summary>
+      /// Логика и свойства ракеты
+      /// </summary>
     class Rocket : BaseObject, ICollision
     {
 
@@ -11,9 +15,13 @@ namespace Asteroids
         /// </summary>
         public int Damage { get; private set; }
         /// <summary>
-        /// Ссылка на RectangleF ракеты
+        /// Ссылка на коллайдер ракеты
         /// </summary>
-        public RectangleF Rect => new RectangleF(_pos, _size);
+        public RectangleF Collider => new RectangleF(_pos, _colliderSize);
+        /// <summary>
+        /// Размер коллайдера ракеты
+        /// </summary>
+        private SizeF _colliderSize;
 
         /// <summary>
         /// Направление движения по оси X по умолчанию
@@ -31,7 +39,11 @@ namespace Asteroids
         /// Скорость по умолчанию
         /// </summary>
         private const int _startSpeed = 500;
+        /// <summary>
+        /// Начальный урон ракеты
+        /// </summary>
         private const int _startDamage = 1;
+        
         /// <summary>
         /// Создает экземпляр ракеты.
         /// по умолчанию направление движения слева направо,
@@ -39,16 +51,17 @@ namespace Asteroids
         /// урон равен _startDamage
         /// </summary>
         /// <param name="fileName"></param>
-        public Rocket(string fileName)
+        public Rocket(string fileName, PointF pos)
         {
             _dir = new PointF(_defaultDirectionX, _defaultDirectionY);
             var rocketImgPath = Path.GetFullPath(fileName);
             _rocketImg = Image.FromFile(rocketImgPath);
-            
+            _pos = pos;
             _size = _rocketImg.Size;
             Speed = _startSpeed;
             Damage = _startDamage;
-            GoToStartPos();
+            SetColliderSize(0.8f);
+            
             SceneObjects.Rockets.Add(this);
 
         }
@@ -67,21 +80,27 @@ namespace Asteroids
         public override void Update()
         {
             _pos.X += _dir.X* Speed / GameGraphics.TargetFPS;
-            
-            if (_pos.X>GameGraphics.Width)
+
+            foreach (ICollision asteroid  in SceneObjects.Asteroids)
             {
-                GoToStartPos();                
+                if (Collision(asteroid))
+                {
+                    SceneObjects.Player.CurrentScore++;
+                    FormManager.GameForm.SetScore(SceneObjects.Player.CurrentScore.ToString());
+
+                }
             }
         }
         /// <summary>
-        /// Возвращает ракету в стартовую точку. ДЗ
+        /// Задает размер коллайдера относительно изображения
         /// </summary>
-        public void GoToStartPos()
+        /// <param name="sizeMultiplier"></param>
+        private void SetColliderSize(float sizeMultiplier)
         {
-            _pos.X = 50;
-            _pos.Y = 350;
+            _colliderSize.Width = _size.Width * sizeMultiplier;
+            _colliderSize.Height = _size.Height * sizeMultiplier;
         }
-        #region ркаллтзация интерфейса ICollision
+        #region рeалbзация интерфейса ICollision
 
         /// <summary>
         /// нанести урон
@@ -98,7 +117,8 @@ namespace Asteroids
         /// <param name="damage">колличество урона</param>
         public void GetDamage(int damage)
         {
-            GoToStartPos();
+            //GameGraphics.Objects.Remove(this);
+            //SceneObjects.Rockets.Remove(this);
         }
         /// <summary>
         /// Произошло ли столкновение с обьектом?
@@ -107,8 +127,9 @@ namespace Asteroids
         /// <returns></returns>
         public bool Collision(ICollision obj)
         {
-            return obj.Rect.IntersectsWith(this.Rect);
+            return obj.Collider.IntersectsWith(this.Collider);
         }
         #endregion
+        
     }
 }

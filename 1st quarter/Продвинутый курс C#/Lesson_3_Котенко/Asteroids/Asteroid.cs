@@ -16,8 +16,14 @@ namespace Asteroids
         /// Здоровье астероида
         /// </summary>
         public int Health { get; private set; }
-
-        public RectangleF Rect => new RectangleF(_pos,_size);
+        /// <summary>
+        /// Ссылка на коллайдер. Размер определяется _colliderSize
+        /// </summary>
+        public RectangleF Collider => new RectangleF(_pos, _colliderSize);
+        /// <summary>
+        /// Размер коллайдера
+        /// </summary>
+        private SizeF _colliderSize;
 
         /// <summary>
         /// Направление движения по оси X по умолчанию
@@ -45,11 +51,13 @@ namespace Asteroids
         /// <param name="fileName">имя файла</param>
         public Asteroid(string fileName)
         {
+            Send += JournalWriter.Write;
             _dir = new PointF(_defaultDirectionX, _defaultDirectionY);
             var asteroidImgPath = Path.GetFullPath(fileName);
             _asteroidImg = Image.FromFile(asteroidImgPath);
             _startSize = _asteroidImg.Size;
             InitAsteroidParams();
+            SetColliderSize(0.8f);
             SceneObjects.Asteroids.Add(this);
             
         }
@@ -68,22 +76,35 @@ namespace Asteroids
         public override void Update()
         {
             _pos.X += _dir.X*Speed/ GameGraphics.TargetFPS;
-            foreach (BaseObject item in GameGraphics.Objects)
+            foreach (ICollision rocket  in SceneObjects.Rockets)
             {
-                if (item is Rocket || item is Ship)
+                if (Collision(rocket))
                 {
-                    
-                    if (Collision(item as ICollision))
-                    {
-                        (item as ICollision).GetDamage(Damage);
-                        this.GetDamage((item as ICollision).Damage);
-                    }
+                    SendAction(rocket as BaseObject, "hit Asteroid");
+                    rocket.GetDamage(Damage);
+                    this.GetDamage(rocket.Damage);
                 }
             }
+            if (Collision(SceneObjects.Player))
+            {
+                SendAction(this, "hit Player");
+                SceneObjects.Player.GetDamage(Damage);
+                this.GetDamage(SceneObjects.Player.Damage);
+            }
+            
             if (_pos.X < 0-_size.Width)
             {
                 InitAsteroidParams();
             }
+        }
+        /// <summary>
+        /// Определяет размер коллайдера относительно исходного размера изображения обьекта
+        /// </summary>
+        /// <param name="sizeMultiplier">коээфициент, на который умножается размер изображения</param>
+        private void SetColliderSize(float sizeMultiplier)
+        {
+            _colliderSize.Width = _size.Width * sizeMultiplier;
+            _colliderSize.Height = _size.Height * sizeMultiplier;
         }
         #region приватные методы
         /// <summary>
@@ -119,7 +140,7 @@ namespace Asteroids
         /// <summary>
         /// Инициализация положения, размера, скорости, урона и жизней астеродиа
         /// </summary>
-        public void InitAsteroidParams()
+        private void InitAsteroidParams()
         {
             _size = GetRandomSize(_startSize);
             _pos = GetRandomPos(GameGraphics.Width, GameGraphics.Width*2,
@@ -187,7 +208,7 @@ namespace Asteroids
         /// <returns></returns>
         public bool Collision(ICollision obj)
         {
-            return obj.Rect.IntersectsWith(this.Rect);
+            return obj.Collider.IntersectsWith(this.Collider);
         }
         /// <summary>
         /// нанести урон

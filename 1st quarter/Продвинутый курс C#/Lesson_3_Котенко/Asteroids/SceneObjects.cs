@@ -19,6 +19,13 @@ namespace Asteroids
         /// Ссылка на список ракет
         /// </summary>
         public static List<BaseObject> Rockets { get; private set; }
+        /// <summary>
+        /// Ссылка на коллецкию аптечек
+        /// </summary>
+        public static List<BaseObject> HealthPacks { get; private set; }
+        /// <summary>
+        /// Ссылка на игрока
+        /// </summary>
         public static Ship Player { get; set; }
 
         static SceneObjects()
@@ -26,7 +33,9 @@ namespace Asteroids
             Asteroids = new List<BaseObject>();
             BackGrounds = new List<BaseObject>();
             Rockets = new List<BaseObject>();
-            
+            HealthPacks = new List<BaseObject>();
+
+
         }
 
     }

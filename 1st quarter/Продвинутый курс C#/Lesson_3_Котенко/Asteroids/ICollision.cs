@@ -14,7 +14,7 @@ namespace Asteroids
         /// <summary>
         /// Ссылка на RectangleF обекта
         /// </summary>
-        RectangleF Rect { get; }
+        RectangleF Collider { get; }
         /// <summary>
         /// Произошло столкновение обьектов?
         /// </summary>

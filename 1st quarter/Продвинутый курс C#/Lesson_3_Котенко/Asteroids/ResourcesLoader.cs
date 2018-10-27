@@ -35,6 +35,8 @@ namespace Asteroids
                     return new List<string>() { "Resources/Ships_Player.png" };                   
                 case TypeOf.enemy:
                     return new List<string>() { "" };
+                case TypeOf.health:
+                    return new List<string>() { "Resources/HelthPack.png" };
                 default:
                     return null;
             }

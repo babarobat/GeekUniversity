@@ -73,10 +73,17 @@ namespace Asteroids
                 Height = _screenHeight
             };
             IsPaused = false;
+            GameForm.ScoreLabel.Font = new System.Drawing.Font(_buttonsFont.Families[0],11f);
+            GameForm.HealthLabel.Font = new System.Drawing.Font(_buttonsFont.Families[0], 11f);
+            
             GameForm.MenuButton.Font = new System.Drawing.Font(_buttonsFont.Families[0], 14f);
             GameForm.MenuButton.Hide();
             GameGraphics.Init(GameForm);
             GameGraphics.DrawGraphics();
+            GameForm.HealthLabel.Text = "Health: "+SceneObjects.Player.CurrentHealth.ToString();
+            GameForm.ScoreLabel.Text = "Score: " + SceneObjects.Player.CurrentScore.ToString();
+
+
             SplashScreen.Hide();
             
             GameForm.Show();

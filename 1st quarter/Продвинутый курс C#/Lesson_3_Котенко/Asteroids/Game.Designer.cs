@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.Menu = new System.Windows.Forms.Button();
+            this.HealthLbl = new System.Windows.Forms.Label();
+            this.ScoreLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Menu
@@ -47,12 +49,33 @@
             this.Menu.UseVisualStyleBackColor = false;
             this.Menu.Click += new System.EventHandler(this.Menu_Click);
             // 
+            // HealthLbl
+            // 
+            this.HealthLbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.HealthLbl.Location = new System.Drawing.Point(13, 13);
+            this.HealthLbl.Name = "HealthLbl";
+            this.HealthLbl.Size = new System.Drawing.Size(190, 31);
+            this.HealthLbl.TabIndex = 2;
+            this.HealthLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.HealthLbl.Click += new System.EventHandler(this.HealthLbl_Click);
+            // 
+            // ScoreLbl
+            // 
+            this.ScoreLbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ScoreLbl.Location = new System.Drawing.Point(13, 44);
+            this.ScoreLbl.Name = "ScoreLbl";
+            this.ScoreLbl.Size = new System.Drawing.Size(190, 31);
+            this.ScoreLbl.TabIndex = 3;
+            this.ScoreLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.ScoreLbl);
+            this.Controls.Add(this.HealthLbl);
             this.Controls.Add(this.Menu);
             this.Name = "Game";
             this.Text = "Game";
@@ -63,5 +86,7 @@
 
         #endregion
         private System.Windows.Forms.Button Menu;
+        private System.Windows.Forms.Label HealthLbl;
+        private System.Windows.Forms.Label ScoreLbl;
     }
 }
