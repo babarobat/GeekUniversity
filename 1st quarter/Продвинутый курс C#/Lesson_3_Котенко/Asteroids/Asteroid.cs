@@ -19,11 +19,12 @@ namespace Asteroids
         /// <summary>
         /// Ссылка на коллайдер. Размер определяется _colliderSize
         /// </summary>
-        public RectangleF Collider => new RectangleF(_pos, _colliderSize);
+        public RectangleF Collider => new RectangleF(_pos, _size);
         /// <summary>
         /// Размер коллайдера
         /// </summary>
         private SizeF _colliderSize;
+        private PointF _colliderPos;
 
         /// <summary>
         /// Направление движения по оси X по умолчанию
@@ -57,7 +58,7 @@ namespace Asteroids
             _asteroidImg = Image.FromFile(asteroidImgPath);
             _startSize = _asteroidImg.Size;
             InitAsteroidParams();
-            SetColliderSize(0.8f);
+            
             SceneObjects.Asteroids.Add(this);
             
         }
@@ -76,6 +77,7 @@ namespace Asteroids
         public override void Update()
         {
             _pos.X += _dir.X*Speed/ GameGraphics.TargetFPS;
+            //SetColliderSizeAndPos(0.8f);
             foreach (ICollision rocket  in SceneObjects.Rockets)
             {
                 if (Collision(rocket))
@@ -98,14 +100,18 @@ namespace Asteroids
             }
         }
         /// <summary>
-        /// Определяет размер коллайдера относительно исходного размера изображения обьекта
+        /// Определяет размер и позицию коллайдера относительно исходного размера изображения обьекта
         /// </summary>
         /// <param name="sizeMultiplier">коээфициент, на который умножается размер изображения</param>
-        private void SetColliderSize(float sizeMultiplier)
+        private void SetColliderSizeAndPos(float sizeMultiplier)
         {
             _colliderSize.Width = _size.Width * sizeMultiplier;
             _colliderSize.Height = _size.Height * sizeMultiplier;
+            _colliderPos.X = _pos.X + (_size.Width - _colliderSize.Width) / 2;
+            _colliderPos.Y = _pos.Y + (_size.Height - _colliderSize.Width) / 2;
+
         }
+        
         #region приватные методы
         /// <summary>
         /// Возвращает случайно расположенную точку 

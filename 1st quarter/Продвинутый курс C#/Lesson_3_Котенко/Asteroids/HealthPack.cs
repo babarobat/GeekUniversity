@@ -24,11 +24,15 @@ namespace Asteroids
         /// <summary>
         /// Ссылка на коллайдер 
         /// </summary>
-        public RectangleF Collider => new RectangleF(_pos, _colliderSize);
+        public RectangleF Collider => new RectangleF(_pos, _size);
         /// <summary>
         /// Размер коллайдера
         /// </summary>
         private SizeF _colliderSize;
+        /// <summary>
+        /// Позиция коллайдера
+        /// </summary>
+        private PointF _colliderPos;
         /// <summary>
         /// Направление движения по умолчанию по оси X
         /// </summary>
@@ -52,7 +56,7 @@ namespace Asteroids
             var healthImgPath = Path.GetFullPath(fileName);
             _healthPackImg = Image.FromFile(healthImgPath);
             _size = _healthPackImg.Size;
-            SetColliderSize(1);
+            //SetColliderSizeAndPos(1);
             GoToSpawnPoint();
             SceneObjects.HealthPacks.Add(this);
 
@@ -73,7 +77,7 @@ namespace Asteroids
         {
             _pos.X += _dir.X * Speed / GameGraphics.TargetFPS;
             
-            
+
         }
         #region Реализация интерфейса ICollision
         public void GetDamage(int damage)
@@ -127,14 +131,18 @@ namespace Asteroids
             return new Point(rndPosX, rndPosY);
         }
         /// <summary>
-        /// Задает размер коллайдера относительно размера изображения обьекта
+        /// Определяет размер и позицию коллайдера относительно исходного размера изображения обьекта
         /// </summary>
-        /// <param name="sizeMultiplier"></param>
-        private void SetColliderSize(float sizeMultiplier)
+        /// <param name="sizeMultiplier">коээфициент, на который умножается размер изображения</param>
+        private void SetColliderSizeAndPos(float sizeMultiplier)
         {
             _colliderSize.Width = _size.Width * sizeMultiplier;
             _colliderSize.Height = _size.Height * sizeMultiplier;
+            _colliderPos.X = _pos.X + (_size.Width - _colliderSize.Width) / 2;
+            _colliderPos.Y = _pos.Y + (_size.Height - _colliderSize.Width) / 2;
+
         }
+        
         #endregion
 
     }
