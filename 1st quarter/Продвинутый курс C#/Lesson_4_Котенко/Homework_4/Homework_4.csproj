@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C5AC0BCF-3F2F-4FA0-88DC-6FE1A50B7EE1}</ProjectGuid>
+    <ProjectGuid>{C7F1BC7D-1CC7-4BAA-BF48-CF48D72A21CF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Asteroids</RootNamespace>
-    <AssemblyName>Asteroids</AssemblyName>
+    <RootNamespace>Homework_4</RootNamespace>
+    <AssemblyName>Homework_4</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,8 +34,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,55 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asteroid.cs" />
-    <Compile Include="BackGround.cs" />
-    <Compile Include="BaseObject.cs" />
-    <Compile Include="FormManager.cs" />
-    <Compile Include="Game.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Game.Designer.cs">
-      <DependentUpon>Game.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GameGraphics.cs" />
-    <Compile Include="HealthPack.cs" />
-    <Compile Include="ICollision.cs" />
-    <Compile Include="ScoresManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="ResourcesLoader.cs" />
-    <Compile Include="Rocket.cs" />
-    <Compile Include="SceneObjects.cs" />
-    <Compile Include="Scores.cs" />
-    <Compile Include="Ship.cs" />
-    <Compile Include="SplashScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SplashScreen.Designer.cs">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TypeOf.cs" />
-    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Game.resx">
-      <DependentUpon>Game.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SplashScreen.resx">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

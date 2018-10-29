@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using System;
 
 namespace Asteroids
 {
@@ -8,7 +7,7 @@ namespace Asteroids
         static void Main(string[] args)
         {
             FormManager.RunSplashScreen();
-            Application.Run(FormManager.SplashScreen);
+            Application.Run(FormManager.SplashScreenForm);
         }
     }
 }

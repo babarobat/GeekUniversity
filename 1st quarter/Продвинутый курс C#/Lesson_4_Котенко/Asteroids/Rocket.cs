@@ -136,14 +136,20 @@ namespace Asteroids
 
 
         #endregion
+        #region реализация интерфейса IDispose
+        /// <summary>
+        /// Логика уничтожения обьекта
+        /// </summary>
         public void Dispose()
         {
             _rocketImg.Dispose();
             GameGraphics.Objects.Remove(this);
             SceneObjects.Rockets.Remove(this);
-            
-            
+
+
         }
+        #endregion
+
 
 
     }

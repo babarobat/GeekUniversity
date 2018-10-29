@@ -115,7 +115,9 @@ namespace Asteroids
         {
             return 1000 / tragetUpdatePerSecCount;
         }
-        
+        /// <summary>
+        /// Добавляет игровые обьекты в соответствующие коллекции
+        /// </summary>
         private static  void LoadSceneObjects()
         {
             Objects = new List<BaseObject>();
@@ -134,6 +136,9 @@ namespace Asteroids
             }
             Objects.Add(new Ship(ResourcesLoader.GetImage(TypeOf.playerShip)[0]));
         }
+        /// <summary>
+        /// очищает коллекции, в которых содержались игровые обьекты
+        /// </summary>
         private static void ClearScene()
         {
             Objects?.Clear();

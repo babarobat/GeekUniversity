@@ -1,0 +1,7 @@
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_4_Котенко\Homework_4\obj\Debug\Homework_4.csprojAssemblyReference.cache
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_4_Котенко\Homework_4\obj\Debug\Homework_4.csproj.CoreCompileInputs.cache
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_4_Котенко\Homework_4\bin\Debug\Homework_4.exe.config
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_4_Котенко\Homework_4\bin\Debug\Homework_4.exe
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_4_Котенко\Homework_4\bin\Debug\Homework_4.pdb
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_4_Котенко\Homework_4\obj\Debug\Homework_4.exe
+Z:\Work\_Unity\GeekUniversity\1st quarter\Продвинутый курс C#\Lesson_4_Котенко\Homework_4\obj\Debug\Homework_4.pdb

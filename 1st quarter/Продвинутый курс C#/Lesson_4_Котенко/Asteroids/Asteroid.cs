@@ -24,6 +24,9 @@ namespace Asteroids
         /// Размер коллайдера
         /// </summary>
         private SizeF _colliderSize;
+        /// <summary>
+        /// позиция коллайдера
+        /// </summary>
         private PointF _colliderPos;
          
         /// <summary>
@@ -52,7 +55,7 @@ namespace Asteroids
         /// <param name="fileName">имя файла</param>
         public Asteroid(string fileName)
         {
-            Send += JournalWriter.Write;
+            Send += ScoresManager.Write;
             _dir = new PointF(_defaultDirectionX, _defaultDirectionY);
             var asteroidImgPath = Path.GetFullPath(fileName);
             _asteroidImg = Image.FromFile(asteroidImgPath);
@@ -70,14 +73,15 @@ namespace Asteroids
             GameGraphics.Buffer.Graphics.DrawImage(_asteroidImg,
                                                     _pos.X, _pos.Y,
                                                     _size.Width, _size.Height);
-            GameGraphics.Buffer.Graphics.DrawRectangle(Pens.Green,
-                                                       new Rectangle((int)_colliderPos.X,
-                                                                     (int)_colliderPos.Y,
-                                                                     (int)Collider.Width,
-                                                                     (int)Collider.Height));
-            GameGraphics.Buffer.Graphics.DrawString(this.Health.ToString(),
-                                                    SystemFonts.DefaultFont,
-                                                    Brushes.Green, _colliderPos);
+            /// показывает коллайдеры
+            //GameGraphics.Buffer.Graphics.DrawRectangle(Pens.Green,
+            //                                           new Rectangle((int)_colliderPos.X,
+            //                                                         (int)_colliderPos.Y,
+            //                                                         (int)Collider.Width,
+            //                                                         (int)Collider.Height));
+            //GameGraphics.Buffer.Graphics.DrawString(this.Health.ToString(),
+            //                                        SystemFonts.DefaultFont,
+            //                                        Brushes.Green, _colliderPos);
         }
         /// <summary>
         /// Обновление позиции обьекта
@@ -91,7 +95,7 @@ namespace Asteroids
             {
                 SendAction(this, "hit Player");
                 SceneObjects.Player.GetDamage(Damage);
-                this.GetDamage(SceneObjects.Player.Damage);
+                InitAsteroidParams();
             }
             
             if (_pos.X < 0-_size.Width)
@@ -149,11 +153,7 @@ namespace Asteroids
             
             return new SizeF(fromSize.Width * rndSizeValue, fromSize.Height * rndSizeValue);
         }
-        public string GetInfo()
-        {
-            return "_pos = "+_pos.X.ToString()+"," + _pos.Y.ToString() + ";" +
-                   " _size = "+_size.Width.ToString()+","+_size.Height.ToString();
-        }
+        
         /// <summary>
         /// Инициализация положения, размера, скорости, урона и жизней астеродиа
         /// </summary>

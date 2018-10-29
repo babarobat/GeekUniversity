@@ -38,6 +38,8 @@
             this.GameNameLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.AuthorLbl = new System.Windows.Forms.Label();
+            this.Scores = new System.Windows.Forms.TextBox();
+            this.CloseScores = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +118,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.CloseScores);
+            this.panel1.Controls.Add(this.Scores);
             this.panel1.Controls.Add(this.AuthorLbl);
             this.panel1.Controls.Add(this.NewGameBtn);
             this.panel1.Controls.Add(this.GameNameLabel);
@@ -139,6 +143,34 @@
             this.AuthorLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.AuthorLbl.Click += new System.EventHandler(this.AuthorLbl_Click);
             // 
+            // Scores
+            // 
+            this.Scores.BackColor = System.Drawing.SystemColors.InfoText;
+            this.Scores.ForeColor = System.Drawing.SystemColors.Info;
+            this.Scores.Location = new System.Drawing.Point(365, 198);
+            this.Scores.Multiline = true;
+            this.Scores.Name = "Scores";
+            this.Scores.ReadOnly = true;
+            this.Scores.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Scores.Size = new System.Drawing.Size(567, 375);
+            this.Scores.TabIndex = 6;
+            this.Scores.TextChanged += new System.EventHandler(this.Scores_TextChanged);
+            // 
+            // CloseScores
+            // 
+            this.CloseScores.BackColor = System.Drawing.Color.Black;
+            this.CloseScores.FlatAppearance.BorderSize = 0;
+            this.CloseScores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.CloseScores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseScores.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseScores.Location = new System.Drawing.Point(564, 579);
+            this.CloseScores.Name = "CloseScores";
+            this.CloseScores.Size = new System.Drawing.Size(150, 50);
+            this.CloseScores.TabIndex = 7;
+            this.CloseScores.Text = "Back";
+            this.CloseScores.UseVisualStyleBackColor = false;
+            this.CloseScores.Click += new System.EventHandler(this.CloseScores_Click);
+            // 
             // SplashScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +180,7 @@
             this.Name = "SplashScreen";
             this.Text = "SplashScreencs";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +196,7 @@
         private System.Windows.Forms.Label GameNameLabel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label AuthorLbl;
+        private System.Windows.Forms.TextBox Scores;
+        private System.Windows.Forms.Button CloseScores;
     }
 }

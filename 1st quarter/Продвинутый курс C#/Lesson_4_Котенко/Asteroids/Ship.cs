@@ -1,12 +1,8 @@
 ﻿using System;
-
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Asteroids
 {
@@ -15,6 +11,7 @@ namespace Asteroids
     /// </summary>
     public class Ship : BaseObject, ICollision
     {
+        
         /// <summary>
         /// Урон, который наносит игрок при столкновении с обьектами.
         /// Установлено большое значение для того что бы уничтожать аптечки и астероиды
@@ -65,7 +62,7 @@ namespace Asteroids
         /// <param name="fileName"></param>
         public Ship(string fileName)
         {
-            Send += JournalWriter.Write;
+            Send += ScoresManager.Write;
             Speed = 500;
             CurrentHealth = StartHealth;
             CurrentScore = StartScore;
@@ -180,6 +177,9 @@ namespace Asteroids
             {
                 FormManager.ShowDieMenu();
                 CurrentHealth = 0;
+                ScoresManager.HighScores.scores.Add(DateTime.Now, CurrentScore);
+                ScoresManager.SaveScores();
+                
             }
             FormManager.GameForm.SetHealth(CurrentHealth.ToString());
         }

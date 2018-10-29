@@ -1,6 +1,11 @@
 ﻿using System.IO;
 using System.Drawing.Text;
+using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using System;
+using System.Linq;
+
 namespace Asteroids
 {
     /// <summary>
@@ -8,6 +13,7 @@ namespace Asteroids
     /// </summary>
     static class FormManager
     {
+        
         /// <summary>
         /// Ссылка на шрифт для кнопок
         /// </summary>
@@ -31,7 +37,7 @@ namespace Asteroids
         /// <summary>
         /// Ссылка на форму с меню
         /// </summary>
-        public static SplashScreen SplashScreen { get; private set; }
+        public static SplashScreen SplashScreenForm { get; private set; }
         /// <summary>
         /// Сейчас пауза?
         /// </summary>
@@ -41,7 +47,7 @@ namespace Asteroids
         /// </summary>
         public static void RunSplashScreen()
         {
-            SplashScreen = new SplashScreen()
+            SplashScreenForm = new SplashScreen()
             {
                 Width = _screenWidth,
                 Height = _screenHeight
@@ -51,16 +57,24 @@ namespace Asteroids
             _buttonsFont.AddFontFile(Path.GetFullPath("Resources/joystix monospace.ttf"));
             _gameNameFont.AddFontFile(Path.GetFullPath("Resources/BACKTO1982.ttf"));
             System.Drawing.Font buttonsFont = new  System.Drawing.Font(_buttonsFont.Families[0], 14f);
-            SplashScreen.NewGame.Font = buttonsFont;
-            SplashScreen.Records.Font = buttonsFont;
-            SplashScreen.Exit.Font = buttonsFont;
-            SplashScreen.About.Font = new System.Drawing.Font(_buttonsFont.Families[0], 8f);
-            SplashScreen.GameName.Font = new System.Drawing.Font(_gameNameFont.Families[0], 30f);
+            SplashScreenForm.ScoresText.Font = new System.Drawing.Font(_buttonsFont.Families[0], 8f); ;
+            SplashScreenForm.NewGame.Font = buttonsFont;
+            SplashScreenForm.Records.Font = buttonsFont;
+            SplashScreenForm.CloseScoresBtn.Font = buttonsFont;
+            SplashScreenForm.Exit.Font = buttonsFont;
+            SplashScreenForm.About.Font = new System.Drawing.Font(_buttonsFont.Families[0], 8f);
+            SplashScreenForm.GameName.Font = new System.Drawing.Font(_gameNameFont.Families[0], 30f);
+
+            
+
+            HideScores();
+
+
             if (GameForm != null)
             {
                 GameForm.Close();
             }            
-            SplashScreen.Show();
+            SplashScreenForm.Show();
         }
         /// <summary>
         /// Показывает форму игрой
@@ -78,7 +92,7 @@ namespace Asteroids
             StartNewGame();
 
 
-            SplashScreen.Hide();
+            SplashScreenForm.Hide();
             
             GameForm.Show();
         }
@@ -103,6 +117,9 @@ namespace Asteroids
             }
             
         }
+        /// <summary>
+        /// Отображает и скрывает меню паузы во время игры
+        /// </summary>
         public static void ShowDieMenu()
         {
             GameForm.MenuButton.Show();
@@ -110,6 +127,9 @@ namespace Asteroids
             GameForm.YouLooseLbl.Show();
             IsPaused = true;
         }
+        /// <summary>
+        /// Инициализация обьектов пользовательского интерфейса
+        /// </summary>
         public static  void StartNewGame()
         {
             IsPaused = false;
@@ -123,6 +143,34 @@ namespace Asteroids
             GameForm.YouLooseLbl.Hide();
             GameForm.HealthLabel.Text = "Health: " + SceneObjects.Player.CurrentHealth.ToString();
             GameForm.ScoreLabel.Text = "Score: " + SceneObjects.Player.CurrentScore.ToString();
+        }
+        /// <summary>
+        /// Отображает панель с рекордами
+        /// </summary>
+        public static void ShowScores()
+        {
+            SplashScreenForm.ScoresText.Show();
+            //ScoresManager.HighScores.scores.
+
+            var d = ScoresManager.HighScores.scores.OrderBy(e => e.Value).Reverse();
+            foreach (KeyValuePair<DateTime,int> item in d)
+            {
+                SplashScreenForm.ScoresText.Text += item.Key.ToString()
+                                                    + " player destroyed  " 
+                                                    + item.Value.ToString() 
+                                                    + " asteroids" 
+                                                    + Environment.NewLine;
+                Console.WriteLine(item.Value);
+            }
+            SplashScreenForm.CloseScoresBtn.Show();
+        }
+        /// <summary>
+        /// скрывает панель с рекордами
+        /// </summary>
+        public static void HideScores()
+        {
+            SplashScreenForm.ScoresText.Hide();
+            SplashScreenForm.CloseScoresBtn.Hide();
         }
     }
 }
