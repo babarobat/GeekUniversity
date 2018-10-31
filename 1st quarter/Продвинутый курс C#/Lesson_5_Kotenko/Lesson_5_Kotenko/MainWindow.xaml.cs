@@ -20,12 +20,10 @@ namespace Lesson_5_Kotenko
     /// </summary>
     public partial class MainWindow : Window
     {
-
-
-
         public MainWindow()
         {
             InitializeComponent();
+            Company company = Company.GetRandomCompany();
         }
 
         

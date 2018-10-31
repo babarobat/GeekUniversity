@@ -9,7 +9,7 @@ namespace Lesson_5_Kotenko
     /// <summary>
     /// Содержит параметры и логику сотрудника
     /// </summary>
-    class Employee :IEquatable<Employee>
+    public class Employee :IEquatable<Employee>
     {
         /// <summary>
         /// статический параметр для создания уникального имени
