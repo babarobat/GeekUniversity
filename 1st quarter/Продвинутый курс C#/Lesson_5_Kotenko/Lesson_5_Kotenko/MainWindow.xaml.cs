@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,13 +25,17 @@ namespace Lesson_5_Kotenko
         {
             InitializeComponent();
             Company company = Company.GetRandomCompany();
+            DepList.ItemsSource = company.Departments;
+            
+        }
+        private void DepList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EmpList.ItemsSource = (DepList.SelectedItem as Department).Employees;
         }
 
-        
-
-        private void ListBox_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+        private void EmpList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            EmpParamPannel.DataContext = (EmpList.SelectedItem as Employee);
         }
     }
 }

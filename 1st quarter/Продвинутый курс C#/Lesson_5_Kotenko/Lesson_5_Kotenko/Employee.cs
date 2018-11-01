@@ -23,49 +23,18 @@ namespace Lesson_5_Kotenko
         /// Имя работника.
         /// Если ввести пустую строку присвоит стандартное имя
         /// </summary>
-        public string Name
-        {
-            get { return Name; }
-            set
-            {
-                if (value != string.Empty)
-                {
-                    Name = value;
-                }
-                else
-                {
-                    Name = "Simple Employee Name " + Index;
-                }
-            }
-        }
+        public string Name { get; set; }
+        
         /// <summary>
         /// Возраст сотрудника. Не может быть меньше 0
         /// </summary>
-        public int Age
-        {
-            get { return Age; }
-            set
-            {
-                if (value >0)
-                {
-                    Age = value;
-                }
-            }
-        }
+        public int Age { get; set; }
+        
         /// <summary>
         /// Зарплата сотрудника. Не может быть меньше 0
         /// </summary>
-        public int Sel
-        {
-            get { return Sel; }
-            set
-            {
-                if (value > 0)
-                {
-                    Sel = value;
-                }
-            }
-        }
+        public int Sel { get; set; }
+        
         /// <summary>
         /// Конструктор без параметров
         /// </summary>

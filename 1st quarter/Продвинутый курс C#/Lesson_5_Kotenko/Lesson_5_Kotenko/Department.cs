@@ -15,7 +15,7 @@ namespace Lesson_5_Kotenko
         /// <summary>
         /// статический параметр для создания уникального имени
         /// </summary>
-        public static int Index { get; private set; }
+        public static int Index { get; private set; } = 0;
         ~Department()
         {
             Index--;
@@ -24,21 +24,8 @@ namespace Lesson_5_Kotenko
         /// Имя работника.
         /// Если ввести пустую строку присвоит стандартное имя
         /// </summary>
-        public string Name
-        {
-            get { return Name; }
-            set
-            {
-                if (value != string.Empty)
-                {
-                    Name = value;
-                }
-                else
-                {
-                    Name = "Simple Department Name " + Index;
-                }
-            }
-        }
+        public string Name { get; set; }
+        
         /// <summary>
         /// Коллекция сотрудников департамента
         /// </summary>
@@ -58,7 +45,7 @@ namespace Lesson_5_Kotenko
         {
             Department tmpDep = new Department();
             tmpDep.Name = "Simple Department Name " + Index;
-            Index++;
+            
             for (int i = 0; i < Util.GetRandom(5, 20); i++)
             {
                 tmpDep.Employees.Add(Employee.GetRandomEmployee());
@@ -118,5 +105,9 @@ namespace Lesson_5_Kotenko
             };
             Employees.Add(tmpEmployee);
         }
+        //public override string ToString()
+        //{
+        //    return Name;
+        //}
     }
 }
