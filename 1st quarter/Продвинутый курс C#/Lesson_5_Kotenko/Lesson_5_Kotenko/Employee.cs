@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson_5_Kotenko
 {
@@ -20,21 +16,62 @@ namespace Lesson_5_Kotenko
             Index--;
         }
         /// <summary>
-        /// Имя работника.
-        /// Если ввести пустую строку присвоит стандартное имя
+        /// Имя сотрудника
         /// </summary>
-        public string Name { get; set; }
-        
+        private string _name;
+        /// <summary>
+        /// Возраст сотрудника
+        /// </summary>
+        private int _age;
+        /// <summary>
+        /// Зарплата сотрудника
+        /// </summary>
+        private int _sel;
+        /// <summary>
+        /// Имя сотрудника
+        /// Не может быть пустой строкой
+        /// </summary>
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                if (value!=string.Empty)
+                {
+                    _name = value;
+                } 
+            }
+            
+        }        
         /// <summary>
         /// Возраст сотрудника. Не может быть меньше 0
         /// </summary>
-        public int Age { get; set; }
-        
+        public int Age
+        {
+            get => _age;
+            set
+            {                
+                if ( value >0)
+                {
+                    _age = value;
+                }
+            }
+        }
+
         /// <summary>
         /// Зарплата сотрудника. Не может быть меньше 0
         /// </summary>
-        public int Sel { get; set; }
-        
+        public int Sel
+        {
+            get => _sel;
+            set
+            {
+                if (value > 0)
+                {
+                    _sel = value;
+                }
+            }
+        }
         /// <summary>
         /// Конструктор без параметров
         /// </summary>

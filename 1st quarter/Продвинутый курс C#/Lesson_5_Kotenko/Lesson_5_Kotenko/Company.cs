@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace Lesson_5_Kotenko
 {
@@ -18,33 +13,26 @@ namespace Lesson_5_Kotenko
         public ObservableCollection<Department> Departments;
 
         /// <summary>
-        /// Коллекция работников, не принадлежащих к какому-либо департаменту
+        /// Содержит работников, не принадлежащих к какому-либо департаменту.
+        /// Поле Deletable этого департамента должно быть false; 
         /// </summary>
-        public ObservableCollection<Employee> NoDepEmployees;
+        public Department NoDepEmployees;
         
         /// <summary>
-        /// Конструктор без параметров
+        /// Конструктор без параметров.
         /// </summary>
         public Company()
         {
             Departments = new ObservableCollection<Department>();
-            NoDepEmployees = new ObservableCollection<Employee>();
+            NoDepEmployees = new Department("Сотрудники без департамента", false);
+            Departments.Add(NoDepEmployees);
         }
-        public void RemoveDepartment(Department department)
-        {
-            foreach (var employee in department.Employees)
-            {
-                NoDepEmployees.Add(employee);
-            }
-            Departments.Remove(department);
-        }
-        public void AddDepartment(string name)
-        {
-            Department tmpDep = new Department
-            {
-                Name = name
-            };
-        }
+        
+        /// <summary>
+        /// Возвращает случайно сгенерированную компанию.
+        /// Для ДЗ
+        /// </summary>
+        /// <returns></returns>
         public static Company GetRandomCompany()
         {
             Company tmpCompany = new Company();
