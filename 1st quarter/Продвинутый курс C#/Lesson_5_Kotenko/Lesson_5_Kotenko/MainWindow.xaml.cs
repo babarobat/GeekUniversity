@@ -44,6 +44,7 @@ namespace Lesson_5_Kotenko
         {
             EmpParamPannel.DataContext = (EmpList.SelectedItem as Employee);
             DepComboBox.ItemsSource = company.Departments;
+            DepComboBox.SelectedItem = DepList.SelectedItem as Department;
         }
         /// <summary>
         /// Вызывается при нажатии на кнопку удаления сотрудника.
