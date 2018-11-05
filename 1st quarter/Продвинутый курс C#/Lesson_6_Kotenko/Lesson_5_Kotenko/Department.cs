@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Lesson_5_Kotenko
 {
     /// <summary>
     /// Содержит параметры и логику департамента
     /// </summary>
-    public class Department : IEquatable<Department>
+    public class Department : IEquatable<Department>,IEnumerable
     {
 
         /// <summary>
@@ -95,6 +99,8 @@ namespace Lesson_5_Kotenko
             Name = name;
             Employees = employees;
         }
+
+
         /// <summary>
         /// Сравнение двух департаментов на равенство
         /// </summary>
@@ -144,6 +150,7 @@ namespace Lesson_5_Kotenko
                 Name = name
             };
             Employees.Add(tmpEmployee);
+            
         }
         public void RemoveEmplyee(Employee employee)
         {
@@ -151,7 +158,15 @@ namespace Lesson_5_Kotenko
             {
                 Employees.Remove(employee);
             }
+            
         }
-       
+        void OnPropChanged([CallerMemberName]string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+        public IEnumerator GetEnumerator()
+        {
+            return ((IEnumerable)Employees).GetEnumerator();
+        }
     }
 }

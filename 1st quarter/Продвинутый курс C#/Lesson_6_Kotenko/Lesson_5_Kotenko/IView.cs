@@ -10,10 +10,8 @@ namespace Lesson_5_Kotenko
 {
     public interface IView
     {
-        ObservableCollection<Department> Departments { get; set; }
-        ObservableCollection<Employee> Employees { get; set; }
-        Employee Employee { get; set; }
-
-        
+        ObservableCollection<Department> Company { get; set; }
+        ObservableCollection<Employee> Department { get; set; }
+        Employee Employee { get; set; } 
     }
 }

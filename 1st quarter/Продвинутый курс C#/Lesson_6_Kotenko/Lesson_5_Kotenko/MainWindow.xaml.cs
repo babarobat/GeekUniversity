@@ -13,13 +13,15 @@ namespace Lesson_5_Kotenko
     {
        
         private Presenter _p;
+        #region  IView
 
-        public ObservableCollection<Department> Departments
+        
+        public ObservableCollection<Department> Company
         {
             get => DepList.ItemsSource as ObservableCollection<Department>;
             set => DepList.ItemsSource = value;
         }
-        public ObservableCollection<Employee> Employees
+        public ObservableCollection<Employee> Department
         {
             get => EmpList.ItemsSource as ObservableCollection<Employee>;
             set => EmpList.ItemsSource = value;
@@ -27,26 +29,41 @@ namespace Lesson_5_Kotenko
         public Employee Employee
         {
             get => EmpParamPannel.DataContext as Employee;
-            set => EmpParamPannel.DataContext = value;
+            set
+            {
+                EmpParamPannel.DataContext = value;
+                EmpList.SelectedItem = value;
+                if (EmpList.SelectedItem != null)
+                {
+                    DepComboBox.ItemsSource = Company;
+                    DepComboBox.SelectedItem = DepList.SelectedItem as Department;
+                }
+                else
+                {
+                    DepComboBox.ItemsSource = null;
+                }
+            } 
         }
+        #endregion
 
         public MainWindow()
         {
             InitializeComponent();
             _p = new Presenter(this);
             _p.LoadCompany();
-            Departments = _p.GetDepartments();
-            //Employees = DepList.SelectedItem as ObservableCollection<Employee>;
-            DepList.SelectionChanged += delegate 
+
+            DepList.SelectionChanged += delegate { _p.ShowDep(DepList.SelectedItem as Department); };
+            EmpList.SelectionChanged += delegate { _p.ShowEmp(EmpList.SelectedItem as Employee); };
+            DepComboBox.SelectionChanged += delegate
             {
-                _p.ShowDep( EmpList, DepList.SelectedItem as ObservableCollection<Employee>);
+                _p.ChangeDep(DepComboBox.SelectedItem as Department,
+                            DepList.SelectedItem as Department,
+                           EmpList.SelectedItem as Employee);
             };
-
+            DeleteEmpBtn.Click += delegate { _p.RemoveEmployee(); };
+            AddEmpBtn.Click+= delegate { _p.AddEmployee(); };
+            AddDepBtn.Click += delegate { _p.AddDep(); };
         }
-
-        
-
-
 
         #region Обработчики событий
         /// <summary>

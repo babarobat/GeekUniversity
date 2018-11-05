@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Collections;
+using System.ComponentModel;
+
 
 namespace Lesson_5_Kotenko
 {
@@ -28,7 +30,9 @@ namespace Lesson_5_Kotenko
             NoDepEmployees = new Department("Сотрудники без департамента", false);
             Departments.Add(NoDepEmployees);
         }
-        
+
+       
+
         /// <summary>
         /// Возвращает случайно сгенерированную компанию.
         /// Для ДЗ
@@ -48,6 +52,22 @@ namespace Lesson_5_Kotenko
         public IEnumerator GetEnumerator()
         {
             return ((IEnumerable)Departments).GetEnumerator();
+        }
+        public void AddDep(Department dep)
+        {
+            Departments.Add(dep);
+        }
+        public void RemoveDep(Department dep)
+        {
+            if (dep.Deletable)
+            {
+                foreach (var emp in dep.Employees)
+                {
+                    NoDepEmployees.AddEmployee(emp);
+                }
+                Departments.Remove(dep);
+            }
+            
         }
     }
 }

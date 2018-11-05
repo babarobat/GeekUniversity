@@ -22,19 +22,52 @@ namespace Lesson_5_Kotenko
         public void LoadCompany()
         {
             _model.LoadData();
-            _view.Departments = _model.Company.Departments;
+            _view.Company = _model.Company.Departments;
         }
-        public ObservableCollection <Department> GetDepartments()
+            
+        public void ShowDep(Department dep)
         {
-            return _view.Departments;
+            _view.Department = dep.Employees;
         }
-        public ObservableCollection<Employee> GetEmplyees()
+        public void ShowEmp(Employee emp)
         {
-            return _view.Employees;
+            _view.Employee = emp;
         }
-        public void ShowDep(ListBox s, ObservableCollection<Employee> employees)
+        public void ChangeDep(Department newDep, Department oldDep, Employee emp )
         {
-            s.ItemsSource = employees;
+            if (newDep!=null && oldDep != null && newDep!=oldDep )
+            {
+                newDep.AddEmployee(emp);
+                oldDep.RemoveEmplyee(emp);
+            }            
         }
+        public void RemoveEmployee()
+        {
+            if (_view.Employee!=null&&_view.Department != null)
+            {
+                _view.Department.Remove(_view.Employee);
+            }
+        }
+        public void AddEmployee()
+        {
+            if (_view.Department != null)
+            {
+                var tmpEmp = new Employee() { Name = "New Empployee" };
+                _view.Department.Add(tmpEmp);
+                _view.Employee = tmpEmp;
+            }
+        }
+        public void AddDep()
+        {
+                var tmpDep = new Department("New Dep", true);
+                _view.Company.Add(tmpDep);
+                _view.Department = tmpDep.Employees;   
+        }
+        public void RemoveDep()
+        {
+            _view.Company
+           
+        }
+
     }
 }
