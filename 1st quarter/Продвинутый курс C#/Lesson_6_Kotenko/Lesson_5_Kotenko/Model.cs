@@ -6,14 +6,26 @@ using System.Threading.Tasks;
 
 namespace Lesson_5_Kotenko
 {
+    /// <summary>
+    /// Отвечает за логику загрузки и сохранения данных
+    /// </summary>
     class Model
     {
-        public Company Company { get; private set; }
 
+        /// <summary>
+        /// контейнер данных
+        /// </summary>
+        public Company Company { get; private set; }
+        /// <summary>
+        /// сохраннение данных
+        /// </summary>
         public void SaveData()
         {
 
         }
+        /// <summary>
+        /// загрузка данных
+        /// </summary>
         public void LoadData()
         {
             Company = Company.GetRandomCompany();

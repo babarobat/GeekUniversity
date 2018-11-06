@@ -1,24 +1,32 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Collections;
+
+using System.Runtime.CompilerServices;
 
 namespace Lesson_5_Kotenko
 {
     /// <summary>
     /// Логика и свойства компании
     /// </summary>
-    public class Company:IEnumerable
+    public class Company:IEnumerable, INotifyPropertyChanged
     {
         /// <summary>
         /// Коллекция департаментов
         /// </summary>
         public ObservableCollection<Department> Departments;
-
+        
         /// <summary>
         /// Содержит работников, не принадлежащих к какому-либо департаменту.
         /// Поле Deletable этого департамента должно быть false; 
         /// </summary>
         public Department NoDepEmployees;
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnChange([CallerMemberName]string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
         /// <summary>
         /// Конструктор без параметров.
         /// </summary>
@@ -27,8 +35,8 @@ namespace Lesson_5_Kotenko
             Departments = new ObservableCollection<Department>();
             NoDepEmployees = new Department("Сотрудники без департамента", false);
             Departments.Add(NoDepEmployees);
+            
         }
-        
         /// <summary>
         /// Возвращает случайно сгенерированную компанию.
         /// Для ДЗ
@@ -48,6 +56,24 @@ namespace Lesson_5_Kotenko
         public IEnumerator GetEnumerator()
         {
             return ((IEnumerable)Departments).GetEnumerator();
+        }
+        public void AddDep(Department dep)
+        {
+            Departments.Add(dep);
+        }
+        public void RemoveDep(Department dep)
+        {
+            if (dep.Deletable)
+            {
+                foreach (var emp in dep.Employees)
+                {
+                    NoDepEmployees.AddEmployee(emp);
+                }
+                Departments.Remove(dep);
+                OnChange("Departments");
+                
+            }
+            
         }
     }
 }

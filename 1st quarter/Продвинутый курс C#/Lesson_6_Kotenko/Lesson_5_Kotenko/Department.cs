@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Lesson_5_Kotenko
 {
     /// <summary>
     /// Содержит параметры и логику департамента
     /// </summary>
-    public class Department : IEquatable<Department>
+    public class Department : IEquatable<Department>,IEnumerable, INotifyPropertyChanged
     {
 
         /// <summary>
@@ -24,6 +28,12 @@ namespace Lesson_5_Kotenko
         /// Имя сотрудника.
         /// </summary>
         private string _name;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropChanged([CallerMemberName]string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
         /// <summary>
         /// Имя сотрудника. Не может быть пустой строкой
         /// </summary>
@@ -95,6 +105,8 @@ namespace Lesson_5_Kotenko
             Name = name;
             Employees = employees;
         }
+
+
         /// <summary>
         /// Сравнение двух департаментов на равенство
         /// </summary>
@@ -131,6 +143,7 @@ namespace Lesson_5_Kotenko
             if (employee!=null)
             {
                 Employees.Add(employee);
+                OnPropChanged("Employees");
             } 
         }
         /// <summary>
@@ -144,14 +157,22 @@ namespace Lesson_5_Kotenko
                 Name = name
             };
             Employees.Add(tmpEmployee);
+            OnPropChanged("Employees");
+
         }
         public void RemoveEmplyee(Employee employee)
         {
             if (Employees.Contains(employee) && employee!=null)
             {
                 Employees.Remove(employee);
+                OnPropChanged("Employees");
             }
+            
         }
-       
+        
+        public IEnumerator GetEnumerator()
+        {
+            return ((IEnumerable)Employees).GetEnumerator();
+        }
     }
 }
