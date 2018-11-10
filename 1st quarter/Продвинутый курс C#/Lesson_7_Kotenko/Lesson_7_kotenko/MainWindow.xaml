@@ -34,7 +34,7 @@
         </ListBox>
         <StackPanel x:Name="EmpParamPannel" Grid.Column="2" Grid.Row="1" Grid.RowSpan="1">
             <TextBlock x:Name="NameLBL" Margin="20,10" TextWrapping="Wrap" Text="ФИО" Height="30"/>
-            <TextBox x:Name="NameTxt" Margin="20,0" TextWrapping="Wrap" Text="{Binding Name}" Height="30" TextChanged="NameTxt_TextChanged"/>
+            <TextBox x:Name="NameTxt" Margin="20,0" TextWrapping="Wrap" Text="{Binding Name}" Height="30" LostFocus="NameTxt_LostFocus"/>
 
             <TextBlock x:Name="AgeLBL" Margin="20,10" TextWrapping="Wrap" Text="Возраст" Height="30"/>
             <TextBox x:Name="AgeTxt" Margin="20,0" TextWrapping="Wrap" Text="{Binding Age}" Height="30"/>

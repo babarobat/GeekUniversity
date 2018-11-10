@@ -64,7 +64,6 @@ namespace Lesson_7_kotenko
 
         private void DepList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
             EmpList.ItemsSource = DataManager.GetEmps(path, (DepList.SelectedValue as DataRowView).Row[0].ToString()).DefaultView;
         }
 
@@ -73,9 +72,11 @@ namespace Lesson_7_kotenko
             EmpParamPannel.DataContext = EmpList.SelectedItem as DataRowView;
         }
 
-        private void NameTxt_TextChanged(object sender, TextChangedEventArgs e)
+       
+        private void NameTxt_LostFocus(object sender, RoutedEventArgs e)
         {
-
+           // EmpList.ItemsSource = DataManager.UpdateEmp(path).DefaultView;
+            
         }
 
         private void DeleteEmpBtn_Click(object sender, RoutedEventArgs e)

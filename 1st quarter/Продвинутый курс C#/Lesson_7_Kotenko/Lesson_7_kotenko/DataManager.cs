@@ -14,7 +14,7 @@ namespace Lesson_7_kotenko
         
         static SqlConnection connection;
         
-        
+
 
         public static void SaveEmployee(string path, string table,Employee emp)   
         {   
@@ -103,7 +103,15 @@ namespace Lesson_7_kotenko
                 {
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     SqlCommand command = new SqlCommand($"Update Employees SET Name = @Name, Age = @Age, Department = @Department, Selary = @Selary WHERE ID = @ID", connection);
-                    command.Parameters.AddWithValue("@Name",sql)
+                    command.Parameters.AddWithValue("@Name", "Name");
+                    command.Parameters.AddWithValue("@Age", "Age");
+                    command.Parameters.AddWithValue("@Department", "Department");
+                    command.Parameters.AddWithValue("@Selary", "Selary");
+                    SqlParameter param = command.Parameters.AddWithValue("@ID", "ID");
+                    adapter.UpdateCommand = command;
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
                 }
             }
             catch (Exception e)
