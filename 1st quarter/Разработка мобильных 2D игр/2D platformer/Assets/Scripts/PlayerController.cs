@@ -1,59 +1,39 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Game.Controllers;
 public class PlayerController : MonoBehaviour {
-
-    public float speed = 10;
-    public float jumpForce = 30;
-    [SerializeField] private LayerMask _whatIsGround;
-    [SerializeField] private Transform _groundCheck;
-    [SerializeField] private Transform _map;
-
-    private bool isGrounded;    
-    private const float groundedRadius = .2f;
-    private Rigidbody2D rb;
-    private Vector3 velocity = Vector3.zero;
     
+    private BaseComponentController [] _controllers;    
+    private ControlParams e;    
     private Animator _animator;
-	// Use this for initialization
+	
 	void Start () {
-        rb = GetComponent<Rigidbody2D>();
+
+        e = new ControlParams();
         _animator = GetComponentInChildren<Animator>();
-    }
-    private void FixedUpdate()
-    {
+        _controllers = GetComponentsInChildren<BaseComponentController>();
        
-        Collider2D[] collidrs = Physics2D.OverlapCircleAll(_groundCheck.position, groundedRadius, _whatIsGround);
-        foreach (var col in collidrs)
-        {
-            if (col.gameObject != gameObject)
-            {
-                isGrounded = true;
-                _animator.SetTrigger("Grounded");
-            }
-        }
     }
+    
     // Update is called once per frame
     void Update()
     {
-        var hor = Input.GetAxisRaw("Horizontal");
-        var jump = Input.GetAxisRaw("Jump") > 0;
         
-        rb.velocity = new Vector2(hor * speed * Time.deltaTime, rb.velocity.y);
-        _map.Translate(Vector2.right*-hor*.3f*Time.deltaTime);
-        transform.localScale = hor < 0 ? new Vector3(-1, 1, 1) : hor > 0 ? new Vector3(1, 1, 1) : transform.localScale;
-
-
-        _animator.SetFloat("VelocityX",Mathf.Abs( hor));
-        
-        if (jump && isGrounded)
+        e.Horizontal = InputController.Instance.ControlParams.Horizontal;
+        e.Jump = InputController.Instance.ControlParams.Jump;
+        foreach (var controller in _controllers)
         {
-            isGrounded = false;
-            _animator.SetTrigger("Jump");
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(Vector3.up * jumpForce);
+            controller.Action(e);
         }
 
+        //_map.Translate(Vector2.right*-hor*.3f*Time.deltaTime);
+        
+        _animator.SetFloat("VelocityX",Mathf.Abs(e.Horizontal));
+        
+        
+
     }
+    
 }
