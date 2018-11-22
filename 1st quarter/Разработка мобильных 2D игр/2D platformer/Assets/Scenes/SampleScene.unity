@@ -20152,6 +20152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cfad2ea2b2ac904893eaed441248847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 250
+  jumpForce: 600
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  _groundCheck: {fileID: 1255144563}
+  _map: {fileID: 136597632}
 --- !u!114 &605987905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20163,13 +20170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac308cd8149b214683d471167ad6157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 250
-  jumpForce: 600
-  _whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  _groundCheck: {fileID: 1255144563}
-  _map: {fileID: 136597632}
 --- !u!4 &605987906
 Transform:
   m_ObjectHideFlags: 0

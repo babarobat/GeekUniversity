@@ -8,6 +8,6 @@ namespace Game.Controllers
 {
     public abstract class  BaseComponentController:MonoBehaviour
     {
-        public abstract void Action(ControlParams e);
+       
     }
 }

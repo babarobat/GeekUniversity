@@ -1,33 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Controllers
 {
-    class AnimationController : BaseComponentController
+    /// <summary>
+    /// Определяет логику и параметры анимации
+    /// </summary>
+    [RequireComponent(typeof(Animator))]
+    public class AnimationController : BaseComponentController
     {
-        private Rigidbody2D rb;
+        /// <summary>
+        /// ссылка на компонет Аниматор
+        /// </summary>
         private Animator _animator;
         private void Start()
         {
             _animator = GetComponent<Animator>();
-            rb = GetComponentInParent<Rigidbody2D>();
+           
         }
-        public override void Action(ControlParams e)
+        /// <summary>
+        /// Запускает анимацию движения
+        /// </summary>
+        /// <param name="hor">скорость движения по горизонтали</param>
+        public void Move(float value)
         {
-            _animator.SetFloat("VelocityX", Mathf.Abs(e.Horizontal));
-            if (e.Jump)
-            {
-                _animator.SetTrigger("Jump");
-
-            }
-            if (e.Grounded)
-            {
-                _animator.SetTrigger("Grounded");
-            }
+            _animator.SetFloat("VelocityX", Mathf.Abs(value));
         }
+        /// <summary>
+        /// Запускает анимацию движения
+        /// </summary>
+        public void Jump()
+        {
+            _animator.SetTrigger("Jump");
+        }
+        /// <summary>
+        /// Анимация приземления
+        /// </summary>
+        public void Grounded()
+        {
+            _animator.SetTrigger("Grounded");
+        }
+        
     }
 }

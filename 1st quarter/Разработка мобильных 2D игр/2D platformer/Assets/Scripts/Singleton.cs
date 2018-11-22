@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
-
+/// <summary>
+/// Синглтон
+/// </summary>
+/// <typeparam name="T"></typeparam>
 [DisallowMultipleComponent]
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
+    
     private static T _instance;
     private static object _lock = new object();
     private static bool _applicationIsQuitting;
