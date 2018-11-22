@@ -10,6 +10,7 @@ namespace Game.Controllers
         public float Horizontal { get; set; }
         public float MovingSpeed { get; set; }
         public bool Jump { get; set; }
-        public float jumpForce { get; set; }
+        public bool Grounded { get; set; }
+
     }
 }

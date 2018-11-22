@@ -27,7 +27,7 @@ namespace Game.Controllers
         }
         public override void Action(ControlParams e)
         {
-            
+            e.Grounded = isGrounded;
             Move(speed, e.Horizontal);
             Jump(e.Jump);
         }
@@ -57,7 +57,7 @@ namespace Game.Controllers
         {
             if (jump && isGrounded)
             {
-                Debug.Log("1");
+                
                 isGrounded = false;
                 //_animator.SetTrigger("Jump");
                 rb.velocity = new Vector2(rb.velocity.x, 0);

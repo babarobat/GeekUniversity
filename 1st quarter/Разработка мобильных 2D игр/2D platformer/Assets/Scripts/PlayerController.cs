@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 
         //_map.Translate(Vector2.right*-hor*.3f*Time.deltaTime);
         
-        _animator.SetFloat("VelocityX",Mathf.Abs(e.Horizontal));
+        //_animator.SetFloat("VelocityX",Mathf.Abs(e.Horizontal));
         
         
 
