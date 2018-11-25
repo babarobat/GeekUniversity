@@ -16,5 +16,9 @@
         /// Возвращает true, если нажата кнопка, назначенная на ось Jump
         /// </summary>
         public bool Jump { get; set; }
+        /// <summary>
+        /// Возвращает true, если нажата кнопка, назначенная на ось Fire1
+        /// </summary>
+        public bool Fire { get; set; }
     }
 }

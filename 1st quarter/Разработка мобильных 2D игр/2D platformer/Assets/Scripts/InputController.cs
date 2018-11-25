@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Controllers
 {
+    /// <summary>
+    /// Класс для получения ввода пользователя
+    /// </summary>
     class InputController : Singleton<InputController>
     {
+        /// <summary>
+        /// Входящие параметры ввода
+        /// </summary>
         public ControlParams ControlParams { get; private set; }
-        private void Start()
+        private void Awake()
         {
             ControlParams = new ControlParams();
         }
@@ -17,6 +19,8 @@ namespace Game.Controllers
         {
             ControlParams.Horizontal = Input.GetAxisRaw("Horizontal");
             ControlParams.Jump = Input.GetAxisRaw("Jump")>0;
+            ControlParams.Fire = Input.GetAxisRaw("Fire1")>0;
+
         }
     }
 }

@@ -21,16 +21,16 @@ namespace Game.Controllers
         /// <summary>
         /// Ссылка на компонент управления движениями
         /// </summary>
-        protected MovementController _moveMentController;
+        protected MovementController _movementController;
         /// <summary>
         /// Ссылка на компонент управления анимацией
         /// </summary>
         protected AnimationController _animationController;
 
-        protected void Start()
+        protected virtual void Start()
         {
             
-            _moveMentController = GetComponent<MovementController>() ?? gameObject.AddComponent<MovementController>();
+            _movementController = GetComponent<MovementController>() ?? gameObject.AddComponent<MovementController>();
             _animationController = GetComponentInChildren<AnimationController>() ?? GetComponentInChildren<Animator>().gameObject.AddComponent<AnimationController>();
         }
     }

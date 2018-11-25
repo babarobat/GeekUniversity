@@ -14,8 +14,7 @@ namespace Game.Controllers
         private Animator _animator;
         private void Start()
         {
-            _animator = GetComponent<Animator>();
-           
+            _animator = GetComponent<Animator>();           
         }
         /// <summary>
         /// Запускает анимацию движения
@@ -30,14 +29,14 @@ namespace Game.Controllers
         /// </summary>
         public void Jump()
         {
-            _animator.SetTrigger("Jump");
+            _animator.SetBool("IsJumping",true);
         }
         /// <summary>
         /// Анимация приземления
         /// </summary>
         public void Grounded()
         {
-            _animator.SetTrigger("Grounded");
+            _animator.SetBool("IsJumping", false);
         }
         
     }

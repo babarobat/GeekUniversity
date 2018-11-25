@@ -10,22 +10,21 @@ namespace Game.Controllers
         /// <summary>
         /// Ссылка на компонет RigidBody2D
         /// </summary>
-        private Rigidbody2D rb;
+        private Rigidbody2D _rb;
         private void Start()
         {
-            rb = GetComponentInParent<Rigidbody2D>();
+            _rb = GetComponentInParent<Rigidbody2D>();
         }
         /// <summary>
         /// Двигает персонажа с заданной скоростью по заданному направлению по оси X
         /// </summary>
         /// <param name="moveSpeed">Скорость движения</param>
         /// <param name="horizontal">направление движения</param>
-        public void Move(float moveSpeed, float horizontal)
+        public void Move(float moveSpeed)
         {
-            rb.velocity = new Vector2(horizontal * moveSpeed * Time.deltaTime, rb.velocity.y);
-            //_map.Translate(Vector2.right * -hor * .3f * Time.deltaTime);
-            transform.localScale = horizontal < 0 ? new Vector3(-1, 1, 1):
-                                   horizontal > 0 ? new Vector3(1, 1, 1) : transform.localScale;
+            _rb.velocity = new Vector2(moveSpeed * Time.deltaTime, _rb.velocity.y);
+            transform.localScale = moveSpeed < 0 ? new Vector3(-1, 1, 1):
+                                   moveSpeed > 0 ? new Vector3(1, 1, 1) : transform.localScale;
         }
         /// <summary>
         /// Заставляет прыгнуть персонажа с заданной силой прыжка
@@ -34,9 +33,15 @@ namespace Game.Controllers
         public void Jump(float jumpForce)
         {
 
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(Vector3.up * jumpForce);
+            _rb.velocity = new Vector2(_rb.velocity.x, 0);
+            _rb.AddForce(Vector3.up * jumpForce);
 
+        }
+        public void MoveTo(Transform target,float  speed)
+        {
+            _rb.velocity = target.position.x < transform.position.x ? new Vector2(-speed * Time.deltaTime, _rb.velocity.y) : new Vector2(speed * Time.deltaTime, _rb.velocity.y);
+            transform.localScale = _rb.velocity.x < 0 ? new Vector3(-1, 1, 1) :
+                                   _rb.velocity.x > 0 ? new Vector3(1, 1, 1) : transform.localScale;
         }
     }
 }
