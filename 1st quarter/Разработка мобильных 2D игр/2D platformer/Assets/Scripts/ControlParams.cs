@@ -3,6 +3,7 @@
     /// <summary>
     /// Структура для хранения параметров управления
     /// </summary>
+    [System.Serializable]
     public class ControlParams
     {
         /// <summary>
@@ -11,14 +12,14 @@
         /// 1 при нажатой кнопке вправо и 0,
         /// если по оси Horizontal нет сигнала
         /// </summary>
-        public float Horizontal { get; set; }
+        public float Horizontal;//{ get; set; }
         /// <summary>
         /// Возвращает true, если нажата кнопка, назначенная на ось Jump
         /// </summary>
-        public bool Jump { get; set; }
+        public bool Jump;// { get; set; }
         /// <summary>
         /// Возвращает true, если нажата кнопка, назначенная на ось Fire1
         /// </summary>
-        public bool Fire { get; set; }
+        public bool Fire;// { get; set; }
     }
 }

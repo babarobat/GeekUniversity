@@ -20289,7 +20289,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _groundCheck: {fileID: 1255144563}
-  _hp: 0
+  _hp: 3
   _map: {fileID: 136597632}
 --- !u!114 &605987905
 MonoBehaviour:
@@ -24440,7 +24440,7 @@ GameObject:
   - component: {fileID: 905381628}
   m_Layer: 9
   m_Name: Spikes
-  m_TagString: Untagged
+  m_TagString: Spikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -8,12 +8,14 @@ namespace Game.Controllers
     class InputController : Singleton<InputController>
     {
         /// <summary>
-        /// Входящие параметры ввода
+        /// Параметры ввода
         /// </summary>
         public ControlParams ControlParams { get; private set; }
         private void Awake()
         {
             ControlParams = new ControlParams();
+            
+            
         }
         private void Update()
         {

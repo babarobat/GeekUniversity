@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50673811283587388}
   - component: {fileID: 70605377492446190}
   - component: {fileID: 114565379653536166}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,6 +196,8 @@ MonoBehaviour:
   _patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
+  _hp: 5
+  _damage: 1
   _rayCastPoint: {fileID: 4111238444945286}
 --- !u!212 &212888636540185602
 SpriteRenderer:

@@ -16,10 +16,11 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
-            if (_applicationIsQuitting)
-            {
-                return null;
-            }
+            //if (_applicationIsQuitting)
+            //{
+            //    Debug.Log(_instance);
+            //    return null;
+            //}
             lock (_lock)
             {
                 if (_instance == null)
@@ -27,6 +28,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     _instance = (T)FindObjectOfType(typeof(T));
                     if (FindObjectsOfType(typeof(T)).Length > 1)
                     {
+                        Debug.Log(_instance);
                         return _instance;
                     }
                     if (_instance == null)
@@ -38,6 +40,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         DontDestroyOnLoad(singleton);
                     }
                 }
+                
                 return _instance;
             }
         }

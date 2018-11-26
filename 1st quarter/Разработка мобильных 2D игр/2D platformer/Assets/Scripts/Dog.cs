@@ -15,14 +15,16 @@ namespace Game.Controllers
             }
             else
             {
+                
                 Patrol();
             }
         }
 
         private void Patrol()
         {
-            if (_patrolPoints.Length>2)
+            if (_patrolPoints.Length>=2)
             {
+                
                 if (Vector2.Distance(_patrolPoints[patrolPointIndex].position, transform.position) < 0.5)
                 {
                     patrolPointIndex = patrolPointIndex < _patrolPoints.Length - 1 ? patrolPointIndex + 1 : 0;

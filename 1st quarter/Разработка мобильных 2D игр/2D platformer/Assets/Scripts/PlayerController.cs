@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using Game.Controllers;
+using UnityEngine.SceneManagement;
+
 namespace Game {
     /// <summary>
     /// Содержит логику и параметры управления персонажем
@@ -60,14 +60,21 @@ namespace Game {
         /// <summary>
         /// Параметры управления
         /// </summary>
-        private ControlParams _controlParams;
+        [SerializeField] private ControlParams _controlParams;
         /// <summary>
         /// Ссылка на компонент управления оружием
         /// </summary>
         private WeaponController _weaponController;
+        
+
+        
+
         protected override void Start()
         {
+            
             base.Start();
+            
+            
             _weaponController = GetComponentInChildren<WeaponController>();
             _controlParams = InputController.Instance.ControlParams;
 
@@ -130,6 +137,7 @@ namespace Game {
             if (_controlParams.Fire)
             {
                 _weaponController.Fire((int)transform.localScale.x);
+                
             }
 
         }
@@ -140,7 +148,16 @@ namespace Game {
         public void GetDamage(int damage)
         {
             Hp -= damage;
-            
+            Debug.Log("Объект " + name + " получил " + damage + " урона. Осталось " + Hp + " жизней");
+
+        }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Spikes")
+            {
+                
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
     }
 }
