@@ -14,8 +14,7 @@ namespace Game.Controllers
         private void Awake()
         {
             ControlParams = new ControlParams();
-            
-            
+
         }
         private void Update()
         {

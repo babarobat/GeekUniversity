@@ -321,6 +321,8 @@ TextureImporter:
     21300632: industrialMap_316
     21300634: industrialMap_317
     21300636: industrialMap_318
+    21300638: JumpPlatform1
+    21300640: industrialMap_319
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -6870,6 +6872,46 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 7f2b0a18921e3ae41948774bdf7cc1d8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpPlatform1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 416
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09dc079442122e74fbb22a867d30aa51
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: industrialMap_319
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 416
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8b8852aca43974d98932e828d4d372
       vertices: []
       indices: 
       edges: []

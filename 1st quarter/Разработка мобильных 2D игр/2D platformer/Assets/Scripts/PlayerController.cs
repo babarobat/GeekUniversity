@@ -136,10 +136,9 @@ namespace Game {
         {
             if (_controlParams.Fire)
             {
-                _weaponController.Fire((int)transform.localScale.x);
+                _weaponController.Fire();
                 
             }
-
         }
         /// <summary>
         /// Поученить урон

@@ -27,9 +27,9 @@ namespace Game.Controllers
         /// Стрельнуть в заданном направлении
         /// </summary>
         /// <param name="dir">напрваление стрельбы</param>
-        public void Fire(int dir)
+        public void Fire()
         {
-            ActiveWeapon?.Fire(dir);
+            ActiveWeapon?.Fire();
         }
     }
 }

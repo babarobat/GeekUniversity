@@ -63,14 +63,15 @@ namespace Game
         /// Выстреливает заданным снарядом в заданном направлении
         /// </summary>
         /// <param name="dir">направление стрельбы</param>
-        public void Fire(int dir)
+        public void Fire()
         {            
             if (CanFire)
             {
-                var rotation = dir > 0 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+                
+                var dir = transform.rotation.eulerAngles.y == 180 ? -1 : 1;
                 _lastShotTime = DateTime.Now;
-                var proj = Instantiate(_ammunitionPrefab, _firePosint.position, rotation);
-                proj.Speed = dir * _ammoSpeed;
+                var proj = Instantiate(_ammunitionPrefab, _firePosint.position, transform.rotation);
+                proj.Speed = dir*_ammoSpeed;
                 proj.Damage = _damage;
             }
         }

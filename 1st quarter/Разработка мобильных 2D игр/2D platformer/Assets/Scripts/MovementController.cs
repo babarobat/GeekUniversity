@@ -13,22 +13,21 @@ namespace Game.Controllers
         /// Ссылка на компонет RigidBody2D
         /// </summary>
         private Rigidbody2D _rb;
-        private bool _facingRight = true;
         private void Start()
         {
             _rb = GetComponentInParent<Rigidbody2D>();
         }
         /// <summary>
-        /// Двигает персонажа с заданной скоростью по заданному направлению по оси X
+        /// Двигает персонажа с заданной скоростью.
+        /// Направление движения зависит от скорости:
+        /// при отрицательном значении скорости персонаж будет двигаться влево.
         /// </summary>
         /// <param name="moveSpeed">Скорость движения</param>
-        /// <param name="horizontal">направление движения</param>
-        public void Move(float moveSpeed)
+        public void Move(float moveSpeed) 
         {
-
             _rb.velocity = new Vector2(moveSpeed * Time.deltaTime, _rb.velocity.y);
-            transform.localScale = moveSpeed < 0 ? new Vector3(-1, 1, 1):
-                                   moveSpeed > 0 ? new Vector3(1, 1, 1) : transform.localScale;
+            transform.rotation = _rb.velocity.x < 0 ? Quaternion.Euler(0, 180, 0) :
+                _rb.velocity.x > 0 ? Quaternion.Euler(0, 0, 0) : transform.rotation;
         }
         /// <summary>
         /// Заставляет прыгнуть персонажа с заданной силой прыжка
@@ -36,27 +35,20 @@ namespace Game.Controllers
         /// <param name="jumpForce">Сила прыжка</param>
         public void Jump(float jumpForce)
         {
-
             _rb.velocity = new Vector2(_rb.velocity.x, 0);
-            _rb.AddForce(Vector3.up * jumpForce);
-
+            _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        public void MoveTo(Transform target,float  speed)
+        /// <summary>
+        /// Двигает персонажа к заданной позиции с заданной скоростью
+        /// </summary>
+        /// <param name="target">позиция цели</param>
+        /// <param name="speed">скорость</param>
+        public void MoveToTarget(Vector2 target, float speed)
         {
-
-
-            //Vector2 dir = (target.transform.position - transform.position).normalized;
-            ////_rb.MovePosition(transform.position + dir * speed * Time.deltaTime);
-            //_rb.velocity = dir * speed * Time.deltaTime;
-
-            //    transform.Rotate(0, _rb.velocity.x<0?180:0, 0);
-
-
-
-            //_rb.MovePosition(dir * speed * Time.deltaTime);
-            _rb.velocity = target.position.x < transform.position.x ? new Vector2(-speed * Time.deltaTime, _rb.velocity.y) : new Vector2(speed * Time.deltaTime, _rb.velocity.y);
-            transform.localScale = _rb.velocity.x < 0 ? new Vector3(-1, 1, 1) :
-                                   _rb.velocity.x > 0 ? new Vector3(1, 1, 1) : transform.localScale;
+            Vector2 dir = (target - (Vector2)transform.position).normalized;           
+            _rb.velocity = dir * speed * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, _rb.velocity.x < 0 ? 180 : 0, 0);
         }
+        
     }
 }

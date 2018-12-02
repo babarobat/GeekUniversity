@@ -29,7 +29,7 @@ namespace Game
         protected void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _rb.velocity = Vector3.right * Speed;
+            _rb.velocity = Vector2.right * Speed;
             Destroy(gameObject, lifeTime);
         }
         private void OnCollisionEnter2D(Collision2D collision)

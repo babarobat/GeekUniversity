@@ -16,11 +16,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
-            //if (_applicationIsQuitting)
-            //{
-            //    Debug.Log(_instance);
-            //    return null;
-            //}
+        
             lock (_lock)
             {
                 if (_instance == null)
