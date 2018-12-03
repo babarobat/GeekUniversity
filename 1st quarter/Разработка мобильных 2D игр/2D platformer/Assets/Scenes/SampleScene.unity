@@ -12124,16 +12124,6 @@ Prefab:
       propertyPath: _patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 81225580}
-    - target: {fileID: 114862989767717256, guid: 90e3ab812121135409c167dd55ab2ba0,
-        type: 2}
-      propertyPath: _speed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114862989767717256, guid: 90e3ab812121135409c167dd55ab2ba0,
-        type: 2}
-      propertyPath: _startHp
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90e3ab812121135409c167dd55ab2ba0, type: 2}
   m_IsPrefabAsset: 0
@@ -20315,7 +20305,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605987903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.45, y: -3.25, z: 0}
+  m_LocalPosition: {x: -1.26, y: -0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1255144563}

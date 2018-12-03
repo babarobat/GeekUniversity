@@ -8,6 +8,10 @@ namespace Game.Controllers
 {
     public abstract class  BaseComponentController:MonoBehaviour
     {
-       
+        public bool IsActive
+        {
+            get => gameObject.activeSelf;
+            set => gameObject.SetActive(value);
+        }
     }
 }

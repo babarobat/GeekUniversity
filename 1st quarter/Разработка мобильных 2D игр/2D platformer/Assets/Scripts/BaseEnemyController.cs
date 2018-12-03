@@ -7,6 +7,8 @@ namespace Game.Controllers
     /// </summary>
     class BaseEnemyController:BaseCharacterController,IDamage
     {
+        
+
         /// <summary>
         /// Радиус агро
         /// </summary>
@@ -39,10 +41,20 @@ namespace Game.Controllers
         [SerializeField] protected Transform _rayCastPoint;
         public float CurrentHp
         {
-            get => _currentHp;
+            get
+            {
+                return _currentHp;
+            }
+
             set
             {
                 _currentHp = value < 0 ? 0 : value;
+                if (_currentHp == 0)
+                {
+
+                    Explode();
+
+                }
             }
         }
         /// <summary>
@@ -69,9 +81,14 @@ namespace Game.Controllers
         /// Индекс текущей точки патрулирования
         /// </summary>
         protected int patrolPointIndex = 0;
+
+
+        protected ExplosionController _explosionController;
+
         protected override void Start()
         {
             base.Start();
+            _explosionController = GetComponentInChildren<ExplosionController>();
             _hit = new RaycastHit2D();
             CurrentHp = _startHp;
             _target = FindObjectOfType<PlayerController>().transform;
@@ -89,6 +106,14 @@ namespace Game.Controllers
         private void OnCollisionEnter2D(Collision2D collision)
         {
             collision.gameObject.GetComponent<IDamage>()?.GetDamage(_damage);           
+        }
+        private void Explode()
+        {
+            _animationController.IsActive = false;
+            GetComponent<Rigidbody2D>().isKinematic = true;
+            GetComponent<Collider2D>().enabled = false;
+            _explosionController.Explode();
+            
         }
     }
 }
