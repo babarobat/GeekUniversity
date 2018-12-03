@@ -672,6 +672,8 @@ MonoBehaviour:
   _explodedModel: {fileID: 1283385623111754}
   _effector: {fileID: 250427902064595538}
   _destoryTime: 0
+  _explosionPrefab: {fileID: 1903124326539688, guid: 7c2499ce69c19ef41a3e4473c3943804,
+    type: 2}
 --- !u!114 &114565379653536166
 MonoBehaviour:
   m_ObjectHideFlags: 1

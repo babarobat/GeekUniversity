@@ -53,6 +53,7 @@ namespace Game.Controllers
                 {
 
                     Explode();
+                    Destroy(gameObject);
 
                 }
             }

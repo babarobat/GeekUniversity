@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 using UnityEngine;
 namespace Game.Controllers
 {
@@ -15,6 +10,8 @@ namespace Game.Controllers
         private Effector2D _effector;
         [SerializeField]
         private float _destoryTime;
+        [SerializeField]
+        private GameObject _explosionPrefab;
         
        
         private void Start()
@@ -23,9 +20,21 @@ namespace Game.Controllers
         }
         private IEnumerator Explosion()
         {
+            Vector3 pos = transform.position;
+            transform.SetParent(null);
+            transform.position = pos;
             _explodedModel.SetActive(true);
+            Instantiate(_explosionPrefab, transform);
             yield return new WaitForSeconds(0.5f);
             _effector.enabled = false;
+            var colliders = _explodedModel.GetComponentsInChildren<Collider2D>();
+            foreach (var item in colliders)
+            {
+                item.enabled = false;
+            }
+            Destroy(gameObject, 1f);
+
+
         }
         public void Explode()
         {
