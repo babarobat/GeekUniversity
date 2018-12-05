@@ -9,6 +9,7 @@ namespace Game.Controllers
     [RequireComponent(typeof(Collider2D))]
     public class MovementController : BaseComponentController
     {
+        
         /// <summary>
         /// Ссылка на компонет RigidBody2D
         /// </summary>
@@ -16,6 +17,8 @@ namespace Game.Controllers
         private void Start()
         {
             _rb = GetComponentInParent<Rigidbody2D>();
+            //GetComponent<BaseCharacterController>().Move += Move;
+
         }
         /// <summary>
         /// Двигает персонажа с заданной скоростью.

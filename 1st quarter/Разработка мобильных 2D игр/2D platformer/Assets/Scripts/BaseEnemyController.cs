@@ -7,8 +7,6 @@ namespace Game.Controllers
     /// </summary>
     class BaseEnemyController:BaseCharacterController,IDamage
     {
-        
-
         /// <summary>
         /// Радиус агро
         /// </summary>

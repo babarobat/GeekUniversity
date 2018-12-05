@@ -14,7 +14,8 @@ namespace Game.Controllers
         private Animator _animator;
         private void Start()
         {
-            _animator = GetComponent<Animator>();           
+            _animator = GetComponent<Animator>();
+            //GetComponentInParent<BaseCharacterController>().Move += Move;
         }
         /// <summary>
         /// Запускает анимацию движения

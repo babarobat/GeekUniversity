@@ -7,6 +7,9 @@ namespace Game {
     /// <summary>
     /// Содержит логику и параметры управления персонажем
     /// </summary>
+    [RequireComponent(typeof(MovementController))]
+    [RequireComponent(typeof(AnimationController))]
+    [RequireComponent(typeof(WeaponController))]
     public class PlayerController : BaseCharacterController,IDamage
     {
 
@@ -84,7 +87,7 @@ namespace Game {
         {
             //Движение заднего фона карты. Прототип
             _map.Translate(Vector2.right * -_controlParams.Horizontal * .3f * Time.deltaTime);
-
+            //Move?.Invoke(_speed * _controlParams.Horizontal);
             Move();
             Jump();
             Fire();
@@ -99,7 +102,7 @@ namespace Game {
         public void Move()
         {
             _animationController.Move(_controlParams.Horizontal);
-            _movementController.Move(_speed* _controlParams.Horizontal);
+            _movementController.Move(_speed * _controlParams.Horizontal);
         }
         /// <summary>
         /// Прыжок
@@ -158,5 +161,6 @@ namespace Game {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+        
     }
 }
