@@ -4,6 +4,11 @@ namespace Game.Controllers
 {
     class FlyingRobot:BaseEnemyController
     {
+        [SerializeField]
+        private float _viewAngle;
+
+
+
         private WeaponController _weaponController;
         [SerializeField] private float _attackDistance;
 
@@ -11,6 +16,11 @@ namespace Game.Controllers
         {
             base.Start();
             _weaponController = GetComponentInChildren<WeaponController>();
+        }
+        private void Update()
+        {
+            All();
+            _movementController.MoveToTarget(_targetPos, Speed);
         }
         private void FollowTarget()
         {
@@ -32,6 +42,32 @@ namespace Game.Controllers
                 }
             }
             
+        }
+        private void Attack()
+        {
+            if (Mathf.Abs( transform.position.y - _target.position.y)<=1)
+            {
+                
+                _weaponController.Fire();
+            }
+            
+        }
+        private void All()
+        {
+            if (Vector2.Distance(_target.position,transform.position)<=_agroRadius)
+            {
+                MoveToAttackPos();
+                Attack();
+            }
+            else
+            {
+                Patrol();
+            }
+        }
+        private void MoveToAttackPos()
+        {
+            _targetPos.y = _target.position.y;
+            _targetPos.x = transform.position.x;
         }
     }
 }

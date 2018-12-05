@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 namespace Game.Controllers
 {
@@ -26,6 +27,8 @@ namespace Game.Controllers
         /// Ссылка на компонент управления анимацией
         /// </summary>
         protected AnimationController _animationController;
+
+        //public Action<float> Move;
 
         protected virtual void Start()
         {
