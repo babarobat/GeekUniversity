@@ -19,8 +19,8 @@ namespace Game.Controllers
         }
         private void Update()
         {
-            All();
-            _movementController.MoveToTarget(_targetPos, Speed);
+            
+            //_movementController.MoveToTarget(_targetPos, Speed);
         }
         private void FollowTarget()
         {
