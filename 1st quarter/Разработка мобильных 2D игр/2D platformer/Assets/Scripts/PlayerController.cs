@@ -102,7 +102,7 @@ namespace Game {
         public void Move()
         {
             _animationController.Move(_controlParams.Horizontal);
-            _movementController.Move(_speed * _controlParams.Horizontal);
+            _movementController.Move(_controlParams.Horizontal* Speed);
         }
         /// <summary>
         /// Прыжок

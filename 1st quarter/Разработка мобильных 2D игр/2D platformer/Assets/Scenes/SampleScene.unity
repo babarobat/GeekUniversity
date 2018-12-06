@@ -20355,7 +20355,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605987903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.92, y: -0.77, z: 0}
+  m_LocalPosition: {x: 7.41, y: 4.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1255144563}
@@ -24879,7 +24879,6 @@ GameObject:
   - component: {fileID: 898055726}
   - component: {fileID: 898055728}
   - component: {fileID: 898055729}
-  - component: {fileID: 898055730}
   m_Layer: 12
   m_Name: FlyingRobot
   m_TagString: Untagged
@@ -24893,8 +24892,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 898055724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.49, y: -0.64, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 9.88, y: 7.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 837820764}
@@ -24903,7 +24902,7 @@ Transform:
   - {fileID: 1207938637}
   m_Father: {fileID: 0}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!50 &898055726
 Rigidbody2D:
   serializedVersion: 4
@@ -24961,40 +24960,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd033e19f52470b4aae982d91cc86ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 100
+  _speed: 0
   _agroRadius: 10
   _followSpeed: 200
   _patrolPoints:
   - {fileID: 1742318299}
   - {fileID: 2035251587}
-  - {fileID: 2085092994}
   _startHp: 3
   _damage: 1
   _rayCastPoint: {fileID: 0}
   _viewAngle: 0
   _attackDistance: 10
---- !u!114 &898055730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 898055724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d009b6c92c93e84595d14790421b46f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 8192
-  _wallsMask:
-    serializedVersion: 2
-    m_Bits: 256
-  _viewRadious: 3.39
-  Target: {fileID: 0}
-  _meshResolution: 1
-  _viewAngle: 61
-  _viewMeshFilter: {fileID: 1207938635}
 --- !u!1 &905381624
 GameObject:
   m_ObjectHideFlags: 0
@@ -27096,7 +27072,7 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d3daddff2a6eedb4f8f483f46727edeb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27236,6 +27212,7 @@ GameObject:
   - component: {fileID: 1207938637}
   - component: {fileID: 1207938636}
   - component: {fileID: 1207938635}
+  - component: {fileID: 1207938638}
   m_Layer: 12
   m_Name: ViewVisualisation
   m_TagString: Untagged
@@ -27291,13 +27268,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1207938634}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.3946637, w: 0.9188257}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 898055725}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -46.49}
+--- !u!114 &1207938638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207938634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d009b6c92c93e84595d14790421b46f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  _wallsMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _viewRadious: 6
+  Target: {fileID: 0}
+  _meshResolution: 1
+  _viewAngle: 30
+  _viewMeshFilter: {fileID: 1207938635}
 --- !u!1 &1212312712
 GameObject:
   m_ObjectHideFlags: 0
@@ -32315,7 +32314,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1742318298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.85, y: 7.5111284, z: -0.1292603}
+  m_LocalPosition: {x: -4.58, y: 6.87, z: -0.1292603}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -32908,7 +32907,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2035251586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.64, y: 0.13, z: -0.1292603}
+  m_LocalPosition: {x: 16.45, y: 7.35, z: -0.1292603}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -33138,34 +33137,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2085092993
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2085092994}
-  m_Layer: 0
-  m_Name: FlyingRobotPatrolPoint3
-  m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2085092994
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2085092993}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.03, y: -17.1, z: -0.1292603}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2088438197
 GameObject:

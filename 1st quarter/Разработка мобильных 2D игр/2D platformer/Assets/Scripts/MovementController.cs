@@ -29,8 +29,7 @@ namespace Game.Controllers
         public void Move(float moveSpeed) 
         {
             _rb.velocity = new Vector2(moveSpeed * Time.deltaTime, _rb.velocity.y);
-            transform.rotation = _rb.velocity.x < 0 ? Quaternion.Euler(0, 180, 0) :
-                _rb.velocity.x > 0 ? Quaternion.Euler(0, 0, 0) : transform.rotation;
+            transform.rotation = GetRotation();
         }
         /// <summary>
         /// Заставляет прыгнуть персонажа с заданной силой прыжка
@@ -50,8 +49,17 @@ namespace Game.Controllers
         {
             Vector2 dir = (target - (Vector2)transform.position).normalized;           
             _rb.velocity = dir * speed * Time.deltaTime;
-            transform.rotation = Quaternion.Euler(0, _rb.velocity.x < 0 ? 180 : 0, 0);
+            transform.rotation = GetRotation();
         }
-        
+        public void Stop()
+        {
+            _rb.velocity = Vector2.zero;
+        }
+        private Quaternion GetRotation()
+        {
+            var rotationY = _rb.velocity.x < 0 ? 180 : _rb.velocity.x > 0 ? 0 : transform.rotation.eulerAngles.y;
+            return  Quaternion.Euler(0, rotationY, 0);
+        }
+
     }
 }

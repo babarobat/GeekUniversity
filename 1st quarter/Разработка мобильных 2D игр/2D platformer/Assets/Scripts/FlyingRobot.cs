@@ -11,16 +11,19 @@ namespace Game.Controllers
 
         private WeaponController _weaponController;
         [SerializeField] private float _attackDistance;
+        private FieldOfViewController _fieldOfViewController;
+
 
         protected override void Start()
         {
             base.Start();
             _weaponController = GetComponentInChildren<WeaponController>();
+            _fieldOfViewController = GetComponentInChildren<FieldOfViewController>();
         }
         private void Update()
         {
-            
-            //_movementController.MoveToTarget(_targetPos, Speed);
+            All();
+            _movementController.MoveToTarget(_targetPos, Speed);
         }
         private void FollowTarget()
         {
@@ -40,8 +43,9 @@ namespace Game.Controllers
                     _targetPos = _patrolPoints[patrolPointIndex].position;
                     _currentSpeed = Speed;
                 }
+                
             }
-            
+            _fieldOfViewController.SearchTarget();
         }
         private void Attack()
         {
@@ -54,20 +58,28 @@ namespace Game.Controllers
         }
         private void All()
         {
-            if (Vector2.Distance(_target.position,transform.position)<=_agroRadius)
-            {
-                MoveToAttackPos();
-                Attack();
-            }
-            else
-            {
-                Patrol();
-            }
+            Patrol();
+            //if (_fieldOfViewController.Target == null)
+            //{
+            //    Patrol();
+            //}
+            //else
+            //{
+            //    //LookAtTarget();
+            //    //MoveToFirePositionThenFire();
+
+
+            //}
+            
         }
         private void MoveToAttackPos()
         {
             _targetPos.y = _target.position.y;
             _targetPos.x = transform.position.x;
+        }
+        void LookAtTarget()
+        {
+            _fieldOfViewController.LookAtTarget(_target);
         }
     }
 }

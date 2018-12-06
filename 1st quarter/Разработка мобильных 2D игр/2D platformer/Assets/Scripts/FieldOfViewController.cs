@@ -19,13 +19,14 @@ namespace Game.Controllers
 
         public MeshFilter _viewMeshFilter;
         private Mesh _viewMesh;
-
+        private float _searchSpeed = 1;
+        
         private void Start()
         {
             _viewMesh = new Mesh() { name = "View mesh" };
             _viewMeshFilter.mesh = _viewMesh;
-                
 
+           
             StartCoroutine(FindTargetWhithDelay(0.2f));
         }
         private void Update()
@@ -36,7 +37,8 @@ namespace Game.Controllers
         {
             if (!angleIsGlobal)
             {
-                angleDegrees += transform.eulerAngles.y;
+                var z = transform.rotation.eulerAngles.y == 180 ? -1 : 1;
+                angleDegrees += transform.eulerAngles.z*z +  transform.eulerAngles.y;
             }
             return new Vector2(Mathf.Cos(angleDegrees * Mathf.Deg2Rad), Mathf.Sin(angleDegrees * Mathf.Deg2Rad));
         }
@@ -75,7 +77,8 @@ namespace Game.Controllers
             List<Vector3> viewPoints = new List<Vector3>();
             for (int i = 0; i < stepCount; i++)
             {
-                float angle = transform.eulerAngles.z - _viewAngle / 2 + stepAngleSize * i;
+                var z = transform.rotation.eulerAngles.y == 180 ? -1 : 1;
+                float angle = z*transform.rotation.eulerAngles.z + transform.rotation.eulerAngles.y - _viewAngle / 2 + stepAngleSize * i;
                 ViewCastInfo viewCastInfo = ViewCast(angle);
                 viewPoints.Add(viewCastInfo.point);
             }
@@ -131,6 +134,25 @@ namespace Game.Controllers
                 this.angle = angle;
 
             }
+        }
+        public void LookAtTarget(Transform target)
+        {
+            
+            transform.LookAt(target);
+        }
+        public void SearchTarget()
+        {
+            if (transform.rotation.eulerAngles.z <= 280 &&_searchSpeed<0)
+            {
+                _searchSpeed *= -1;
+            }
+            if (transform.rotation.eulerAngles.z >= 355 && _searchSpeed > 0)
+            {
+                _searchSpeed *= -1;
+            }
+            
+            transform.Rotate(new Vector3(0, 0, _searchSpeed));
+
         }
     }
 }
