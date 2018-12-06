@@ -24892,7 +24892,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 898055724}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.88, y: 7.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24902,7 +24902,7 @@ Transform:
   - {fileID: 1207938637}
   m_Father: {fileID: 0}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &898055726
 Rigidbody2D:
   serializedVersion: 4
@@ -24960,7 +24960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd033e19f52470b4aae982d91cc86ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
+  _speed: 100
   _agroRadius: 10
   _followSpeed: 200
   _patrolPoints:
@@ -27213,6 +27213,7 @@ GameObject:
   - component: {fileID: 1207938636}
   - component: {fileID: 1207938635}
   - component: {fileID: 1207938638}
+  - component: {fileID: 1207938639}
   m_Layer: 12
   m_Name: ViewVisualisation
   m_TagString: Untagged
@@ -27268,13 +27269,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1207938634}
-  m_LocalRotation: {x: 0, y: 0, z: -0.3946637, w: 0.9188257}
+  m_LocalRotation: {x: 0, y: 0, z: -0.42656863, w: 0.9044552}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 898055725}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -46.49}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50.5}
 --- !u!114 &1207938638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27297,6 +27298,24 @@ MonoBehaviour:
   _meshResolution: 1
   _viewAngle: 30
   _viewMeshFilter: {fileID: 1207938635}
+--- !u!95 &1207938639
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207938634}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dfe43246b92064849832bcdd7c05a773, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1212312712
 GameObject:
   m_ObjectHideFlags: 0
@@ -32303,7 +32322,7 @@ GameObject:
   m_Layer: 0
   m_Name: FlyingRobotPatrolPoint1
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -32896,7 +32915,7 @@ GameObject:
   m_Layer: 0
   m_Name: FlyingRobotPatrolPoint2
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

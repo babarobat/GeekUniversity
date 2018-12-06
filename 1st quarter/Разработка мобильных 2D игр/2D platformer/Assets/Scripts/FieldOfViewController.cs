@@ -137,21 +137,14 @@ namespace Game.Controllers
         }
         public void LookAtTarget(Transform target)
         {
-            
-            transform.LookAt(target);
+            transform.right = target.position - transform.position;
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, Mathf.Clamp(transform.eulerAngles.z, 0, 270));
+            //GetComponent<Animator>().SetBool("Patroling", false);
+
         }
         public void SearchTarget()
         {
-            if (transform.rotation.eulerAngles.z <= 280 &&_searchSpeed<0)
-            {
-                _searchSpeed *= -1;
-            }
-            if (transform.rotation.eulerAngles.z >= 355 && _searchSpeed > 0)
-            {
-                _searchSpeed *= -1;
-            }
-            
-            transform.Rotate(new Vector3(0, 0, _searchSpeed));
+            GetComponent<Animator>().SetBool("Patroling", true);
 
         }
     }

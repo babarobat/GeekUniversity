@@ -23,7 +23,7 @@ namespace Game.Controllers
         private void Update()
         {
             All();
-            _movementController.MoveToTarget(_targetPos, Speed);
+            
         }
         private void FollowTarget()
         {
@@ -58,19 +58,28 @@ namespace Game.Controllers
         }
         private void All()
         {
-            Patrol();
-            //if (_fieldOfViewController.Target == null)
-            //{
-            //    Patrol();
-            //}
-            //else
-            //{
-            //    //LookAtTarget();
-            //    //MoveToFirePositionThenFire();
-
-
-            //}
             
+            if (_fieldOfViewController.Target == null)
+            {
+                Patrol();
+                _movementController.MoveToTarget(_targetPos, Speed);
+            }
+            else
+            {
+                LookAtTarget();
+                if (Mathf.Abs(transform.position.y - _targetPos.y)>.1)
+                {
+                    print(3);
+                    MoveToAttackPos();
+                    _movementController.MoveToTarget(_targetPos, Speed);
+                }
+                else
+                {
+                    _movementController.Stop();
+                    _weaponController.Fire();
+                }
+            }
+
         }
         private void MoveToAttackPos()
         {
