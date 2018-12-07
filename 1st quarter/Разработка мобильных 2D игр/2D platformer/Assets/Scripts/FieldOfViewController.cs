@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace Game.Controllers
 {
-    class FieldOfViewController:BaseComponentController
+
+    class FieldOfViewController : BaseComponentController
     {
         public LayerMask _targetLayerMask;
         public LayerMask _wallsMask;
@@ -14,19 +15,19 @@ namespace Game.Controllers
         public Transform Target;
         public float _meshResolution;
 
-        [Range(0,360)]
+        [Range(0, 360)]
         public float _viewAngle;
 
         public MeshFilter _viewMeshFilter;
         private Mesh _viewMesh;
         private float _searchSpeed = 1;
-        
+
         private void Start()
         {
             _viewMesh = new Mesh() { name = "View mesh" };
             _viewMeshFilter.mesh = _viewMesh;
 
-           
+
             StartCoroutine(FindTargetWhithDelay(0.2f));
         }
         private void Update()
@@ -35,12 +36,12 @@ namespace Game.Controllers
         }
         public Vector2 DirFromAngle(float angleDegrees, bool angleIsGlobal)
         {
+            var z = transform.rotation.eulerAngles.y == 180 ? -1 : 1;
             if (!angleIsGlobal)
             {
-                var z = transform.rotation.eulerAngles.y == 180 ? -1 : 1;
-                angleDegrees += transform.eulerAngles.z*z +  transform.eulerAngles.y;
+                angleDegrees += transform.eulerAngles.z;
             }
-            return new Vector2(Mathf.Cos(angleDegrees * Mathf.Deg2Rad), Mathf.Sin(angleDegrees * Mathf.Deg2Rad));
+            return new Vector3(z * Mathf.Cos(angleDegrees * Mathf.Deg2Rad), Mathf.Sin(angleDegrees * Mathf.Deg2Rad));
         }
         private void FindVisibleTargets()
         {
@@ -50,10 +51,10 @@ namespace Game.Controllers
             {
                 Transform target = targetsInViewRadius[i].transform;
                 Vector2 dirToTarget = (target.position - transform.position).normalized;
-                if (Vector2.Angle(transform.right,dirToTarget)<_viewAngle/2)
+                if (Vector2.Angle(transform.right, dirToTarget) < _viewAngle / 2)
                 {
                     float distTotarget = Vector2.Distance(transform.position, target.position);
-                    if (!Physics2D.Raycast(transform.position,dirToTarget,distTotarget, _wallsMask))
+                    if (!Physics2D.Raycast(transform.position, dirToTarget, distTotarget, _wallsMask))
                     {
                         Target = target;
                     }
@@ -67,7 +68,7 @@ namespace Game.Controllers
             {
                 yield return new WaitForSeconds(delay);
                 FindVisibleTargets();
-                
+
             }
         }
         void DrawFieldOfView()
@@ -77,8 +78,8 @@ namespace Game.Controllers
             List<Vector3> viewPoints = new List<Vector3>();
             for (int i = 0; i < stepCount; i++)
             {
-                var z = transform.rotation.eulerAngles.y == 180 ? -1 : 1;
-                float angle = z*transform.rotation.eulerAngles.z + transform.rotation.eulerAngles.y - _viewAngle / 2 + stepAngleSize * i;
+
+                float angle = transform.rotation.eulerAngles.z - _viewAngle / 2 + stepAngleSize * i;
                 ViewCastInfo viewCastInfo = ViewCast(angle);
                 viewPoints.Add(viewCastInfo.point);
             }
@@ -92,9 +93,20 @@ namespace Game.Controllers
                 vertices[i + 1] = transform.InverseTransformPoint(viewPoints[i]);
                 if (i < vertexCount - 2)
                 {
-                    triangles[i * 3] = 0;
-                    triangles[i * 3 + 1] = i + 2;
-                    triangles[i * 3 + 2] = i + 1;
+                    if (transform.eulerAngles.y == 180)
+                    {
+                        triangles[i * 3] = 0;
+                        triangles[i * 3 + 1] = i + 1;
+                        triangles[i * 3 + 2] = i + 2;
+                    }
+                    if (transform.eulerAngles.y == 0)
+                    {
+                        triangles[i * 3] = 0;
+                        triangles[i * 3 + 1] = i + 2;
+                        triangles[i * 3 + 2] = i + 1;
+                    }
+                    
+                    
                 }
             }
 
@@ -114,7 +126,7 @@ namespace Game.Controllers
             }
             else
             {
-                return new ViewCastInfo(false, transform.position +dir*_viewRadious, _viewRadious, globalAngle);
+                return new ViewCastInfo(false, transform.position + dir * _viewRadious, _viewRadious, globalAngle);
             }
 
         }
@@ -146,6 +158,17 @@ namespace Game.Controllers
         {
             GetComponent<Animator>().SetBool("Patroling", true);
 
+        }
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(transform.position, _viewRadious);
+            Vector3 viewAngleA = DirFromAngle(-_viewAngle / 2, false);
+
+            Vector3 viewAngleB = DirFromAngle(_viewAngle / 2, false);
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, transform.position + viewAngleA * _viewRadious);
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(transform.position, transform.position + viewAngleB * _viewRadious);
         }
     }
 }

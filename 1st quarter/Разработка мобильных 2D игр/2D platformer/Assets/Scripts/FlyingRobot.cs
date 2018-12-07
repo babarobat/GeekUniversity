@@ -22,7 +22,7 @@ namespace Game.Controllers
         }
         private void Update()
         {
-            All();
+            Patrol();
             
         }
         private void FollowTarget()
@@ -45,7 +45,7 @@ namespace Game.Controllers
                 }
                 
             }
-            _fieldOfViewController.SearchTarget();
+            _movementController.MoveToTarget(_targetPos, Speed);
         }
         private void Attack()
         {
@@ -59,26 +59,7 @@ namespace Game.Controllers
         private void All()
         {
             
-            if (_fieldOfViewController.Target == null)
-            {
-                Patrol();
-                _movementController.MoveToTarget(_targetPos, Speed);
-            }
-            else
-            {
-                LookAtTarget();
-                if (Mathf.Abs(transform.position.y - _targetPos.y)>.1)
-                {
-                    print(3);
-                    MoveToAttackPos();
-                    _movementController.MoveToTarget(_targetPos, Speed);
-                }
-                else
-                {
-                    _movementController.Stop();
-                    _weaponController.Fire();
-                }
-            }
+            
 
         }
         private void MoveToAttackPos()
@@ -86,9 +67,6 @@ namespace Game.Controllers
             _targetPos.y = _target.position.y;
             _targetPos.x = transform.position.x;
         }
-        void LookAtTarget()
-        {
-            _fieldOfViewController.LookAtTarget(_target);
-        }
+        
     }
 }

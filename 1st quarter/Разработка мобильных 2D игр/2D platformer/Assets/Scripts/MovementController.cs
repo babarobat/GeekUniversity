@@ -49,7 +49,7 @@ namespace Game.Controllers
         {
             Vector2 dir = (target - (Vector2)transform.position).normalized;           
             _rb.velocity = dir * speed * Time.deltaTime;
-            print(2);
+           
             transform.rotation = GetRotation();
         }
         public void Stop()

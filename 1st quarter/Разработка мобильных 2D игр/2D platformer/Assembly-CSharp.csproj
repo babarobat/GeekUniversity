@@ -67,12 +67,10 @@
     <Compile Include="Assets\Scripts\BaseEnemyController.cs" />
     <Compile Include="Assets\Scripts\BaseWeapon.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Class1.cs" />
     <Compile Include="Assets\Scripts\ControlParams.cs" />
     <Compile Include="Assets\Scripts\Dog.cs" />
     <Compile Include="Assets\Scripts\ExplosionController.cs" />
     <Compile Include="Assets\Scripts\FieldOfViewController.cs" />
-    <Compile Include="Assets\Scripts\FieldOfViewEditor.cs" />
     <Compile Include="Assets\Scripts\FireBall.cs" />
     <Compile Include="Assets\Scripts\FlyingRobot.cs" />
     <Compile Include="Assets\Scripts\IDamage.cs" />
