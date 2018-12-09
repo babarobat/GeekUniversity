@@ -32,9 +32,7 @@ namespace Game.Controllers
             {
                 item.enabled = false;
             }
-            Destroy(gameObject, 1f);
-
-
+            Destroy(gameObject);
         }
         public void Explode()
         {

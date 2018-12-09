@@ -5,35 +5,83 @@ using UnityEngine;
 
 namespace Game.Controllers
 {
-
+    /// <summary>
+    /// Содержит логику и параметры зрения персонажа
+    /// </summary>
+    [RequireComponent(typeof(MeshFilter))]
+    [RequireComponent(typeof(MeshRenderer))]
     class FieldOfViewController : BaseComponentController
     {
-        public LayerMask _targetLayerMask;
-        public LayerMask _wallsMask;
-        public float _viewRadious;
+        /// <summary>
+        /// Layer обьекта цель
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Layer обьекта, которого нужно обнаружить")]
+        private LayerMask _targetLayerMask;
+        /// <summary>
+        /// Layer препятсвий для зрения
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Layer препятсвий для зрения")]
+        private LayerMask _wallsMask;
+        /// <summary>
+        /// Качество меша.
+        /// </summary>
+        private const float _meshResolution = 1f;
+        /// <summary>
+        /// Радиус обзора
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Радиус обзора")]
+        private float _viewRadious;
+        /// <summary>
+        /// Радиус обзора
+        /// </summary>
+        public float ViewRadius
+        {
+            get => _viewRadious;
+            set => _viewRadious = value < 0 ? 0 : value; 
+        }
+        public Transform Target { get; private set; }
 
-        public Transform Target;
-        public float _meshResolution;
-
+        /// <summary>
+        /// Угол обзора
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Угол обзора")]
         [Range(0, 360)]
-        public float _viewAngle;
-
-        public MeshFilter _viewMeshFilter;
+        private float _viewAngle;
+        /// <summary>
+        /// ссылка на компонент MeshFilter
+        /// </summary>
+        private MeshFilter _viewMeshFilter;
+        /// <summary>
+        /// ссылка на компонент Mesh
+        /// </summary>
         private Mesh _viewMesh;
-        private float _searchSpeed = 1;
+        /// <summary>
+        /// Скорость сканирования территории
+        /// </summary>
+        private const float _searchSpeed = 0.2f;
 
         private void Start()
         {
+            
+            _viewMeshFilter = GetComponent<MeshFilter>();
             _viewMesh = new Mesh() { name = "View mesh" };
             _viewMeshFilter.mesh = _viewMesh;
-
-
-            StartCoroutine(FindTargetWhithDelay(0.2f));
+            StartCoroutine(FindTargetWhithDelay(_searchSpeed));
         }
         private void Update()
         {
             DrawFieldOfView();
         }
+        /// <summary>
+        /// Возвращает напрваление ввиде Vector 2 относительно заданного угла
+        /// </summary>
+        /// <param name="angleDegrees">заданный угол</param>
+        /// <param name="angleIsGlobal">заданный угол глобальный?</param>
+        /// <returns></returns>
         public Vector2 DirFromAngle(float angleDegrees, bool angleIsGlobal)
         {
             var z = transform.rotation.eulerAngles.y == 180 ? -1 : 1;
@@ -41,9 +89,12 @@ namespace Game.Controllers
             {
                 angleDegrees += transform.eulerAngles.z;
             }
-            return new Vector3(z * Mathf.Cos(angleDegrees * Mathf.Deg2Rad), Mathf.Sin(angleDegrees * Mathf.Deg2Rad));
+            return new Vector2(z * Mathf.Cos(angleDegrees * Mathf.Deg2Rad), Mathf.Sin(angleDegrees * Mathf.Deg2Rad));
         }
-        private void FindVisibleTargets()
+        /// <summary>
+        /// Находит цель в поле зрения
+        /// </summary>
+        private void FindVisibleTarget()
         {
             Target = null;
             Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, _viewRadious, _targetLayerMask);
@@ -61,16 +112,23 @@ namespace Game.Controllers
                 }
             }
         }
-
+        /// <summary>
+        /// Обновляет данные о цели с заданной переодичностью
+        /// </summary>
+        /// <param name="delay">частота вызова метода</param>
+        /// <returns></returns>
         IEnumerator FindTargetWhithDelay(float delay)
         {
             while (true)
             {
                 yield return new WaitForSeconds(delay);
-                FindVisibleTargets();
+                FindVisibleTarget();
 
             }
         }
+        /// <summary>
+        /// Визульное отображение зрения персонажа при помощи Mesh
+        /// </summary>
         void DrawFieldOfView()
         {
             int stepCount = Mathf.RoundToInt(_viewAngle * _meshResolution);
@@ -109,13 +167,16 @@ namespace Game.Controllers
                     
                 }
             }
-
-
             _viewMesh.Clear();
             _viewMesh.vertices = vertices;
             _viewMesh.triangles = triangles;
             _viewMesh.RecalculateNormals();
         }
+        /// <summary>
+        /// Запускает луч в напралении заданного угла и возвращает ViewCastInfo с информацией о попадании
+        /// </summary>
+        /// <param name="globalAngle"></param>
+        /// <returns></returns>
         ViewCastInfo ViewCast(float globalAngle)
         {
             Vector3 dir = DirFromAngle(globalAngle, true);
@@ -130,45 +191,20 @@ namespace Game.Controllers
             }
 
         }
-
-        public struct ViewCastInfo
+        /// <summary>
+        /// Отображает в режиме редактора парамтры зрения 
+        /// </summary>
+        private void OnDrawGizmosSelected()
         {
-            public bool hit;
-            public Vector3 point;
-            public float dst;
-            public float angle;
-
-            public ViewCastInfo(bool hit, Vector3 point, float dst, float angle)
-            {
-                this.hit = hit;
-                this.point = point;
-                this.dst = dst;
-                this.angle = angle;
-
-            }
-        }
-        public void LookAtTarget(Transform target)
-        {
-            transform.right = target.position - transform.position;
-            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, Mathf.Clamp(transform.eulerAngles.z, 0, 270));
-            //GetComponent<Animator>().SetBool("Patroling", false);
-
-        }
-        public void SearchTarget()
-        {
-            GetComponent<Animator>().SetBool("Patroling", true);
-
-        }
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, _viewRadious);
+            Gizmos.DrawWireSphere(transform.position, ViewRadius);
             Vector3 viewAngleA = DirFromAngle(-_viewAngle / 2, false);
 
             Vector3 viewAngleB = DirFromAngle(_viewAngle / 2, false);
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, transform.position + viewAngleA * _viewRadious);
+            Gizmos.DrawLine(transform.position, transform.position + viewAngleA * ViewRadius);
             Gizmos.color = Color.white;
-            Gizmos.DrawLine(transform.position, transform.position + viewAngleB * _viewRadious);
+            Gizmos.DrawLine(transform.position, transform.position + viewAngleB * ViewRadius);
         }
+        
     }
 }
