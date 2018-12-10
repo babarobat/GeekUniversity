@@ -9,13 +9,14 @@ namespace Game.Controllers
     [RequireComponent(typeof(Collider2D))]
     public class MovementController : BaseComponentController
     {
-        
+
         /// <summary>
         /// Ссылка на компонет RigidBody2D
         /// </summary>
         private Rigidbody2D _rb;
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             _rb = GetComponentInParent<Rigidbody2D>();
             //GetComponent<BaseCharacterController>().Move += Move;
 
@@ -26,7 +27,7 @@ namespace Game.Controllers
         /// при отрицательном значении скорости персонаж будет двигаться влево.
         /// </summary>
         /// <param name="moveSpeed">Скорость движения</param>
-        public void Move(float moveSpeed) 
+        public void Move(float moveSpeed)
         {
             _rb.velocity = new Vector2(moveSpeed * Time.deltaTime, _rb.velocity.y);
             transform.rotation = GetRotation();
@@ -47,21 +48,28 @@ namespace Game.Controllers
         /// <param name="speed">скорость</param>
         public void MoveToTarget(Vector2 target, float speed)
         {
-            Vector2 dir = (target - (Vector2)transform.position).normalized;           
+            Vector2 dir = (target - (Vector2)transform.position).normalized;
             _rb.velocity = dir * speed * Time.deltaTime;
-           
+
             transform.rotation = GetRotation();
         }
         public void Stop()
         {
-            print(1);
+            
             _rb.velocity = Vector2.zero;
         }
         private Quaternion GetRotation()
         {
             var rotationY = _rb.velocity.x < 0 ? 180 : _rb.velocity.x > 0 ? 0 : transform.rotation.eulerAngles.y;
-            return  Quaternion.Euler(0, rotationY, 0);
+            return Quaternion.Euler(0, rotationY, 0);
         }
+        public void LookAtTarget(Transform target)
+        {
+            var targetOnRight = transform.position.x < target.position.x ? false : true;
+            var rotationY = targetOnRight ? 180 :  0 ;
+            transform.rotation =  Quaternion.Euler(0, rotationY, 0);
+        }
+        
 
     }
 }

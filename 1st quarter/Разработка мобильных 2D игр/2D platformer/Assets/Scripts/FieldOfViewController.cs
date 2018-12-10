@@ -64,9 +64,9 @@ namespace Game.Controllers
         /// </summary>
         private const float _searchSpeed = 0.2f;
 
-        private void Start()
+        protected override void Start()
         {
-            
+            base.Start();
             _viewMeshFilter = GetComponent<MeshFilter>();
             _viewMesh = new Mesh() { name = "View mesh" };
             _viewMeshFilter.mesh = _viewMesh;
@@ -205,6 +205,15 @@ namespace Game.Controllers
             Gizmos.color = Color.white;
             Gizmos.DrawLine(transform.position, transform.position + viewAngleB * ViewRadius);
         }
+        public void LookAtTarget()
+        {
+            if (Target!=null)
+            {
+                transform.right = Target.position - transform.position;
+            }
+            
+        }
+        
         
     }
 }

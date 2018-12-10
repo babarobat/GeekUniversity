@@ -8,6 +8,11 @@ namespace Game.Controllers
 {
     public abstract class  BaseComponentController:MonoBehaviour
     {
+        protected BaseCharacterController _characterController;
+        protected virtual void Start()
+        {
+            _characterController = GetComponentInParent<BaseCharacterController>();
+        }
         public bool IsActive
         {
             get => gameObject.activeSelf;

@@ -3,14 +3,15 @@ using UnityEngine;
 using Game.Controllers;
 using UnityEngine.SceneManagement;
 
-namespace Game {
+namespace Game
+{
     /// <summary>
     /// Содержит логику и параметры управления персонажем
     /// </summary>
     [RequireComponent(typeof(MovementController))]
     [RequireComponent(typeof(AnimationController))]
     [RequireComponent(typeof(WeaponController))]
-    public class PlayerController : BaseCharacterController,IDamage
+    public class PlayerController : BaseCharacterController, IDamage
     {
 
         /// <summary>
@@ -47,7 +48,7 @@ namespace Game {
         /// Событие для 
         /// </summary>
         public Action<int> HpChanged;
-        
+
         /// <summary>
         /// Здоровье персонажа
         /// </summary>
@@ -68,16 +69,16 @@ namespace Game {
         /// Ссылка на компонент управления оружием
         /// </summary>
         private WeaponController _weaponController;
-        
 
-        
+
+
 
         protected override void Start()
         {
-            
+
             base.Start();
-            
-            
+
+
             _weaponController = GetComponentInChildren<WeaponController>();
             _controlParams = InputController.Instance.ControlParams;
 
@@ -87,7 +88,7 @@ namespace Game {
         {
             //Движение заднего фона карты. Прототип
             _map.Translate(Vector2.right * -_controlParams.Horizontal * .3f * Time.deltaTime);
-            //Move?.Invoke(_speed * _controlParams.Horizontal);
+            
             Move();
             Jump();
             Fire();
@@ -102,7 +103,7 @@ namespace Game {
         public void Move()
         {
             _animationController.Move(_controlParams.Horizontal);
-            _movementController.Move(_controlParams.Horizontal* Speed);
+            _movementController.Move(_controlParams.Horizontal * Speed);
         }
         /// <summary>
         /// Прыжок
@@ -140,7 +141,7 @@ namespace Game {
             if (_controlParams.Fire)
             {
                 _weaponController.Fire();
-                
+
             }
         }
         /// <summary>
@@ -157,10 +158,10 @@ namespace Game {
         {
             if (collision.gameObject.tag == "Spikes")
             {
-                
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-        
+
     }
 }

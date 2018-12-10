@@ -53,12 +53,21 @@ namespace Game.Controllers
         /// </summary>
         protected ExplosionController _explosionController;
 
+
+        [SerializeField]
+        protected Transform[] _patrolPoints;
+        protected int _patrolPointIndex = 0;
+
+
+
+
+
         protected override void Start()
         {
             base.Start();
             _explosionController = GetComponentInChildren<ExplosionController>();
             CurrentHp = _startHp;
-            _target = FindObjectOfType<PlayerController>().transform;
+            
         }
         /// <summary>
         /// Логика получения урона
@@ -81,5 +90,6 @@ namespace Game.Controllers
             _explosionController?.Explode();
             
         }
+        
     }
 }
