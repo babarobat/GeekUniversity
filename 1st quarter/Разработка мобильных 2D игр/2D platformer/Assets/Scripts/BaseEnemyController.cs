@@ -86,7 +86,6 @@ namespace Game.Controllers
         }
         private void Explode()
         {
-            _animationController.IsActive = false;
             GetComponent<Rigidbody2D>().isKinematic = true;
             GetComponent<Collider2D>().enabled = false;
             _explosionController?.Explode();

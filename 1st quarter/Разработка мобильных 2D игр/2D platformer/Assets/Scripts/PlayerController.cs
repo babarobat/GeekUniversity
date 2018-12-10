@@ -102,7 +102,7 @@ namespace Game
         /// </summary>
         public void Move()
         {
-            _animationController.Move(_controlParams.Horizontal);
+            //_animationController.Move(_controlParams.Horizontal);
             _movementController.Move(_controlParams.Horizontal * Speed);
         }
         /// <summary>
@@ -113,7 +113,7 @@ namespace Game
             if (_controlParams.Jump && isGrounded)
             {
                 isGrounded = false;
-                _animationController.Jump();
+                //_animationController.Jump();
                 _movementController.Jump(_jumpForce);
             }
         }
@@ -129,7 +129,7 @@ namespace Game
                 {
 
                     isGrounded = true;
-                    _animationController.Grounded();
+                    //_animationController.Grounded();
                 }
             }
         }

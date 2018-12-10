@@ -6,6 +6,8 @@ namespace Game.Controllers
     /// <summary>
     /// Базовый класс для управленя персонажами
     /// </summary>
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(MovementController))]
     public abstract class BaseCharacterController : MonoBehaviour
     {
 
@@ -23,18 +25,15 @@ namespace Game.Controllers
         /// Ссылка на компонент управления движениями
         /// </summary>
         protected MovementController _movementController;
-        /// <summary>
-        /// Ссылка на компонент управления анимацией
-        /// </summary>
-        protected AnimationController _animationController;
+        protected Animator _animator;
+
+
 
         //public Action<float> Move;
 
         protected virtual void Start()
         {
-
-            _movementController = GetComponent<MovementController>() ?? gameObject.AddComponent<MovementController>();
-            _animationController = GetComponentInChildren<AnimationController>() ?? GetComponentInChildren<Animator>().gameObject.AddComponent<AnimationController>();
+            _movementController = GetComponent<MovementController>();
         }
     }
 }
