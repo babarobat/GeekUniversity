@@ -5,17 +5,15 @@ namespace Game.Controllers
 {
     class FlyingRobot:BaseEnemyController
     {
-        private FieldOfViewController _fow;
+        
         private WeaponController _weaponController;
         private float _attackDistance;
         private bool _canAttack;
         
         protected override  void Start()
         {
-            base.Start();
-            _fow = GetComponentInChildren<FieldOfViewController>();
-            _weaponController = GetComponentInChildren<WeaponController>();
-            
+            base.Start();            
+            _weaponController = GetComponentInChildren<WeaponController>();            
             _target = _fow.Target;
         }
 
@@ -27,20 +25,16 @@ namespace Game.Controllers
             }
             else
             {
-                
                 LookAtTarget();
                 GoToAttackPos();
                 Attack();
-            }
-
-            
+            }     
         }
         void Patrol()
         {
             
             if (_patrolPoints.Length>1)
-            {
-                
+            {                
                 _movementController.MoveToTarget(_patrolPoints[_patrolPointIndex].position, Speed);
                 if (Vector2.Distance(transform.position, _patrolPoints[_patrolPointIndex].position)<.1f)
                 {
@@ -53,14 +47,11 @@ namespace Game.Controllers
                         _patrolPointIndex = 0;
                     }
                 }
-            }
-            
+            }            
         }
-       
-        
+
         public void LookAtTarget()
-        {
-            
+        {            
             _movementController.LookAtTarget(_fow.Target);
             _fow.LookAtTarget();
         }
@@ -71,22 +62,19 @@ namespace Game.Controllers
             {
                 _movementController.MoveToTarget(attackPos, Speed);
                 _canAttack = false;
-
             }
             else
             {
                 _canAttack = true;
                 _movementController.Stop();
             }
-            
         }
         void Attack()
         {
             if (_canAttack)
             {
                 _weaponController.Fire();
-            }
-            
+            }            
         }
         
         

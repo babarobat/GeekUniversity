@@ -57,7 +57,7 @@ namespace Game.Controllers
         [SerializeField]
         protected Transform[] _patrolPoints;
         protected int _patrolPointIndex = 0;
-
+        protected FieldOfViewController _fow;
 
 
 
@@ -65,6 +65,8 @@ namespace Game.Controllers
         protected override void Start()
         {
             base.Start();
+            _target = FindObjectOfType<PlayerController>().transform;
+            _fow = GetComponentInChildren<FieldOfViewController>();
             _explosionController = GetComponentInChildren<ExplosionController>();
             CurrentHp = _startHp;
             

@@ -64,12 +64,17 @@ namespace Game.Controllers
         /// </summary>
         private const float _searchSpeed = 0.2f;
 
+
+
+        private Animator _animator;
         protected override void Start()
         {
             base.Start();
             _viewMeshFilter = GetComponent<MeshFilter>();
             _viewMesh = new Mesh() { name = "View mesh" };
             _viewMeshFilter.mesh = _viewMesh;
+            
+            _animator = GetComponent<Animator>();
             StartCoroutine(FindTargetWhithDelay(_searchSpeed));
         }
         private void Update()
@@ -108,8 +113,15 @@ namespace Game.Controllers
                     if (!Physics2D.Raycast(transform.position, dirToTarget, distTotarget, _wallsMask))
                     {
                         Target = target;
+
                     }
+                    
+                    
                 }
+            }
+            if (Target == null)
+            {
+                _animator.enabled = true;
             }
         }
         /// <summary>
@@ -207,8 +219,10 @@ namespace Game.Controllers
         }
         public void LookAtTarget()
         {
+            
             if (Target!=null)
             {
+                _animator.enabled = false;
                 transform.right = Target.position - transform.position;
             }
             
