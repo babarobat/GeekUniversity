@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections;
 
 namespace Game.Controllers
 {
@@ -9,32 +10,58 @@ namespace Game.Controllers
         private WeaponController _weaponController;
         private float _attackDistance;
         private bool _canAttack;
+        bool _isAngry;
+        bool keppFolowing = true;
+
+        
         
         protected override  void Start()
         {
             base.Start();            
-            _weaponController = GetComponentInChildren<WeaponController>();            
-            _target = _fow.Target;
+            _weaponController = GetComponentInChildren<WeaponController>();
+            
+            
         }
-
-        private void Update()
+        
+        private void LateUpdate()
         {
-            if (_fow.Target==null)
+            
+            
+            if (_fow.Target != null)
             {
-                Patrol();
+                _isAngry = true;
+
             }
-            else
+            if (_isAngry)
             {
                 LookAtTarget();
                 GoToAttackPos();
                 Attack();
+                if (_fow.Target == null)
+                {
+                    if (keppFolowing)
+                    {
+                        StartCoroutine(KeepFolowing(2));
+                    }
+                }
+            }
+            else
+            {
+                Patrol();
             }     
         }
-        void Patrol()
+        
+        IEnumerator KeepFolowing(float time)
         {
-            
+            keppFolowing = false;
+            yield return new WaitForSeconds(time);
+            keppFolowing = true;
+            _isAngry = false;
+        }
+        void Patrol()
+        {            
             if (_patrolPoints.Length>1)
-            {                
+            {
                 _movementController.MoveToTarget(_patrolPoints[_patrolPointIndex].position, Speed);
                 if (Vector2.Distance(transform.position, _patrolPoints[_patrolPointIndex].position)<.1f)
                 {
@@ -52,12 +79,12 @@ namespace Game.Controllers
 
         public void LookAtTarget()
         {            
-            _movementController.LookAtTarget(_fow.Target);
-            _fow.LookAtTarget();
+            _movementController.LookAtTarget(_target);
+            _fow.LookAtTarget(_target);
         }
         void GoToAttackPos()
         {
-            var attackPos =  new Vector2(transform.position.x,_fow.Target.transform.position.y);
+            var attackPos =  new Vector2(transform.position.x,_target.transform.position.y);
             if (Vector2.Distance(attackPos,transform.position)>0.1f)
             {
                 _movementController.MoveToTarget(attackPos, Speed);

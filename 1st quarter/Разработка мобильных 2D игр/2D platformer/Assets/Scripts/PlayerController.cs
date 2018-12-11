@@ -9,7 +9,6 @@ namespace Game
     /// Содержит логику и параметры управления персонажем
     /// </summary>
     [RequireComponent(typeof(MovementController))]
-    [RequireComponent(typeof(AnimationController))]
     [RequireComponent(typeof(WeaponController))]
     public class PlayerController : BaseCharacterController, IDamage
     {
@@ -81,7 +80,7 @@ namespace Game
 
             _weaponController = GetComponentInChildren<WeaponController>();
             _controlParams = InputController.Instance.ControlParams;
-
+            
 
         }
         void Update()
@@ -102,7 +101,7 @@ namespace Game
         /// </summary>
         public void Move()
         {
-            //_animationController.Move(_controlParams.Horizontal);
+            _animator.SetFloat("VelocityX", Mathf.Abs( _controlParams.Horizontal));
             _movementController.Move(_controlParams.Horizontal * Speed);
         }
         /// <summary>
@@ -113,7 +112,7 @@ namespace Game
             if (_controlParams.Jump && isGrounded)
             {
                 isGrounded = false;
-                //_animationController.Jump();
+                _animator.SetBool("IsJumping", true);
                 _movementController.Jump(_jumpForce);
             }
         }
@@ -129,7 +128,7 @@ namespace Game
                 {
 
                     isGrounded = true;
-                    //_animationController.Grounded();
+                    _animator.SetBool("IsJumping", false);
                 }
             }
         }

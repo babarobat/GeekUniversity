@@ -42,7 +42,7 @@ namespace Game.Controllers
             get => _viewRadious;
             set => _viewRadious = value < 0 ? 0 : value; 
         }
-        public Transform Target { get; private set; }
+        
 
         /// <summary>
         /// Угол обзора
@@ -64,21 +64,24 @@ namespace Game.Controllers
         /// </summary>
         private const float _searchSpeed = 0.2f;
 
+        //public Transform Test;
+        public Transform Target { get; private set; }
 
-
-        private Animator _animator;
         protected override void Start()
         {
             base.Start();
             _viewMeshFilter = GetComponent<MeshFilter>();
             _viewMesh = new Mesh() { name = "View mesh" };
             _viewMeshFilter.mesh = _viewMesh;
-            
-            _animator = GetComponent<Animator>();
+            //Test = Target;
+
+
             StartCoroutine(FindTargetWhithDelay(_searchSpeed));
         }
         private void Update()
         {
+            //print(Target);
+            //print(Test);
             DrawFieldOfView();
         }
         /// <summary>
@@ -119,10 +122,7 @@ namespace Game.Controllers
                     
                 }
             }
-            if (Target == null)
-            {
-                _animator.enabled = true;
-            }
+            
         }
         /// <summary>
         /// Обновляет данные о цели с заданной переодичностью
@@ -165,12 +165,14 @@ namespace Game.Controllers
                 {
                     if (transform.eulerAngles.y == 180)
                     {
+                        
                         triangles[i * 3] = 0;
                         triangles[i * 3 + 1] = i + 1;
                         triangles[i * 3 + 2] = i + 2;
                     }
                     if (transform.eulerAngles.y == 0)
                     {
+                        
                         triangles[i * 3] = 0;
                         triangles[i * 3 + 1] = i + 2;
                         triangles[i * 3 + 2] = i + 1;
@@ -217,13 +219,13 @@ namespace Game.Controllers
             Gizmos.color = Color.white;
             Gizmos.DrawLine(transform.position, transform.position + viewAngleB * ViewRadius);
         }
-        public void LookAtTarget()
+        public void LookAtTarget(Transform target)
         {
             
-            if (Target!=null)
+            if (target != null)
             {
-                _animator.enabled = false;
-                transform.right = Target.position - transform.position;
+                
+                transform.right = target.position - transform.position;
             }
             
         }

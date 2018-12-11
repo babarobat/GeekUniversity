@@ -34,6 +34,7 @@ namespace Game.Controllers
         protected virtual void Start()
         {
             _movementController = GetComponent<MovementController>();
+            _animator = GetComponent<Animator>();
         }
     }
 }
