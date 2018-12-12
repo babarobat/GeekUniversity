@@ -7,11 +7,11 @@ namespace Game.Controllers
     public class HealthController:BaseComponentController,IDamage
     {
         [SerializeField]
-        private float _startHp;
+        private int _startHp;
 
-        private float _currentHp;
+        private int _currentHp;
         
-        public float CurrentHp
+        public int CurrentHp
         {
             get => _currentHp;
             private set
@@ -25,7 +25,7 @@ namespace Game.Controllers
                 }
             }
         }
-        public event Action<float> OnHpChange;
+        public event Action<int> OnHpChange;
         public event Action HpIsZero;
 
         public void GetDamage(int damage)

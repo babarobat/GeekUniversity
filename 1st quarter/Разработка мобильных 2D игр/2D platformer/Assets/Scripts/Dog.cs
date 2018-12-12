@@ -36,7 +36,15 @@ namespace Game.Controllers
             {
                 _targetPos.x = _patrolPoints[_patrolPointIndex].position.x;
                 _targetPos.y = transform.position.y;
-                _movementController.MoveToTarget(_targetPos, Speed);
+                if (transform.position.x < _targetPos.x)
+                {
+                    _movementController.Move(Speed);
+                }
+                else
+                {
+                    _movementController.Move(-Speed);
+                }
+                
                 if (Vector2.Distance(transform.position, _patrolPoints[_patrolPointIndex].position) < 1f)
                 {
                     if (_patrolPointIndex < _patrolPoints.Length - 1)
@@ -58,7 +66,15 @@ namespace Game.Controllers
             _targetPos.x = _target.position.x;
             _targetPos.y = transform.position.y;
             _fow.LookAtTarget(_target);
-            _movementController.MoveToTarget(_targetPos,Speed*2f);
+            if (transform.position.x < _targetPos.x)
+            {
+                _movementController.Move( Speed * 2f);
+            }
+            else
+            {
+                _movementController.Move(-Speed * 2f);
+            }
+            
         }
         /// <summary>
         /// Продолжает гнатсья за целью после потери из поля зрения

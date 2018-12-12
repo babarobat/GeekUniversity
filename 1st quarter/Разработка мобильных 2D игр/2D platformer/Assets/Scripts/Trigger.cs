@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game
@@ -12,8 +9,7 @@ namespace Game
     {
         [SerializeField]
         private TriggerEventArgs _args;
-        [SerializeField]
-        private ITriggersListner[] _listners;
+        
         [SerializeField]
         private string[] _triggerActivatorsTegs;
         [SerializeField]
@@ -22,31 +18,40 @@ namespace Game
         bool _disableAfterEnter;
         [SerializeField]
         bool _disableAfterExit;
-
+        [SerializeField]
+        
+        public bool IsInteractble;
          
 
         public event Action<TriggerEventArgs> OnStay;
         public event Action<TriggerEventArgs> OnEnter;
         public event Action<TriggerEventArgs> OnExit;
         public event Action<TriggerEventArgs> OnInteract;
+
+
+        Animator _animator;
         public bool IsEnable
         {
-            get => enabled;
-            set => enabled = value;
+            get => GetComponent<Collider2D>().enabled;
+            set => GetComponent<Collider2D>().enabled = value;
         }
         private void Start()
         {
             _args.Sender = this;
             GetComponent<Collider2D>().isTrigger = true;
+            _animator = GetComponentInChildren<Animator>();
         }
 
 
         private void OnTriggerStay2D(Collider2D collision)
         {
             OnStay?.Invoke(_args);
-            if (Controllers.InputController.Instance.ControlParams.Interacting && _triggerActivatorsTegs.Contains(collision.tag))
+            if (Controllers.InputController.Instance.ControlParams.Interacting
+                && _triggerActivatorsTegs.Contains(collision.tag)
+                && IsInteractble)
             {
                 _args.boolMeta = !_args.boolMeta;
+                _animator?.SetBool("On", _args.boolMeta);
                 OnInteract?.Invoke(_args);
 
                 if (_disableAfterInterract)

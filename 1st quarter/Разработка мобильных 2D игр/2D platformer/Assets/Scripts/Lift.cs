@@ -16,15 +16,28 @@ namespace Game
         [SerializeField]
         float _speed;
         [SerializeField]
-        Trigger[] _switches;
+        Trigger[] _liftControlSwitches;
+        [SerializeField]
+        Trigger[] _liftEnergySwitches;
+
+        int _currentEnergy = 0;
+       
         bool isWorking = false;
         private void Start()
         {
             transform.position = _stopPositions[0];
-            foreach (var _switch in _switches)
+            foreach (var _switch in _liftControlSwitches)
             {
+                _switch.IsInteractble = false;
                 _switch.OnInteract += MoveLift;
-            } 
+            }
+            foreach (var _switch in _liftEnergySwitches)
+            {
+               
+                _switch.IsInteractble = true;
+                _switch.OnInteract += AddEnergy;
+            }
+
         }
         void MoveLift(TriggerEventArgs args)
         {
@@ -49,9 +62,28 @@ namespace Game
             }
             isWorking = false;
             transform.position =_stopPositions[posIndex];
-            
+        }
+        void AddEnergy(TriggerEventArgs args)
+        {
+            (args.Sender as Trigger).IsEnable = false;
+            _currentEnergy+=1;
+           
+            if (_currentEnergy== _liftEnergySwitches.Length)
+            {
+                TernOnLift();
+                
+            }
 
         }
+        void TernOnLift()
+        {
+            foreach (var _switch in _liftControlSwitches)
+            {
+                _switch.IsInteractble = true;
+                _switch.OnInteract += MoveLift;
+            }
+        }
+
 
 
     }
