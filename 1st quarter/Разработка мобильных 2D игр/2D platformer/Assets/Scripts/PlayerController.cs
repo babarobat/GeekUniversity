@@ -10,7 +10,8 @@ namespace Game
     /// </summary>
     [RequireComponent(typeof(MovementController))]
     [RequireComponent(typeof(WeaponController))]
-    public class PlayerController : BaseCharacterController, IDamage
+    [RequireComponent(typeof(HealthController))]
+    public class PlayerController : BaseCharacterController
     {
 
         /// <summary>
@@ -25,10 +26,7 @@ namespace Game
         /// Трансформ для определения нахождения на земле
         /// </summary>
         [Tooltip("Трансформ для определения нахождения на земле")] [SerializeField] private Transform _groundCheck;
-        /// <summary>
-        /// Здоровье персонажа
-        /// </summary>
-        [Tooltip("Здоровье персонажа")] [SerializeField] private int _hp;
+        
 
         /// <summary>
         /// Персонаж находится на земле?
@@ -46,20 +44,7 @@ namespace Game
         /// <summary>
         /// Событие для 
         /// </summary>
-        public Action<int> HpChanged;
-
-        /// <summary>
-        /// Здоровье персонажа
-        /// </summary>
-        public int Hp
-        {
-            get => _hp;
-            set
-            {
-                _hp = value < 0 ? 0 : value;
-                HpChanged?.Invoke(_hp);
-            }
-        }
+        
         /// <summary>
         /// Параметры управления
         /// </summary>
@@ -68,7 +53,7 @@ namespace Game
         /// Ссылка на компонент управления оружием
         /// </summary>
         private WeaponController _weaponController;
-
+        private HealthController _Hp;
 
 
 
@@ -76,10 +61,12 @@ namespace Game
         {
 
             base.Start();
-
-
+            _Hp = GetComponentInChildren<HealthController>();
             _weaponController = GetComponentInChildren<WeaponController>();
             _controlParams = InputController.Instance.ControlParams;
+            _Hp.HpIsZero += Dead;
+
+            
             
 
         }
@@ -143,16 +130,7 @@ namespace Game
 
             }
         }
-        /// <summary>
-        /// Поученить урон
-        /// </summary>
-        /// <param name="damage">колличество урона</param>
-        public void GetDamage(int damage)
-        {
-            Hp -= damage;
-            Debug.Log("Объект " + name + " получил " + damage + " урона. Осталось " + Hp + " жизней");
-
-        }
+        
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Spikes")

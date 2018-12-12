@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 
 namespace Game.Controllers
 {
@@ -17,24 +16,36 @@ namespace Game.Controllers
         [Tooltip("Скорость передвижения")]
         [SerializeField] protected float _speed;
         /// <summary>
-        /// Скорость передвижения
+        /// Текущая скорость передвижения
         /// </summary>
-        public float Speed => _speed;
-
+        public float Speed
+        {
+            get => _currentSpeed;
+            set => _currentSpeed = value;
+        }
+        protected float _currentSpeed;
         /// <summary>
         /// Ссылка на компонент управления движениями
         /// </summary>
         protected MovementController _movementController;
+        /// <summary>
+        /// Ссылка на аниматор
+        /// </summary>
         protected Animator _animator;
-
-
-
-        //public Action<float> Move;
+        
 
         protected virtual void Start()
         {
-            _movementController = GetComponent<MovementController>();
-            _animator = GetComponent<Animator>();
+            _movementController = GetComponentInChildren<MovementController>();
+            _animator = GetComponentInChildren<Animator>();
+            _currentSpeed = _speed;
+        }
+        /// <summary>
+        /// логика смерти персонажа
+        /// </summary>
+        protected virtual void Dead()
+        {
+            print(name + " Dead");
         }
     }
 }

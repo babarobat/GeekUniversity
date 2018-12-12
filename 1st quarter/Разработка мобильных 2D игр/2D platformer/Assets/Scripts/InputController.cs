@@ -21,6 +21,7 @@ namespace Game.Controllers
             ControlParams.Horizontal = Input.GetAxisRaw("Horizontal");
             ControlParams.Jump = Input.GetAxisRaw("Jump")>0;
             ControlParams.Fire = Input.GetAxisRaw("Fire1")>0;
+            ControlParams.Interacting = Input.GetKeyDown(KeyCode.E);
 
         }
     }

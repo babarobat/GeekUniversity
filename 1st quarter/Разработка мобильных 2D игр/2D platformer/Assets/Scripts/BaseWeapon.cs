@@ -16,7 +16,6 @@ namespace Game
             get => gameObject.activeSelf;
             set => gameObject.SetActive(value);
         }
-
         /// <summary>
         /// Урон 
         /// </summary>
@@ -67,7 +66,6 @@ namespace Game
         {            
             if (CanFire)
             {
-                
                 var dir = transform.rotation.eulerAngles.y == 180 ? -1 : 1;
                 _lastShotTime = DateTime.Now;
                 var proj = Instantiate(_ammunitionPrefab, _firePosint.position, transform.rotation);

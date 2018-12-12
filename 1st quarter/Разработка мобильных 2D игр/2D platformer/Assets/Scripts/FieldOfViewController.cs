@@ -10,7 +10,7 @@ namespace Game.Controllers
     /// </summary>
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
-    class FieldOfViewController : BaseComponentController
+    public class FieldOfViewController : BaseComponentController
     {
         /// <summary>
         /// Layer обьекта цель

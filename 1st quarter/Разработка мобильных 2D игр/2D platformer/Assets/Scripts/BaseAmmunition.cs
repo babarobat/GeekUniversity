@@ -34,7 +34,7 @@ namespace Game
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            collision.gameObject.GetComponent<IDamage>()?.GetDamage(Damage);
+            collision.gameObject.GetComponentInChildren<IDamage>()?.GetDamage(Damage);
             Destroy(gameObject);
         }
 

@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Game.Controllers
 {
-
-    class HealthController:BaseComponentController,IDamage
+    
+    public class HealthController:BaseComponentController,IDamage
     {
         [SerializeField]
         private float _startHp;
@@ -17,10 +17,11 @@ namespace Game.Controllers
             private set
             {
                 _currentHp = value < 0 ? 0 : value;
-                OnHpChange(_currentHp);
+                OnHpChange?.Invoke(_currentHp);
+
                 if (_currentHp == 0)
                 {
-                    HpIsZero();
+                    HpIsZero?.Invoke();
                 }
             }
         }
@@ -30,12 +31,12 @@ namespace Game.Controllers
         public void GetDamage(int damage)
         {
             CurrentHp -=  damage; 
-            
-
         }
         protected override void Start()
         {
             base.Start();
+            
+            CurrentHp = _startHp;
         }
 
 

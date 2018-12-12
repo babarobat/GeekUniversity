@@ -7,7 +7,7 @@ namespace Game.Controllers
    /// <summary>
    /// Логика м параметры компонента, управляющего стрельбой
    /// </summary>
-    class WeaponController:BaseComponentController
+    public class WeaponController:BaseComponentController
     {
         /// <summary>
         /// Список оружия
