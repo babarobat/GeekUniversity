@@ -8,7 +8,7 @@ namespace Game.Controllers
     {
         [SerializeField]
         private int _startHp;
-
+        public int StartHp => _startHp;
         private int _currentHp;
         
         public int CurrentHp
@@ -35,8 +35,12 @@ namespace Game.Controllers
         protected override void Start()
         {
             base.Start();
-            
-            CurrentHp = _startHp;
+            _currentHp = StartHp;
+        }
+        public void ResetParams()
+        {
+            _currentHp = StartHp;
+            OnHpChange?.Invoke(_currentHp);
         }
 
 

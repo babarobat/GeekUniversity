@@ -21,10 +21,24 @@ namespace Game
         Trigger[] _liftEnergySwitches;
 
         int _currentEnergy = 0;
+
+        CameraController _camcontroller;
+        [SerializeField]
+        Animator [] _lamps;
+        [SerializeField]
+        
+        int _lampsIndex = 0;
        
+
+
         bool isWorking = false;
         private void Start()
         {
+            foreach (var item in _lamps)
+            {
+                item.enabled = false;
+            }
+            _camcontroller = FindObjectOfType<CameraController>();
             transform.position = _stopPositions[0];
             foreach (var _switch in _liftControlSwitches)
             {
@@ -65,9 +79,11 @@ namespace Game
         }
         void AddEnergy(TriggerEventArgs args)
         {
+
+            _camcontroller.ShowPos(transform.position);
             (args.Sender as Trigger).IsEnable = false;
             _currentEnergy+=1;
-           
+            StartCoroutine(TurnOnLamp());
             if (_currentEnergy== _liftEnergySwitches.Length)
             {
                 TernOnLift();
@@ -83,7 +99,12 @@ namespace Game
                 _switch.OnInteract += MoveLift;
             }
         }
-
+        IEnumerator TurnOnLamp()
+        {
+            yield return new WaitForSeconds(2f);
+            _lamps[_lampsIndex].enabled = true;
+            _lampsIndex++;
+        }
 
 
     }

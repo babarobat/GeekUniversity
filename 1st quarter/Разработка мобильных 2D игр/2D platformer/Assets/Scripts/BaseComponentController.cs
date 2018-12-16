@@ -20,8 +20,8 @@ namespace Game.Controllers
         /// </summary>
         public bool IsActive
         {
-            get => gameObject.activeSelf;
-            set => gameObject.SetActive(value);
+            get => enabled;
+            set => enabled = (value);
         }
     }
 }

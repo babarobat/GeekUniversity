@@ -26,17 +26,26 @@ namespace Game
         /// Время до уничтожения обьекта
         /// </summary>
         private const float lifeTime = 5f;
+        [SerializeField]
+        GameObject _hitEffect;
+
+        public Vector2 Dir;
+
         protected void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _rb.velocity = Vector2.right * Speed;
+            _rb.velocity = Dir * Speed;
             Destroy(gameObject, lifeTime);
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
             collision.gameObject.GetComponentInChildren<IDamage>()?.GetDamage(Damage);
+            var temp = Instantiate(_hitEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            Destroy(temp,2);
+            
         }
+        
 
     }
    

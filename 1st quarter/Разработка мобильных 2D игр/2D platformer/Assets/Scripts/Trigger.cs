@@ -45,18 +45,21 @@ namespace Game
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            OnStay?.Invoke(_args);
-            if (Controllers.InputController.Instance.ControlParams.Interacting
-                && _triggerActivatorsTegs.Contains(collision.tag)
-                && IsInteractble)
+            if (_triggerActivatorsTegs.Contains(collision.tag))
             {
-                _args.boolMeta = !_args.boolMeta;
-                _animator?.SetBool("On", _args.boolMeta);
-                OnInteract?.Invoke(_args);
-
-                if (_disableAfterInterract)
+                OnStay?.Invoke(_args);
+                if (Controllers.InputController.Instance.ControlParams.Interacting
+                    && _triggerActivatorsTegs.Contains(collision.tag)
+                    && IsInteractble)
                 {
-                    IsEnable = false;
+                    _args.boolMeta = !_args.boolMeta;
+                    _animator?.SetBool("On", _args.boolMeta);
+                    OnInteract?.Invoke(_args);
+
+                    if (_disableAfterInterract)
+                    {
+                        IsEnable = false;
+                    }
                 }
             }
         }
@@ -64,6 +67,7 @@ namespace Game
         {
             if (_triggerActivatorsTegs.Contains(collision.tag))
             {
+                
                 OnEnter?.Invoke(_args);
                 if (_disableAfterEnter)
                 {

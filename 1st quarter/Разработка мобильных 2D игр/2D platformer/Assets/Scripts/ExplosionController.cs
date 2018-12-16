@@ -33,6 +33,7 @@ namespace Game.Controllers
             base.Start();
             transform.parent.GetComponentInChildren<HealthController>().HpIsZero+= Explode;
             _explodedModel.SetActive(false);
+            
         }
         /// <summary>
         /// Взрывает и уничтожает обьект
@@ -46,6 +47,7 @@ namespace Game.Controllers
             Destroy(parent);
             transform.position = pos;
             _explodedModel.SetActive(true);
+            FindObjectOfType<CameraController>().ShakeCam();
             Instantiate(_explosionPrefab, transform);
             yield return new WaitForSeconds(0.5f);
             _effector.enabled = false;

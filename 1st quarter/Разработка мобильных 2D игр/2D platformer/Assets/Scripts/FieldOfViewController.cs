@@ -62,7 +62,7 @@ namespace Game.Controllers
         /// <summary>
         /// Скорость сканирования территории
         /// </summary>
-        private const float _searchSpeed = 0.2f;
+        private const float _searchSpeed = 0.09f;
 
         //public Transform Test;
         public Transform Target { get; private set; }
@@ -165,13 +165,14 @@ namespace Game.Controllers
                 {
                     if (transform.eulerAngles.y == 180)
                     {
-                        
+                       
                         triangles[i * 3] = 0;
                         triangles[i * 3 + 1] = i + 1;
                         triangles[i * 3 + 2] = i + 2;
                     }
                     if (transform.eulerAngles.y == 0)
                     {
+
                         
                         triangles[i * 3] = 0;
                         triangles[i * 3 + 1] = i + 2;
@@ -226,6 +227,10 @@ namespace Game.Controllers
             {
                 
                 transform.right = target.position - transform.position;
+            }
+            else
+            {
+                
             }
             
         }

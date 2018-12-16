@@ -55,7 +55,27 @@ namespace Game
         private WeaponController _weaponController;
         private HealthController _Hp;
 
+        private bool _isControllable = true;
 
+
+        public void  IsControllable(bool value)
+        {
+            switch (value)
+            {
+                case true:
+                    _isControllable = true;
+                    GetComponent<Rigidbody2D>().simulated = true;
+                    _Hp.IsActive = true;
+                        break;
+                case false:
+                    _Hp.IsActive = false;
+                    GetComponent<Rigidbody2D>().simulated = false;
+                    _isControllable = false;
+                   
+                    break;
+               
+            }
+        }
 
         protected override void Start()
         {
@@ -72,12 +92,19 @@ namespace Game
         }
         void Update()
         {
-            //Движение заднего фона карты. Прототип
-            _map.Translate(Vector2.right * -_controlParams.Horizontal * .3f * Time.deltaTime);
             
-            Move();
-            Jump();
-            Fire();
+
+            if (_isControllable)
+            {
+                //Движение заднего фона карты. Прототип
+                _map.Translate(Vector2.right * -_controlParams.Horizontal * .3f * Time.deltaTime);
+
+
+                Move();
+                Jump();
+                Fire();
+            }
+            
         }
         private void FixedUpdate()
         {
@@ -135,10 +162,19 @@ namespace Game
         {
             if (collision.gameObject.tag == "Spikes")
             {
-
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                (_Hp as IDamage).GetDamage(100);
             }
         }
+        public void ResetParams()
+        {
+            _Hp.ResetParams();
+        }
+        protected override void Dead()
+        {
+            base.Dead();
+            LoadManager.Instance.LoadFromChekPoint();
+            _Hp.ResetParams();
 
+        }
     }
 }

@@ -1,32 +1,126 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Controllers;
 
 namespace Game
 {
     public class CameraController : MonoBehaviour
     {
 
-        private Transform target;
+        private PlayerController target;
         private Vector3 pos;
+        HealthController _playerHp;
+        Animator _anim;
+        bool folowPlayer = true;
+        
+
+        [SerializeField]
+        private Trigger[] camOffsetTriggers;
+
+        Vector2 DesPos;
+        [SerializeField]
+        float _offsetX;
+        [SerializeField]
+        float _offsetY;
+        public float startFollowDist;
+        public float smoothSpeed;
         // Use this for initialization
         void Start()
         {
-            target = FindObjectOfType<PlayerController>().transform;
-            pos = new Vector3();
-            pos.z = transform.position.z;
+            DesPos = new Vector2();
+            target = FindObjectOfType<PlayerController>();
+            _anim = GetComponent<Animator>();
+            _playerHp = FindObjectOfType<PlayerController>().GetComponentInChildren<HealthController>();
+            transform.position = target.transform.position;
+            _playerHp.OnHpChange += HitPlayerEffect;
+            foreach (var item in camOffsetTriggers)
+            {
+                 item.OnEnter += ChangeOfffset;
+            }
 
 
         }
-
+        void ChangeOfffset(TriggerEventArgs e)
+        {
+            _offsetX = e.VectorMeta.x;
+            _offsetY = e.VectorMeta.y;
+        }
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireCube(transform.position, new Vector3((startFollowDist+_offsetX)*2, (startFollowDist+_offsetY)*2, startFollowDist));
+        }
         // Update is called once per frame
         void Update()
         {
-            pos.x = target.position.x;
-            pos.y = target.position.y;
+            if (folowPlayer)
+            {
+                DesPos = target.transform.position;
+                var xMod = target.transform.eulerAngles.y == 180 ? -1:1;
+                DesPos.x += _offsetX* xMod;
+                DesPos.y += _offsetY;
+                if (Vector2.Distance(DesPos, transform.position)>startFollowDist)
+                {
+                    transform.position = Vector2.Lerp(transform.position, DesPos, smoothSpeed);
+                }
+                
+            }
+            
+            
+            
+        }
+        public void ShakeCam()
+        {
+            _anim.SetTrigger("Shake");
+        }
+        public void HitPlayerEffect(int x)
+        {
+            _anim.SetTrigger("Damaged");
+        }
+        public void ShowPos(Vector2 pos)
+        {
+            StartCoroutine(ShowPosCor(pos));
+            
+        }
+        public void SwitchFollowing(bool value)
+        {
+            folowPlayer = value;
+        }
+        IEnumerator ShowPosCor(Vector2 pos)
+        {
+            folowPlayer = false;
+            target.IsControllable(false);
+            float t = 0f;
+            while (t <= 3)
+            {
+
+                transform.position = Vector2.Lerp(transform.position, pos, t / 3);
+                
+                t += Time.deltaTime;
+                yield return null;
+
+            }
             
             transform.position = pos;
+            yield return new WaitForSeconds(1);
+            t = 0f;
+            target.IsControllable(true);
+            while (t <= 3)
+            {
+                
+                transform.position = Vector2.Lerp(transform.position, target.transform.position, t / 3);
+
+                t += Time.deltaTime;
+                yield return null;
+
+            }
+            
+            transform.position = target.transform.position;
+            folowPlayer = true;
         }
+        
+        
     }
+    
 }
 

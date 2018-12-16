@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553ddf17e10280b48a6bca7e44155f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitEffect: {fileID: 1910945522057254, guid: 909a4a6168e9b5b4ca9e973ace44179c, type: 2}
+  Dir: {x: 0, y: 0}
 --- !u!212 &212145767143249546
 SpriteRenderer:
   m_ObjectHideFlags: 1

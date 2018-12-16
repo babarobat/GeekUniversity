@@ -70,6 +70,6 @@ namespace Game.Controllers
             transform.rotation =  Quaternion.Euler(0, rotationY, 0);
         }
         
-
+        
     }
 }

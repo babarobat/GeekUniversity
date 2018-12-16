@@ -34,6 +34,7 @@ namespace Game.Controllers
         {
             if (_patrolPoints.Length > 1)
             {
+                
                 _targetPos.x = _patrolPoints[_patrolPointIndex].position.x;
                 _targetPos.y = transform.position.y;
                 if (transform.position.x < _targetPos.x)
@@ -86,7 +87,8 @@ namespace Game.Controllers
             keepFolowing = false;
             yield return new WaitForSeconds(time);
             keepFolowing = true;
-            _fow.transform.rotation = Quaternion.Euler(_fow.transform.rotation.eulerAngles.x, _fow.transform.rotation.eulerAngles.y, 0);
+            _fow.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+            //_fow.transform.rotation = Quaternion.Euler(_fow.transform.rotation.eulerAngles.x, _fow.transform.rotation.eulerAngles.y, 0);
             _isAngry = false;
         }
         /// <summary>
