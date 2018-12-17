@@ -100,15 +100,18 @@ namespace Game
                 _map.Translate(Vector2.right * -_controlParams.Horizontal * .3f * Time.deltaTime);
 
 
-                Move();
-                Jump();
-                Fire();
+                //Move();
+                //Jump();
+                //Fire();
             }
             
         }
         private void FixedUpdate()
         {
             ChekCanJump();
+            Move();
+            Jump();
+            Fire();
         }
         /// <summary>
         /// Движение персонажа
@@ -116,7 +119,7 @@ namespace Game
         public void Move()
         {
             _animator.SetFloat("VelocityX", Mathf.Abs( _controlParams.Horizontal));
-            _movementController.Move(_controlParams.Horizontal * Speed);
+            _movementController.Move(_controlParams.Horizontal * Speed*Time.fixedDeltaTime);
         }
         /// <summary>
         /// Прыжок

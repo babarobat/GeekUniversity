@@ -56,7 +56,7 @@ namespace Game.Controllers
             {
                 item.enabled = false;
             }
-            Destroy(gameObject);
+            Destroy(gameObject,2);
         }
         /// <summary>
         /// Запускает алгоритм взрыва обьекта

@@ -29,7 +29,7 @@ namespace Game.Controllers
         /// <param name="moveSpeed">Скорость движения</param>
         public void Move(float moveSpeed)
         {
-            _rb.velocity = new Vector2(moveSpeed * Time.deltaTime, _rb.velocity.y);
+            _rb.velocity = new Vector2(moveSpeed, _rb.velocity.y);
             transform.rotation = GetRotation();
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Game.Controllers
         public void MoveToTarget(Vector2 target, float speed)
         {
             Vector2 dir = (target - (Vector2)transform.position).normalized;
-            _rb.velocity = dir * speed * Time.deltaTime;
+            _rb.velocity = dir * speed ;
 
             transform.rotation = GetRotation();
         }

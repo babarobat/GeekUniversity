@@ -24,11 +24,11 @@ namespace Game.Controllers
         /// </summary>
         bool keepFolowing = true;
 
-        private void Update()
+        
+        private void FixedUpdate()
         {
             PatrollAndAttack();
         }
-
 
         void Patrol()
         {
@@ -39,11 +39,11 @@ namespace Game.Controllers
                 _targetPos.y = transform.position.y;
                 if (transform.position.x < _targetPos.x)
                 {
-                    _movementController.Move(Speed);
+                    _movementController.Move(Speed*Time.fixedDeltaTime);
                 }
                 else
                 {
-                    _movementController.Move(-Speed);
+                    _movementController.Move(-Speed * Time.fixedDeltaTime);
                 }
                 
                 if (Vector2.Distance(transform.position, _patrolPoints[_patrolPointIndex].position) < 1f)
@@ -69,11 +69,11 @@ namespace Game.Controllers
             _fow.LookAtTarget(_target);
             if (transform.position.x < _targetPos.x)
             {
-                _movementController.Move( Speed * 2f);
+                _movementController.Move( Speed * 2f *Time.fixedDeltaTime);
             }
             else
             {
-                _movementController.Move(-Speed * 2f);
+                _movementController.Move(-Speed * 2f *Time.fixedDeltaTime);
             }
             
         }

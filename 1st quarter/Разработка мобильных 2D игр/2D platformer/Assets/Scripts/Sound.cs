@@ -13,6 +13,37 @@ namespace Game.Audio
     {
         public AudioClip Clip;
         public string Name;
+        [HideInInspector]
+        public AudioSource Source;
+        public AudioMixerGroup Out;
+        public bool PlayOnAwake;
+        public bool Loop;
+        public float Volume
+        {
+            get => _volume;
+            set => _volume = value < 0 ? 0 : value;
+        }
+        [SerializeField]
+        private float _volume;
+        public float SpetialBlend
+        {
+            get => _specialBlend;
+            set => _specialBlend = value < 0 ? 0 : value > 1 ? 1 : value;
+        }
+        [SerializeField]
+        private float _specialBlend;
+
+        
+        public void Play()
+        {
+            Source.outputAudioMixerGroup = Out;
+            Source.clip = Clip;
+            Source.Play();
+        }
+        public void Stop()
+        {
+            Source.Stop();
+        }
 
     }
 }

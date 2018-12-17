@@ -9,56 +9,62 @@ using Game.Audio;
 
 namespace Game.Controllers
 {
-    [RequireComponent(typeof(AudioSource))]
-    class SoundController:BaseComponentController
+   
+    public class SoundController:BaseComponentController
     {
-        System.Random rnd = new System.Random();
+        static System.Random rnd = new System.Random();
+        [SerializeField]
         private Sound[] _clips;
-        private AudioSource _source;
+        
         protected override void Start()
         {
-            _source = GetComponent<AudioSource>();
+            foreach (var item in _clips)
+            {
+                var source = item.Source = gameObject.AddComponent<AudioSource>();
+                source.outputAudioMixerGroup = item.Out;
+                source.playOnAwake = item.PlayOnAwake;
+                source.loop = item.Loop;
+                source.clip = item.Clip;
+                source.spatialBlend = item.SpetialBlend;
+                source.volume = item.Volume;
+                if (item.PlayOnAwake)
+                {
+                    source.Play();
+                }
+                
+            }
+            
+            //PlaySound("GamePlay",true);
         }
-        public void PlaySound(string name)
+        public void PlaySound(string name, bool loop)
+        {
+            
+            Sound sound = Array.Find(_clips, s => s.Name == name);
+            sound.Source.loop = loop;
+            sound.Play();
+            
+        }
+        public void StopSound()
         {
             Sound sound = Array.Find(_clips, s => s.Name == name);
-            _source.clip = sound.Clip;
-            _source.Play();
+            sound.Stop();
         }
-        public void PlaySound(int index)
-        {
-            Sound sound = _clips[index];
-            _source.clip = sound.Clip;
-            _source.Play();
-        }
+        //IEnumerator FadeOut(float fadeTime)
+        //{
+        //    float t = 0f;
+        //    while (t <= fadeTime)
+        //    {
 
-        public void PlaySound(int index, bool overPlay)
-        {
-            if (overPlay|| !_source.isPlaying)
-            {
-                PlaySound(index);
-            }
-        }
-        public void PlaySound(string name, bool overPlay)
-        {
-            if (overPlay || !_source.isPlaying)
-            {
-                PlaySound(name);
-            }
-        }
-        public void PlayRandomSound(bool overPlay)
-        {
-           var r = rnd.Next(0, _clips.Length);
-            if (overPlay || !_source.isPlaying)
-            {
-                PlaySound(r);
-            }
-        }
-        public void Stop()
-        {
-            _source.Stop();
-        }
+        //        _healthBar.color = Color.Lerp(_healthBar.color, hideColor, t / fadeTime);
+        //        _healthBarBG.color = Color.Lerp(_healthBarBG.color, hideColor, t / fadeTime);
+        //        t += Time.deltaTime;
+        //        yield return null;
 
+        //    }
+
+        //    _healthBar.color = hideColor;
+        //    _healthBarBG.color = hideColor;
+        //}
 
     }
 }

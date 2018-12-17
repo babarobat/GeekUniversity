@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4981759669799092}
   - component: {fileID: 212730733761874306}
   - component: {fileID: 114608170262818174}
+  - component: {fileID: 114754268968720538}
   m_Layer: 0
   m_Name: Uzi
   m_TagString: Untagged
@@ -87,6 +88,26 @@ MonoBehaviour:
   _firePosint: {fileID: 4324109809151404}
   _ammunitionPrefab: {fileID: 114430124766657992, guid: 9d397f8a1857ce548ba7eed4e70e120b,
     type: 2}
+--- !u!114 &114754268968720538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449506788790854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0a395722490b748bd465c91484fce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clips:
+  - Clip: {fileID: 8300000, guid: 9805ed4560f13b74182a562c15c2e895, type: 3}
+    Name: Blaster
+    Source: {fileID: 0}
+    Out: {fileID: 243347891692174998, guid: 709f64cfc75886a40b7be84ee0218d02, type: 2}
+    PlayOnAwake: 0
+    Loop: 0
+    _volume: 0.5
+    _specialBlend: 0
 --- !u!212 &212730733761874306
 SpriteRenderer:
   m_ObjectHideFlags: 1

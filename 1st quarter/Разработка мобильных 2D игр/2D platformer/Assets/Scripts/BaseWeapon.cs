@@ -52,7 +52,7 @@ namespace Game
         {
             get => (DateTime.Now - _lastShotTime).Milliseconds > _fireSpeed*1000;
         }
-        protected void Start()
+        protected virtual void Start()
         {
             _lastShotTime = DateTime.Now.AddMilliseconds(-_fireSpeed*1000);
             
@@ -62,7 +62,7 @@ namespace Game
         /// Выстреливает заданным снарядом в заданном направлении
         /// </summary>
         /// <param name="dir">направление стрельбы</param>
-        public void Fire()
+        public virtual void Fire()
         {            
             if (CanFire)
             {
@@ -72,7 +72,12 @@ namespace Game
                 proj.Speed = _ammoSpeed;
                 proj.Damage = _damage;
                 proj.Dir = dir;
+                PlayFireSound();
             }
+        }
+        protected virtual void PlayFireSound()
+        {
+
         }
     }
 }
