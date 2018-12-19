@@ -15,7 +15,9 @@ namespace Game.Controllers
         static System.Random rnd = new System.Random();
         [SerializeField]
         private Sound[] _clips;
-        
+        private bool _makeIndependentAfterStart;
+        private bool _autoDestroy;
+
         protected override void Start()
         {
             foreach (var item in _clips)

@@ -181,11 +181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clips:
-  - Clip: {fileID: 8300000, guid: 2cbcf41f91d7c804398313a61c55c718, type: 3}
-    Name: Hit
+  - Clip: {fileID: 8300000, guid: 9805ed4560f13b74182a562c15c2e895, type: 3}
+    Name: Shot
     Source: {fileID: 0}
     Out: {fileID: 243347891692174998, guid: 709f64cfc75886a40b7be84ee0218d02, type: 2}
-    PlayOnAwake: 0
+    PlayOnAwake: 1
     Loop: 0
     _volume: 1
     _specialBlend: 1

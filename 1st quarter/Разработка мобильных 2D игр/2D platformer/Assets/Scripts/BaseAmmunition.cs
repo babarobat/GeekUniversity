@@ -30,7 +30,7 @@ namespace Game
         [SerializeField]
         GameObject _hitEffect;
 
-        protected SoundController _soundController;
+        
 
         public Vector2 Dir;
 
@@ -39,26 +39,15 @@ namespace Game
             _rb = GetComponent<Rigidbody2D>();
             _rb.velocity = Dir * Speed;
             Destroy(gameObject, lifeTime);
-            _soundController = GetComponentInChildren<SoundController>();
+            
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
             collision.gameObject.GetComponentInChildren<IDamage>()?.GetDamage(Damage);
             var temp = Instantiate(_hitEffect, transform.position, Quaternion.identity);
             Vector2 pos = transform.position;
-            if (_soundController != null)
-            {
-                _soundController.transform.SetParent(null);
-                _soundController.transform.position = pos;
-                _soundController.PlaySound("Hit", false);
-                Destroy(_soundController.gameObject, 2);
-            }
-            
-            
             Destroy(gameObject);
             Destroy(temp,2);
-
-            
         }
         
 

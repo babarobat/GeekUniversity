@@ -72,12 +72,9 @@ namespace Game
                 proj.Speed = _ammoSpeed;
                 proj.Damage = _damage;
                 proj.Dir = dir;
-                PlayFireSound();
+                
             }
         }
-        protected virtual void PlayFireSound()
-        {
-
-        }
+        
     }
 }
