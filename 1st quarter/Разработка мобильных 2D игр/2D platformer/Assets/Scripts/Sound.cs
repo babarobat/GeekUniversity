@@ -5,11 +5,10 @@ using System.Text;
 using UnityEngine.Audio;
 using UnityEngine;
 
-
 namespace Game.Audio
 {
     [Serializable]
-    class Sound
+    public class Sound
     {
         public AudioClip Clip;
         public string Name;
@@ -18,6 +17,14 @@ namespace Game.Audio
         public AudioMixerGroup Out;
         public bool PlayOnAwake;
         public bool Loop;
+        public AnimationCurve curve;
+        [SerializeField]
+        private float _maxDistance;
+        public float MaxDistance
+        {
+            get => _maxDistance;
+            set => _maxDistance = value < 0 ? 0 : value;
+        }
         public float Volume
         {
             get => _volume;

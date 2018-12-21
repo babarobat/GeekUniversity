@@ -13,14 +13,15 @@ namespace Game.Controllers
         bool _isAngry;
         bool keppFolowing = true;
 
-        
+        private SoundController _soundController;
         
         protected override  void Start()
         {
             base.Start();            
             _weaponController = GetComponentInChildren<WeaponController>();
+            _soundController = GetComponentInChildren<SoundController>();
             
-            
+
         }
         
         private void LateUpdate()
@@ -34,6 +35,11 @@ namespace Game.Controllers
             }
             if (_isAngry)
             {
+                if (!_soundController.SoundIsPlaying("Alarm"))
+                {
+                    _soundController.PlaySound("Alarm", true);
+                    _soundController.StopSound("Searching");
+                }
                 LookAtTarget();
                 GoToAttackPos();
                 Attack();
@@ -47,6 +53,12 @@ namespace Game.Controllers
             }
             else
             {
+                if (!_soundController.SoundIsPlaying("Searching"))
+                {
+                    _soundController.StopSound("Alarm");
+                    _soundController.PlaySound("Searching", true);
+                }
+                
                 Patrol();
             }
         }
@@ -103,7 +115,10 @@ namespace Game.Controllers
                 _weaponController.Fire();
             }            
         }
-        
+        public void PlaySound(string name)
+        {
+            _soundController.PlaySound(name, false);
+        }
         
     }
 }

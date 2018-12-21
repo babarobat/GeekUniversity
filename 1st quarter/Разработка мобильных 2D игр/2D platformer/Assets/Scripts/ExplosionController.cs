@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using UnityEngine;
 namespace Game.Controllers
 {
@@ -26,15 +27,19 @@ namespace Game.Controllers
         [Tooltip("Префаб эффекта взрыва")]
         [SerializeField]
         private GameObject _explosionPrefab;
-        
+
+        public event Action<GameObject> Exploded;
        
         protected override void Start()
         {
             base.Start();
             transform.parent.GetComponentInChildren<HealthController>().HpIsZero+= Explode;
             _explodedModel.SetActive(false);
-            
+            Exploded += FindObjectOfType<CameraController>().ShakeCam;
+
+
         }
+        
         /// <summary>
         /// Взрывает и уничтожает обьект
         /// </summary>
@@ -47,7 +52,7 @@ namespace Game.Controllers
             Destroy(parent);
             transform.position = pos;
             _explodedModel.SetActive(true);
-            FindObjectOfType<CameraController>().ShakeCam();
+            Exploded?.Invoke(this.gameObject);
             Instantiate(_explosionPrefab, transform);
             yield return new WaitForSeconds(0.5f);
             _effector.enabled = false;

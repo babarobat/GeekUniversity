@@ -108,8 +108,51 @@ MonoBehaviour:
     Out: {fileID: 243347891692174998, guid: 709f64cfc75886a40b7be84ee0218d02, type: 2}
     PlayOnAwake: 1
     Loop: 0
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.097838745
+        value: 0.9962963
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.23358938
+        value: 0.8739565
+        inSlope: -1.0351338
+        outSlope: -1.0351338
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7957799
+        value: 0.19899978
+        inSlope: -1.1879425
+        outSlope: -1.1879425
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.99999905
+        value: 0
+        inSlope: -0.87629443
+        outSlope: -0.87629443
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.2165048
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _maxDistance: 20
     _volume: 1
-    _specialBlend: 0
+    _specialBlend: 1
 --- !u!212 &212098037466940168
 SpriteRenderer:
   m_ObjectHideFlags: 1

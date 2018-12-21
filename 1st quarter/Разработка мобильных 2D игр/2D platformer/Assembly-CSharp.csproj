@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GlobalSoundsManager.cs" />
     <Compile Include="Assets\Scripts\BaseAmmunition.cs" />
     <Compile Include="Assets\Scripts\BaseCharacterController.cs" />
     <Compile Include="Assets\Scripts\BaseComponentController.cs" />
@@ -73,6 +74,8 @@
     <Compile Include="Assets\Scripts\FieldOfViewController.cs" />
     <Compile Include="Assets\Scripts\FireBall.cs" />
     <Compile Include="Assets\Scripts\FlyingRobot.cs" />
+    <Compile Include="Assets\Scripts\GameStates.cs" />
+    <Compile Include="Assets\Scripts\GlobalGameManager.cs" />
     <Compile Include="Assets\Scripts\HealthController.cs" />
     <Compile Include="Assets\Scripts\HPDisplay.cs" />
     <Compile Include="Assets\Scripts\IDamage.cs" />

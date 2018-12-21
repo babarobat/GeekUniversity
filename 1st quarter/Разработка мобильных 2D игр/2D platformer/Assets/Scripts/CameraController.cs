@@ -25,6 +25,9 @@ namespace Game
         float _offsetY;
         public float startFollowDist;
         public float smoothSpeed;
+
+
+        private const float maxDistanceToShakeCam = 10;
         // Use this for initialization
         void Start()
         {
@@ -69,9 +72,13 @@ namespace Game
             
             
         }
-        public void ShakeCam()
+        public void ShakeCam(GameObject sender)
         {
-            _anim.SetTrigger("Shake");
+            if (Vector2.Distance(sender.transform.position, transform.position)< maxDistanceToShakeCam)
+            {
+                _anim.SetTrigger("Shake");
+            }
+            
         }
         public void HitPlayerEffect(int x)
         {

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,45 +12,51 @@ namespace Game.Controllers
    
     public class SoundController:BaseComponentController
     {
-        static System.Random rnd = new System.Random();
+        
         [SerializeField]
         private Sound[] _clips;
-        private bool _makeIndependentAfterStart;
-        private bool _autoDestroy;
-
+        public Sound[] Clips
+        { get=> _clips; private set => _clips=value; }
         protected override void Start()
         {
             foreach (var item in _clips)
             {
-                var source = item.Source = gameObject.AddComponent<AudioSource>();
-                source.outputAudioMixerGroup = item.Out;
-                source.playOnAwake = item.PlayOnAwake;
-                source.loop = item.Loop;
-                source.clip = item.Clip;
-                source.spatialBlend = item.SpetialBlend;
-                source.volume = item.Volume;
+                item.Source = gameObject.AddComponent<AudioSource>();
+                item.Source.outputAudioMixerGroup = item.Out;
+                item.Source.playOnAwake = item.PlayOnAwake;
+                item.Source.loop = item.Loop;
+                item.Source.clip = item.Clip;
+                item.Source.spatialBlend = item.SpetialBlend;
+                item.Source.volume = item.Volume;
+                item.Source.maxDistance = item.MaxDistance;
+                item.Source.rolloffMode = AudioRolloffMode.Custom;
+                //source.SetCustomCurve(AudioSourceCurveType.CustomRolloff,item.curve);
+                
                 if (item.PlayOnAwake)
                 {
-                    source.Play();
-                }
-                
+                    item.Source.Play();
+                } 
             }
-            
-            //PlaySound("GamePlay",true);
         }
+        
         public void PlaySound(string name, bool loop)
         {
             
-            Sound sound = Array.Find(_clips, s => s.Name == name);
-            sound.Source.loop = loop;
-            sound.Play();
+           // _clips[0].Source.Play();
+           // Sound sound = Array.Find(_clips, s => s.Name == name);
+           // sound.Source.loop = loop;
+            //sound.Source.Play();
             
         }
-        public void StopSound()
+        public void StopSound(string name)
         {
-            Sound sound = Array.Find(_clips, s => s.Name == name);
-            sound.Stop();
+            GetSound(name).Stop();
         }
+        public bool SoundIsPlaying(string name)
+        {
+            return GetSound(name).Source.isPlaying;
+        }
+        private Sound GetSound(string name) => Array.Find(_clips, s => s.Name == name);
         //IEnumerator FadeOut(float fadeTime)
         //{
         //    float t = 0f;
