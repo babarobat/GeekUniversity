@@ -30,8 +30,6 @@ namespace Game.Controllers
                 item.Source.volume = item.Volume;
                 item.Source.maxDistance = item.MaxDistance;
                 item.Source.rolloffMode = AudioRolloffMode.Custom;
-                //source.SetCustomCurve(AudioSourceCurveType.CustomRolloff,item.curve);
-                
                 if (item.PlayOnAwake)
                 {
                     item.Source.Play();
@@ -41,12 +39,9 @@ namespace Game.Controllers
         
         public void PlaySound(string name, bool loop)
         {
-            
-           // _clips[0].Source.Play();
-           // Sound sound = Array.Find(_clips, s => s.Name == name);
-           // sound.Source.loop = loop;
-            //sound.Source.Play();
-            
+            Sound sound = GetSound(name);
+            sound.Source.loop = loop;
+            sound.Source.Play();
         }
         public void StopSound(string name)
         {

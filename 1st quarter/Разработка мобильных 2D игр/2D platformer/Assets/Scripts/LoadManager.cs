@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
-    class LoadManager:Singleton<LoadManager>
+    class LoadManager:MonoBehaviour
     {
         [SerializeField]
         Trigger[] _checkPoints;
@@ -47,5 +48,14 @@ namespace Game
 
             _player.transform.position = _loadPos;
         }
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+        public void LoadScene(int sceneIndex)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+        
     }
 }

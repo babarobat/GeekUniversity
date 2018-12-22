@@ -175,9 +175,8 @@ namespace Game
         protected override void Dead()
         {
             base.Dead();
-            LoadManager.Instance.LoadFromChekPoint();
+            FindObjectOfType<LoadManager>()?.LoadFromChekPoint();
             _Hp.ResetParams();
-
         }
     }
 }

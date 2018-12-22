@@ -28,5 +28,9 @@ namespace Game
             
             OnStateChange?.Invoke(this._currentGameState);
         }
+        public void ChangeState(GameStates s)
+        {
+            CurrentState = s;
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    
+    [Serializable]
     public enum GameStates
     {
         MainMenu,
