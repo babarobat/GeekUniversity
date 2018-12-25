@@ -12,6 +12,7 @@ namespace Game.Controllers
         private bool _canAttack;
         bool _isAngry;
         bool keppFolowing = true;
+        
 
         private SoundController _soundController;
         
@@ -20,10 +21,13 @@ namespace Game.Controllers
             base.Start();            
             _weaponController = GetComponentInChildren<WeaponController>();
             _soundController = GetComponentInChildren<SoundController>();
-            
-
+            _hp.OnHpChange += Attacked;
+           
         }
-        
+        void Attacked(int hp)
+        {
+            _isAngry = true;
+        }
         private void LateUpdate()
         {
 
@@ -91,12 +95,12 @@ namespace Game.Controllers
 
         public void LookAtTarget()
         {            
-            _movementController.LookAtTarget(_target);
-            _fow.LookAtTarget(_target);
+            _movementController.LookAtTarget(_target.transform);
+            _fow.LookAtTarget(_target.transform);
         }
         void GoToAttackPos()
         {
-            var attackPos =  new Vector2(transform.position.x,_target.transform.position.y);
+            var attackPos =  new Vector2(transform.position.x,_target.transform.position.y-.5f);
             if (Vector2.Distance(attackPos,transform.position)>0.1f)
             {
                 _movementController.MoveToTarget(attackPos, Speed *Time.deltaTime);

@@ -16,7 +16,7 @@ namespace Game.Controllers
         /// <summary>
         /// Цель
         /// </summary>
-        protected Transform _target;
+        protected PlayerController _target;
 
         /// <summary>
         /// Ссылка на компенент ExplosionController;
@@ -43,7 +43,7 @@ namespace Game.Controllers
         protected override void Start()
         {
             base.Start();
-            _target = FindObjectOfType<PlayerController>().transform;
+            _target = FindObjectOfType<PlayerController>();
             _fow = GetComponentInChildren<FieldOfViewController>();
             _explosionController = GetComponentInChildren<ExplosionController>();
             _hp = GetComponentInChildren<HealthController>();

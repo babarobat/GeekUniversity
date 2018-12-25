@@ -37,12 +37,11 @@ namespace Game
             _playerHp = FindObjectOfType<PlayerController>().GetComponentInChildren<HealthController>();
             transform.position = target.transform.position;
             _playerHp.OnHpChange += HitPlayerEffect;
+            _playerHp.HpIsZero += ShowPlayer;
             foreach (var item in camOffsetTriggers)
             {
                  item.OnEnter += ChangeOfffset;
             }
-
-
         }
         void ChangeOfffset(TriggerEventArgs e)
         {
@@ -92,6 +91,12 @@ namespace Game
         public void SwitchFollowing(bool value)
         {
             folowPlayer = value;
+        }
+        public void ShowPlayer()
+        {
+            DesPos = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
+            transform.position = DesPos;
+
         }
         IEnumerator ShowPosCor(Vector2 pos)
         {

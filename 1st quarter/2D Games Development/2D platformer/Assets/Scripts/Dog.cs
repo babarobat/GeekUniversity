@@ -64,9 +64,9 @@ namespace Game.Controllers
         /// </summary>
         void MoveToTarget()
         {
-            _targetPos.x = _target.position.x;
+            _targetPos.x = _target.transform.position.x;
             _targetPos.y = transform.position.y;
-            _fow.LookAtTarget(_target);
+            _fow.LookAtTarget(_target.transform);
             if (transform.position.x < _targetPos.x)
             {
                 _movementController.Move( Speed * 2f *Time.fixedDeltaTime);
@@ -115,8 +115,15 @@ namespace Game.Controllers
             {
                 Patrol();
             }
-        } 
-
-
+        }
+        protected override void Start()
+        {
+            base.Start();
+            _hp.OnHpChange += Angreed;
+        }
+        void Angreed(int value)
+        {
+            _isAngry = true;
+        }
     }
 }
