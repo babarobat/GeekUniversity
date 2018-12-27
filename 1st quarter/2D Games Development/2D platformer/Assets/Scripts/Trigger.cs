@@ -32,8 +32,9 @@ namespace Game
         Animator _animator;
         public bool IsEnable
         {
-            get => GetComponent<Collider2D>().enabled;
-            set => GetComponent<Collider2D>().enabled = value;
+            get => gameObject.activeSelf;
+            set => gameObject.SetActive(value);
+
         }
         private void Start()
         {
