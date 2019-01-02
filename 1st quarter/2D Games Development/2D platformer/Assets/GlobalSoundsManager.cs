@@ -22,7 +22,7 @@ namespace Game
 
         void Start()
         {
-            print (i);
+            
             gl = GlobalGameManager.Instance;
             gl.OnStateChange += PlayStageMusic;  
             StartCoroutine(Xer());

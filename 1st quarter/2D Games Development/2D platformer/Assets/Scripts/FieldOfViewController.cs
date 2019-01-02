@@ -27,7 +27,7 @@ namespace Game.Controllers
         /// <summary>
         /// Качество меша.
         /// </summary>
-        private const float _meshResolution = 1f;
+        private const float _meshResolution = 2f;
         /// <summary>
         /// Радиус обзора
         /// </summary>
@@ -37,6 +37,7 @@ namespace Game.Controllers
         /// <summary>
         /// Радиус обзора
         /// </summary>
+        
         public float ViewRadius
         {
             get => _viewRadious;
@@ -70,18 +71,17 @@ namespace Game.Controllers
         protected override void Start()
         {
             base.Start();
+            
             _viewMeshFilter = GetComponent<MeshFilter>();
             _viewMesh = new Mesh() { name = "View mesh" };
             _viewMeshFilter.mesh = _viewMesh;
-            //Test = Target;
+            
 
 
             StartCoroutine(FindTargetWhithDelay(_searchSpeed));
         }
         private void Update()
         {
-            //print(Target);
-            //print(Test);
             DrawFieldOfView();
         }
         /// <summary>
@@ -227,11 +227,9 @@ namespace Game.Controllers
             {
                 
                 transform.right = target.position - transform.position;
+
             }
-            else
-            {
-                
-            }
+            
             
         }
         

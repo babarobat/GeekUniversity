@@ -8,17 +8,22 @@ namespace Game.Controllers
     {
         
         private WeaponController _weaponController;
-        private float _attackDistance;
+        
         private bool _canAttack;
         bool _isAngry;
         bool keppFolowing = true;
-        
-
+        [SerializeField]
+        private float _agroSpeed;
+        float _normalRadius;
+        float _currentRadious;
         private SoundController _soundController;
         
         protected override  void Start()
         {
-            base.Start();            
+            
+            base.Start();
+            _normalRadius = _fow.ViewRadius;
+
             _weaponController = GetComponentInChildren<WeaponController>();
             _soundController = GetComponentInChildren<SoundController>();
             _hp.OnHpChange += Attacked;
@@ -70,7 +75,11 @@ namespace Game.Controllers
         IEnumerator KeepFolowing(float time)
         {
             keppFolowing = false;
+            
             yield return new WaitForSeconds(time);
+            _fow.ViewRadius = _normalRadius;
+            print(_normalRadius);
+
             keppFolowing = true;
             _isAngry = false;
         }
@@ -94,21 +103,30 @@ namespace Game.Controllers
         }
 
         public void LookAtTarget()
-        {            
+        {
+            _currentRadious = Vector2.Distance(transform.position, _target.transform.position);
             _movementController.LookAtTarget(_target.transform);
+            _fow.ViewRadius = _currentRadious;
             _fow.LookAtTarget(_target.transform);
         }
         void GoToAttackPos()
         {
-            var attackPos =  new Vector2(transform.position.x,_target.transform.position.y-.5f);
+            var minattackdistance = transform.position.x > _target.transform.position.x + _normalRadius/2 ? _target.transform.position.x + _normalRadius/2 :
+                                   transform.position.x < _target.transform.position.x - _normalRadius/2 ? _target.transform.position.x - _normalRadius/2 :
+                                                                                          transform.position.x;
+           
+            var attackPos =  new Vector2(minattackdistance, _target.transform.position.y-.3f);
+            _canAttack =Mathf.Abs ( transform.position.x - _target.transform.position.x) <= _normalRadius &&
+                        Mathf.Abs( transform.position.y - _target.transform.position.y) <= 1;
+
             if (Vector2.Distance(attackPos,transform.position)>0.1f)
             {
-                _movementController.MoveToTarget(attackPos, Speed *Time.deltaTime);
-                _canAttack = false;
+                _movementController.MoveToTarget(attackPos, _agroSpeed * Time.deltaTime);
+                
             }
             else
             {
-                _canAttack = true;
+               
                 _movementController.Stop();
             }
         }
@@ -116,6 +134,7 @@ namespace Game.Controllers
         {
             if (_canAttack)
             {
+                
                 _weaponController.Fire();
             }            
         }

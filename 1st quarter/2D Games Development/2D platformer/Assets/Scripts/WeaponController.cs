@@ -29,7 +29,6 @@ namespace Game.Controllers
         /// <param name="dir">напрваление стрельбы</param>
         public void Fire()
         {
-            
             ActiveWeapon?.Fire();
         }
     }

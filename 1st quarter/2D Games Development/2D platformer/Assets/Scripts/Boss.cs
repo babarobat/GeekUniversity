@@ -23,7 +23,7 @@ namespace Game.Controllers
         private void Update()
         {
 
-            print(_currentSate.ToString());
+            
             switch (_currentSate)
             {
                 case BossState.Sleeping:
@@ -39,10 +39,7 @@ namespace Game.Controllers
                 
             }
         }
-        void Patrol()
-        {
-
-        }
+       
         void ActivateBoss(TriggerEventArgs e)
         {
             _currentSate = BossState.One;

@@ -18,11 +18,7 @@ namespace Game
         bool _disableAfterEnter;
         [SerializeField]
         bool _disableAfterExit;
-        [SerializeField]
-        
         public bool IsInteractble;
-         
-
         public event Action<TriggerEventArgs> OnStay;
         public event Action<TriggerEventArgs> OnEnter;
         public event Action<TriggerEventArgs> OnExit;
@@ -30,12 +26,7 @@ namespace Game
 
 
         Animator _animator;
-        public bool IsEnable
-        {
-            get => gameObject.activeSelf;
-            set => gameObject.SetActive(value);
-
-        }
+        
         private void Start()
         {
             _args.Sender = this;
@@ -48,18 +39,23 @@ namespace Game
         {
             if (_triggerActivatorsTegs.Contains(collision.tag))
             {
+                
                 OnStay?.Invoke(_args);
-                if (Controllers.InputController.Instance.ControlParams.Interacting
-                    && _triggerActivatorsTegs.Contains(collision.tag)
-                    && IsInteractble)
+                if (Controllers.InputController.Instance.ControlParams.Interacting)    
                 {
-                    _args.boolMeta = !_args.boolMeta;
-                    _animator?.SetBool("On", _args.boolMeta);
                     OnInteract?.Invoke(_args);
-
+                    if (IsInteractble)
+                    {
+                        _args.boolMeta = !_args.boolMeta;
+                        _animator?.SetBool("On", _args.boolMeta);
+                    }
                     if (_disableAfterInterract)
                     {
-                        IsEnable = false;
+                        foreach (var item in GetComponents<Collider2D>())
+                        {
+                            item.enabled = false;
+                        }
+                        
                     }
                 }
             }
@@ -72,7 +68,10 @@ namespace Game
                 OnEnter?.Invoke(_args);
                 if (_disableAfterEnter)
                 {
-                    IsEnable = false;
+                    foreach (var item in GetComponents<Collider2D>())
+                    {
+                        item.enabled = false;
+                    }
                 }
             }
         }
@@ -83,9 +82,13 @@ namespace Game
                 OnExit?.Invoke(_args);
                 if (_disableAfterEnter)
                 {
-                    IsEnable = false;
+                    foreach (var item in GetComponents<Collider2D>())
+                    {
+                        item.enabled = false;
+                    }
                 }
             }
         }
+        
     }
 }

@@ -54,7 +54,7 @@ namespace Game
         }
         protected virtual void Start()
         {
-            _lastShotTime = DateTime.Now.AddMilliseconds(-_fireSpeed*1000);
+            _lastShotTime = DateTime.Now;//.AddMilliseconds(-_fireSpeed*1000);
             
         }
 
@@ -66,6 +66,7 @@ namespace Game
         {            
             if (CanFire)
             {
+                print("2");
                 var dir = transform.rotation.eulerAngles.y == 180 ? -Vector2.right : Vector2.right;
                 _lastShotTime = DateTime.Now;
                 var proj = Instantiate(_ammunitionPrefab, _firePosint.position, transform.rotation);
@@ -75,6 +76,7 @@ namespace Game
                 
             }
         }
+        
         
     }
 }

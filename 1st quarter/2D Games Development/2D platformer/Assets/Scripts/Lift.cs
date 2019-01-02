@@ -28,12 +28,13 @@ namespace Game
         [SerializeField]
         
         int _lampsIndex = 0;
-       
-
-
+        [SerializeField]
+        ToolTipMessage _messagePannel;
+        
         bool isWorking = false;
         private void Start()
         {
+            
             foreach (var item in _lamps)
             {
                 item.enabled = false;
@@ -44,6 +45,7 @@ namespace Game
             {
                 _switch.IsInteractble = false;
                 _switch.OnInteract += MoveLift;
+
             }
             foreach (var _switch in _liftEnergySwitches)
             {
@@ -56,9 +58,14 @@ namespace Game
         void MoveLift(TriggerEventArgs args)
         {
 
-            if (!isWorking)
+            if (!isWorking&& args.Sender.IsInteractble)
             {
                 StartCoroutine(MoveNext());
+            }
+            if (!args.Sender.IsInteractble )
+            {
+
+                _messagePannel.Show("Not enough energy!");
             }
             
         }
@@ -79,9 +86,8 @@ namespace Game
         }
         void AddEnergy(TriggerEventArgs args)
         {
-
             _camcontroller.ShowPos(transform.position);
-            (args.Sender as Trigger).IsEnable = false;
+            
             _currentEnergy+=1;
             StartCoroutine(TurnOnLamp());
             if (_currentEnergy== _liftEnergySwitches.Length)
@@ -105,7 +111,8 @@ namespace Game
             _lamps[_lampsIndex].enabled = true;
             _lampsIndex++;
         }
-
+        
+        
 
     }
 }
