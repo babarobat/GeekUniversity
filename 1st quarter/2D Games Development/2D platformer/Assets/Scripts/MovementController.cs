@@ -18,7 +18,7 @@ namespace Game.Controllers
         {
             base.Start();
             _rb = GetComponentInParent<Rigidbody2D>();
-            //GetComponent<BaseCharacterController>().Move += Move;
+            
 
         }
         /// <summary>
@@ -41,8 +41,33 @@ namespace Game.Controllers
             _rb.velocity = new Vector2(_rb.velocity.x, 0);
             _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+        
+        public void JumpTo(Vector3 end, float deg)
+        {
+            _rb.velocity = Vector2.zero;
+            Vector3  start = transform.position;
+
+            //Вычисляем расстояние до точки, куда нам нужно попасть
+            float distance = Vector3.Distance(start, end);
+
+            //Вычисляем направление, сиё есть вектор
+            var direction = (end - start).normalized;
+            direction.y= 1/Mathf.Sin((2 * deg) * Mathf.Deg2Rad); 
+            direction.x /= 2;
+            print(direction);
+            
+
+
+            //Наконец-то вычисляем силу, по-хорошему надо бы использовать Physics.gravity, но я 
+            //воспользовался константой = 9.81f
+            //F = m * SQRT(distance * g) * direction/ sin (2a); 
+            var force = _rb.mass* Mathf.Sqrt(distance * Physics2D.gravity.magnitude) * direction ;
+            
+            //Швыряем!
+            _rb.AddForce(force,ForceMode2D.Impulse);
+        }
         /// <summary>
-        /// Двигает персонажа к заданной позиции с заданной скоростью
+        /// Двигает персонажа к заданной позиции с заданной скоростью поворачивая лицом в по направлению движения
         /// </summary>
         /// <param name="target">позиция цели</param>
         /// <param name="speed">скорость</param>
@@ -52,6 +77,14 @@ namespace Game.Controllers
             _rb.velocity = dir * speed ;
 
             transform.rotation = GetRotation();
+        }
+        public void MoveToTarget(Vector2 target, float speed, Transform lookAt)
+        {
+            Vector2 dir = (target - (Vector2)transform.position).normalized;
+            _rb.velocity = dir * speed;
+            LookAtTarget(lookAt);
+
+
         }
         public void Stop()
         {

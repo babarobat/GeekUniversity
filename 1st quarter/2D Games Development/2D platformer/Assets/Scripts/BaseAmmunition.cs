@@ -44,10 +44,14 @@ namespace Game
         private void OnCollisionEnter2D(Collision2D collision)
         {
             collision.gameObject.GetComponentInChildren<IDamage>()?.GetDamage(Damage);
-            var temp = Instantiate(_hitEffect, transform.position, Quaternion.identity);
-            Vector2 pos = transform.position;
+            if (_hitEffect != null)
+            {
+                var temp = Instantiate(_hitEffect, transform.position, Quaternion.identity);
+                Vector2 pos = transform.position;
+                Destroy(temp, 2);
+            }
             Destroy(gameObject);
-            Destroy(temp,2);
+
         }
         
 

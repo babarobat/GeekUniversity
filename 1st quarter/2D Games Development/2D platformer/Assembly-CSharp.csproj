@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\SoundController.cs" />
     <Compile Include="Assets\Scripts\SpriteTrap.cs" />
+    <Compile Include="Assets\Scripts\Test.cs" />
     <Compile Include="Assets\Scripts\ToolTip.cs" />
     <Compile Include="Assets\Scripts\ToolTipMessage.cs" />
     <Compile Include="Assets\Scripts\Trigger.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Uzi.cs" />
     <Compile Include="Assets\Scripts\ViewCastInfo.cs" />
+    <Compile Include="Assets\Scripts\Wave.cs" />
     <Compile Include="Assets\Scripts\WeaponController.cs" />
     <Compile Include="Assets\TrailRendererController.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -135,6 +137,12 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:/Git/GeekUniversity/1st quarter/2D Games Development/2D platformer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect.Editor">
+      <HintPath>D:/Git/GeekUniversity/1st quarter/2D Games Development/2D platformer/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect">
+      <HintPath>D:/Git/GeekUniversity/1st quarter/2D Games Development/2D platformer/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

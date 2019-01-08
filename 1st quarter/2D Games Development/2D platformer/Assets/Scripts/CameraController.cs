@@ -25,7 +25,7 @@ namespace Game
         float _offsetY;
         public float startFollowDist;
         public float smoothSpeed;
-
+        bool animIsPlaying = false;
 
         private const float maxDistanceToShakeCam = 10;
         // Use this for initialization
@@ -71,10 +71,16 @@ namespace Game
             
             
         }
+        public void EndAnim()
+        {
+            animIsPlaying = false;
+        }
         public void ShakeCam(GameObject sender)
         {
-            if (Vector2.Distance(sender.transform.position, transform.position)< maxDistanceToShakeCam)
+
+            if (Vector2.Distance(sender.transform.position, transform.position)< maxDistanceToShakeCam && animIsPlaying == false)
             {
+                animIsPlaying = true;
                 _anim.SetTrigger("Shake");
             }
             
