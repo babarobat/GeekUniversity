@@ -96,9 +96,10 @@ namespace Game.Controllers
                 switch (_currentSate)
                 {
                     case BossState.One:
-
-                        _movementController.JumpTo(_target.transform.position, 45);
-                        //_movementController.Jump(25);
+                        _movementController.Jump(25);
+                        break;
+                    case BossState.Two:
+                        _movementController.JumpTo(_target.transform.position, 75);
                         break;
                 }
                 

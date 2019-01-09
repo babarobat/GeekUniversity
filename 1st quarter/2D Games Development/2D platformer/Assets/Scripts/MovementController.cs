@@ -44,27 +44,17 @@ namespace Game.Controllers
         
         public void JumpTo(Vector3 end, float deg)
         {
-            _rb.velocity = Vector2.zero;
-            Vector3  start = transform.position;
+            //Vector2 startPos = transform.position;
+            //Vector2 targetPos = cam.ScreenToWorldPoint(Input.mousePosition);
+            var radAngle = deg * Mathf.Deg2Rad;
+            var dir = (end - transform.position).normalized;
+            float x = (end - transform.position).magnitude;
+            float y = (end - transform.position).y;
 
-            //Вычисляем расстояние до точки, куда нам нужно попасть
-            float distance = Vector3.Distance(start, end);
+            float v2 = (Physics2D.gravity.magnitude * x * x) / (2 * (y - Mathf.Tan(radAngle) * x) * Mathf.Pow(Mathf.Cos(radAngle), 2));
+            float v = Mathf.Sqrt(Mathf.Abs(v2));
 
-            //Вычисляем направление, сиё есть вектор
-            var direction = (end - start).normalized;
-            direction.y= 1/Mathf.Sin((2 * deg) * Mathf.Deg2Rad); 
-            direction.x /= 2;
-            print(direction);
-            
-
-
-            //Наконец-то вычисляем силу, по-хорошему надо бы использовать Physics.gravity, но я 
-            //воспользовался константой = 9.81f
-            //F = m * SQRT(distance * g) * direction/ sin (2a); 
-            var force = _rb.mass* Mathf.Sqrt(distance * Physics2D.gravity.magnitude) * direction ;
-            
-            //Швыряем!
-            _rb.AddForce(force,ForceMode2D.Impulse);
+            _rb.velocity = new Vector2(Mathf.Cos(radAngle) * v * dir.x, Mathf.Sin(radAngle) * v);
         }
         /// <summary>
         /// Двигает персонажа к заданной позиции с заданной скоростью поворачивая лицом в по направлению движения
