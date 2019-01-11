@@ -215,7 +215,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 1, z: 0}
+    VectorMeta: {x: 4, y: 1, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -854,7 +854,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 2, z: 0}
+    VectorMeta: {x: 4, y: 2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -1039,7 +1039,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 2, z: 0}
+    VectorMeta: {x: 4, y: 2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -1694,7 +1694,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: -2, z: 0}
+    VectorMeta: {x: 4, y: -2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -1880,7 +1880,7 @@ GameObject:
   - component: {fileID: 128485981}
   m_Layer: 8
   m_Name: Platforms
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23359,7 +23359,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 0, z: 0}
+    VectorMeta: {x: 4, y: 0, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -23984,7 +23984,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 0, z: 0}
+    VectorMeta: {x: 4, y: 0, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -24256,7 +24256,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 5, y: -3, z: 0}
+    VectorMeta: {x: 5, y: -3, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -24363,6 +24363,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &266997318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 266997320}
+  - component: {fileID: 266997319}
+  m_Layer: 0
+  m_Name: BricksSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &266997319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266997318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90fe352451cfd543b966664db931f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprites: []
+  _spawnerSizeX: 53.6
+  _spawnerSizeY: 7.6
+--- !u!4 &266997320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266997318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 94.2, y: 15.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &276266014
 GameObject:
   m_ObjectHideFlags: 0
@@ -24625,7 +24668,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 0, z: 0}
+    VectorMeta: {x: 4, y: 0, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -36620,7 +36663,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: -4, z: 0}
+    VectorMeta: {x: 4, y: -4, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -37184,6 +37227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 534711572}
+  - component: {fileID: 534711573}
   m_Layer: 0
   m_Name: 'RWavePoint '
   m_TagString: Untagged
@@ -37198,12 +37242,58 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534711571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.71, y: -0.305, z: 0}
+  m_LocalPosition: {x: 0.508, y: -0.371, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1721233175}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &534711573
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534711571}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &543534018
 GameObject:
   m_ObjectHideFlags: 0
@@ -38255,7 +38345,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 0, z: 0}
+    VectorMeta: {x: 4, y: 0, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -38577,7 +38667,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: -3, z: 0}
+    VectorMeta: {x: 4, y: -3, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -38878,7 +38968,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 2, z: 0}
+    VectorMeta: {x: 4, y: 2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -69282,7 +69372,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 0, z: 0}
+    VectorMeta: {x: 4, y: 0, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -69641,7 +69731,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 0, z: 0}
+    VectorMeta: {x: 4, y: 0, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -69873,7 +69963,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 2, z: 0}
+    VectorMeta: {x: 4, y: 2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -70166,7 +70256,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 2, z: 0}
+    VectorMeta: {x: 4, y: 4, z: 7}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -72369,7 +72459,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 2, z: 0}
+    VectorMeta: {x: 4, y: 2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -72591,7 +72681,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 5, y: -1, z: 0}
+    VectorMeta: {x: 5, y: -1, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -72763,7 +72853,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 3, z: 0}
+    VectorMeta: {x: 4, y: 3, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -72841,7 +72931,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 2, z: 0}
+    VectorMeta: {x: 4, y: 2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -73585,7 +73675,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: -2, z: 0}
+    VectorMeta: {x: 4, y: -2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -73921,7 +74011,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 5, y: -1, z: 0}
+    VectorMeta: {x: 5, y: -1, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -74687,7 +74777,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: -1, z: 0}
+    VectorMeta: {x: 4, y: -1, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -75745,7 +75835,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: -4, z: 0}
+    VectorMeta: {x: 4, y: -4, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -76160,7 +76250,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 0, z: 0}
+    VectorMeta: {x: 4, y: 0, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -81073,7 +81163,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: -1, z: 0}
+    VectorMeta: {x: 4, y: -1, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -81308,6 +81398,7 @@ MonoBehaviour:
   - {fileID: 825074775}
   _offsetX: 0
   _offsetY: 0
+  _offsetZ: 5
   startFollowDist: 2
   smoothSpeed: 0.03
 --- !u!4 &1530213142
@@ -82146,7 +82237,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: 2, z: 0}
+    VectorMeta: {x: 4, y: 2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -82224,7 +82315,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: -2, z: 0}
+    VectorMeta: {x: 4, y: -2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0
@@ -82306,7 +82397,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1647752563}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.69, y: -0.305, z: 0}
+  m_LocalPosition: {x: -0.614, y: -0.371, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1721233175}
@@ -103536,7 +103627,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 8ce620f2f922245468788311ad6dafbb, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &1721233178
 SpriteRenderer:
@@ -103617,7 +103708,7 @@ MonoBehaviour:
   _damage: 0
   _patrolPoints: []
   _activasionTrigger: {fileID: 543534021}
-  _distTiGround: 2
+  _distTiGround: 2.001
   ground:
     serializedVersion: 2
     m_Bits: 256
@@ -105977,7 +106068,7 @@ MonoBehaviour:
     intMeta: 0
     Sender: {fileID: 0}
     stringMeta: 
-    VectorMeta: {x: 4, y: -2, z: 0}
+    VectorMeta: {x: 4, y: -2, z: 5}
   _triggerActivatorsTegs:
   - Player
   _disableAfterInterract: 0

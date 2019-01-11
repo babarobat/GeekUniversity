@@ -23,15 +23,18 @@ namespace Game
         float _offsetX;
         [SerializeField]
         float _offsetY;
+        [SerializeField]
+        float _offsetZ;
         public float startFollowDist;
         public float smoothSpeed;
         bool animIsPlaying = false;
-
+        Camera _cam;
         private const float maxDistanceToShakeCam = 10;
         // Use this for initialization
         void Start()
         {
             DesPos = new Vector2();
+            _cam = GetComponentInChildren<Camera>();
             target = FindObjectOfType<PlayerController>();
             _anim = GetComponent<Animator>();
             _playerHp = FindObjectOfType<PlayerController>().GetComponentInChildren<HealthController>();
@@ -47,6 +50,7 @@ namespace Game
         {
             _offsetX = e.VectorMeta.x;
             _offsetY = e.VectorMeta.y;
+            _offsetZ = e.VectorMeta.z;
         }
         private void OnDrawGizmosSelected()
         {
@@ -55,15 +59,19 @@ namespace Game
         // Update is called once per frame
         void Update()
         {
+            
             if (folowPlayer)
             {
                 DesPos = target.transform.position;
                 var xMod = target.transform.eulerAngles.y == 180 ? -1:1;
                 DesPos.x += _offsetX* xMod;
                 DesPos.y += _offsetY;
+                
                 if (Vector2.Distance(DesPos, transform.position)>startFollowDist)
                 {
                     transform.position = Vector2.Lerp(transform.position, DesPos, smoothSpeed);
+                    _cam.orthographicSize = Mathf.Lerp(_cam.orthographicSize, _offsetZ, smoothSpeed);
+
                 }
                 
             }
@@ -136,7 +144,7 @@ namespace Game
             transform.position = target.transform.position;
             folowPlayer = true;
         }
-        
+       
         
     }
     

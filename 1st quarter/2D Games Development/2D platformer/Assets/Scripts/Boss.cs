@@ -21,7 +21,8 @@ namespace Game.Controllers
         [SerializeField]
         float maxPosX;
         CameraController _cam;
-        
+
+        bool _grounded;
         protected override void Start()
         {
             base.Start();
@@ -29,6 +30,12 @@ namespace Game.Controllers
             _activasionTrigger.OnEnter += ActivateBoss;
             _hp.OnHpChange += OnHpChange;
             
+        }
+        private void FixedUpdate()
+        {
+            
+            //_grounded = Physics2D.Raycast(transform.position, Vector2.down, _distTiGround, ground);
+            print(_grounded);
         }
         private void Update()
         {
@@ -102,19 +109,17 @@ namespace Game.Controllers
                         _movementController.JumpTo(_target.transform.position, 75);
                         break;
                 }
-                
+                _grounded = false;
                 _canJump = false;
             }
-            bool grounded = Physics2D.Raycast(transform.position, Vector2.down, _distTiGround, ground);
+            //bool grounded = Physics2D.Raycast(transform.position, Vector2.down, _distTiGround, ground);
 
-            if (grounded)
+            if (_grounded)
             {
-
+                _movementController.Stop();
                 SpawnWave(waveLspawnPoint, 1, 10);
                 SpawnWave(waveRspawnPoint, 1, 10);
 
-
-                _movementController.Stop();
                 _canJump = true;
                 _actionChoosed = false;
                 
@@ -178,5 +183,21 @@ namespace Game.Controllers
             return r == exception ? GetRandomExcept(exception, min, max) : r;
 
         }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            
+            if (collision.transform.CompareTag("Ground"))
+            {
+                _grounded = true;
+            }
+        }
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.transform.CompareTag("Ground"))
+            {
+                _grounded = false;
+            }
+        }
+        
     }
 }
