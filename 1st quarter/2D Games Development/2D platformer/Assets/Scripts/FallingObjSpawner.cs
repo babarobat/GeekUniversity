@@ -26,21 +26,27 @@ namespace Game
         [SerializeField]
         [Range(0, 100)]
         private float _spawnerSizeY;
-
+        
+        [SerializeField]
+        private FallingObj brickPrefab;
         private FallingObj[] _objs;
+
         private void Start()
         {
-            if (randomizeSprites)
-            {
-                for (int i = 0; i < _prefabsCount; i++)
-                {
-
-                }
-            }
-            
-        
+            FindObjectOfType<Game.Controllers.Boss>().OnGrounded += DropBriks;
         }
+        void DropBriks()
+        {
+            for (int i = 0; i < _prefabsCount; i++)
+            {
+                var x = Random.Range(transform.position.x - _spawnerSizeX / 2, transform.position.x + _spawnerSizeX / 2);
+                var y = Random.Range(transform.position.y - _spawnerSizeX / 2, transform.position.y + _spawnerSizeX / 2);
+                var spawnPos = new Vector2(x, y);
+                var brick = Instantiate(brickPrefab, spawnPos, Quaternion.identity);
+                Destroy(brick, 2f);
 
+            }
+        }
         private void OnDrawGizmosSelected()
         {
             var A = new Vector2(transform.position.x - _spawnerSizeX / 2, transform.position.y - _spawnerSizeY / 2);

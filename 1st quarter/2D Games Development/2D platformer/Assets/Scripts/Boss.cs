@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using UnityEngine;
 
 namespace Game.Controllers
@@ -21,6 +22,8 @@ namespace Game.Controllers
         [SerializeField]
         float maxPosX;
         CameraController _cam;
+
+        public event Action OnGrounded;
 
         bool _grounded;
         protected override void Start()
@@ -64,7 +67,7 @@ namespace Game.Controllers
 
             if (_movePointX == null)
             {
-                var dirX = GetRandomExcept(0, -1, 2) * Random.Range(5, 10);
+                var dirX = GetRandomExcept(0, -1, 2) * UnityEngine.Random.Range(5, 10);
                 //var randomPoint = (int)Random.Range(_target.transform.position.x, _target.transform.position.x + 10);
                 _movePointX = _target.transform.position.x < transform.position.x ? transform.position.x + dirX :// :
                                                                                     transform.position.x - dirX; //* dirX;
@@ -106,6 +109,9 @@ namespace Game.Controllers
                         _movementController.Jump(25);
                         break;
                     case BossState.Two:
+                        _movementController.JumpTo(_target.transform.position, 75);
+                        break;
+                    case BossState.Three:
                         _movementController.JumpTo(_target.transform.position, 75);
                         break;
                 }
@@ -179,16 +185,17 @@ namespace Game.Controllers
         }
         int GetRandomExcept(int exception, int min, int max)
         {
-            var r = Random.Range(min, max);
+            var r = UnityEngine.Random.Range(min, max);
             return r == exception ? GetRandomExcept(exception, min, max) : r;
 
         }
-        private void OnCollisionEnter2D(Collision2D collision)
+        protected override void OnCollisionEnter2D(Collision2D collision)
         {
-            
+            base.OnCollisionEnter2D(collision);
             if (collision.transform.CompareTag("Ground"))
             {
                 _grounded = true;
+                OnGrounded?.Invoke();
             }
         }
         private void OnCollisionExit2D(Collision2D collision)

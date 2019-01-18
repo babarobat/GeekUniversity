@@ -24390,9 +24390,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90fe352451cfd543b966664db931f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prefabsCount: 10
+  randomizeSprites: 0
+  _randomizePos: 0
   _sprites: []
   _spawnerSizeX: 53.6
-  _spawnerSizeY: 7.6
+  _spawnerSizeY: 7.2
+  brickPrefab: {fileID: 114694828378060376, guid: e636886124101bd428a98b4e9e23319a,
+    type: 2}
 --- !u!4 &266997320
 Transform:
   m_ObjectHideFlags: 0

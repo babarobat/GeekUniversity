@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace Game.Controllers
 {
@@ -50,10 +51,31 @@ namespace Game.Controllers
             
             _hp.HpIsZero += Dead;
         }
-        private void OnCollisionEnter2D(Collision2D collision)
+        protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
-            collision.gameObject.GetComponentInChildren<IDamage>()?.GetDamage(_damage);           
+            var iDamage = collision.gameObject.GetComponentInChildren<IDamage>();
+            if (iDamage != null)
+            {
+                iDamage?.GetDamage(_damage);
+                var thisLayer = gameObject.layer;
+                var collLayer = collision.gameObject.layer;
+                StartCoroutine(DelColl(1f, thisLayer, collLayer));
+                
+            }
+            
+          
+            
         }
+        IEnumerator DelColl(float time, int id1, int id2)
+        {
+            print("StartIgnore");
+            Physics2D.IgnoreLayerCollision(id1, id2, true);
+            yield return new WaitForSeconds(time);
+            print("StopIgnore");
+            Physics2D.IgnoreLayerCollision(id1, id2, false);
+
+        }
+
           
     }
 }
