@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50212108879472252}
   - component: {fileID: 61941542238346390}
   - component: {fileID: 114694828378060376}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: FallingObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300088, guid: 45411821bbe8ae94cb8fbd14d120bc36, type: 3}
+  m_Sprite: {fileID: 21300638, guid: e9fa38a5270777943b79ddb85cb1f26d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

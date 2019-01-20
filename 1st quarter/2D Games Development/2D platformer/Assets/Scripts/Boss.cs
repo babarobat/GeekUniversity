@@ -23,7 +23,7 @@ namespace Game.Controllers
         float maxPosX;
         CameraController _cam;
 
-        public event Action OnGrounded;
+        public event Action DropBricks;
 
         bool _grounded;
         protected override void Start()
@@ -50,6 +50,7 @@ namespace Game.Controllers
         }
         IEnumerator Activate()
         {
+            _movementController.LookAtTarget(_target.transform);
             yield return new WaitForSeconds(1);
             _currentSate = BossState.One;
         }
@@ -109,7 +110,7 @@ namespace Game.Controllers
                         _movementController.Jump(25);
                         break;
                     case BossState.Two:
-                        _movementController.JumpTo(_target.transform.position, 75);
+                        _movementController.Jump(25);
                         break;
                     case BossState.Three:
                         _movementController.JumpTo(_target.transform.position, 75);
@@ -128,16 +129,17 @@ namespace Game.Controllers
 
                 _canJump = true;
                 _actionChoosed = false;
-                
+                _cam?.ShakeCam(gameObject);
+
             }
         }
-        void SpawnWave( Transform posAddRot, int dmg, float speed)
+        void SpawnWave( Transform posAndRot, int dmg, float speed)
         {
-            var wave = Instantiate(_wavePrefab, posAddRot.position, posAddRot.rotation);
+            var wave = Instantiate(_wavePrefab, posAndRot.position, posAndRot.rotation);
             wave.Damage = dmg;
-            wave.Dir = posAddRot.eulerAngles.y == 180 ? -Vector2.right : Vector2.right;
+            wave.Dir = posAndRot.eulerAngles.y == 180 ? -Vector2.right : Vector2.right;
             wave.Speed = speed;
-            _cam?.ShakeCam(wave.gameObject);
+            
 
         }
         IEnumerator Idle()
@@ -195,7 +197,11 @@ namespace Game.Controllers
             if (collision.transform.CompareTag("Ground"))
             {
                 _grounded = true;
-                OnGrounded?.Invoke();
+                if (_currentSate != BossState.One)
+                {
+                    DropBricks?.Invoke();
+                }
+               
             }
         }
         private void OnCollisionExit2D(Collision2D collision)
