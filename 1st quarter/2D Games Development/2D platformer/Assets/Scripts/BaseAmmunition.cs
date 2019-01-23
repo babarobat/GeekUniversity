@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Game.Controllers;
 
 
 namespace Game
@@ -27,11 +26,14 @@ namespace Game
         /// Время до уничтожения обьекта
         /// </summary>
         private const float lifeTime = 5f;
-        [SerializeField]
-        GameObject _hitEffect;
-
-        
-
+        /// <summary>
+        /// Префаб эффект попадания
+        /// </summary>
+        [SerializeField]       
+        private GameObject _hitEffect;
+        /// <summary>
+        /// Направление движения снаряда
+        /// </summary>
         public Vector2 Dir;
 
         protected void Start()

@@ -21,6 +21,9 @@
         /// Возвращает true, если нажата кнопка, назначенная на ось Fire1
         /// </summary>
         public bool Fire;// { get; set; }
+        /// <summary>
+        /// Возвращает true, если нажата кнопка E
+        /// </summary>
         public bool Interacting;
     }
 }

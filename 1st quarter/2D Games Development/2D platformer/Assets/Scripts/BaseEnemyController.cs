@@ -12,13 +12,11 @@ namespace Game.Controllers
         /// Урон, который наносится при столкновении с персонажем
         /// </summary>
         [Tooltip("Урон, который наносится при столкновении с персонажем")]
-        [SerializeField] protected int _damage;
-        
+        [SerializeField] protected int _damage;       
         /// <summary>
         /// Цель
         /// </summary>
         protected PlayerController _target;
-
         /// <summary>
         /// Ссылка на компенент ExplosionController;
         /// </summary>
@@ -48,7 +46,6 @@ namespace Game.Controllers
             _fow = GetComponentInChildren<FieldOfViewController>();
             _explosionController = GetComponentInChildren<ExplosionController>();
             _hp = GetComponentInChildren<HealthController>();
-            
             _hp.HpIsZero += Dead;
         }
         protected virtual void OnCollisionEnter2D(Collision2D collision)
@@ -59,21 +56,21 @@ namespace Game.Controllers
                 iDamage?.GetDamage(_damage);
                 var thisLayer = gameObject.layer;
                 var collLayer = collision.gameObject.layer;
-                StartCoroutine(DelColl(1f, thisLayer, collLayer));
-                
-            }
-            
-          
-            
+                StartCoroutine(IgnoreLayerForSec(1f, thisLayer, collLayer));               
+            }    
         }
-        IEnumerator DelColl(float time, int id1, int id2)
+        /// <summary>
+        /// Выключает коллизии на указанный промежуток времени между указанными слоями
+        /// </summary>
+        /// <param name="time">время игнорирования коллизий</param>
+        /// <param name="id1">id слоя 1</param>
+        /// <param name="id2">id слоя 2</param>
+        /// <returns></returns>
+        IEnumerator IgnoreLayerForSec(float time, int id1, int id2)
         {
-            print("StartIgnore");
             Physics2D.IgnoreLayerCollision(id1, id2, true);
             yield return new WaitForSeconds(time);
-            print("StopIgnore");
             Physics2D.IgnoreLayerCollision(id1, id2, false);
-
         }
 
           

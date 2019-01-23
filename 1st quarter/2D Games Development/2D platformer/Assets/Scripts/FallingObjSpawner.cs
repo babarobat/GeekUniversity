@@ -33,7 +33,7 @@ namespace Game
 
         private void Start()
         {
-            FindObjectOfType<Game.Controllers.Boss>().DropBricks += DropBriks;
+            FindObjectOfType<Game.Controllers.Boss>().Grounded += DropBriks;
         }
         void DropBriks()
         {
