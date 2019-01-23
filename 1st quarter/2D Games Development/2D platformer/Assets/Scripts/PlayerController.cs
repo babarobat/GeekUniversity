@@ -57,6 +57,7 @@ namespace Game
 
         private bool _isControllable = true;
 
+        public event Action OnPlayerDead;
 
         public void  IsControllable(bool value)
         {
@@ -168,15 +169,11 @@ namespace Game
                 (_Hp as IDamage).GetDamage(100);
             }
         }
-        public void ResetParams()
-        {
-            _Hp.ResetParams();
-        }
+        
         protected override void Dead()
         {
-            base.Dead();
-            FindObjectOfType<LoadManager>()?.LoadFromChekPoint();
             _Hp.ResetParams();
+            OnPlayerDead?.Invoke();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Game.Controllers
         CameraController _cam;
 
         public event Action DropBricks;
-
+        private Vector2 _startPos;
         bool _grounded;
         protected override void Start()
         {
@@ -32,7 +32,10 @@ namespace Game.Controllers
             _cam = FindObjectOfType<CameraController>();
             _activasionTrigger.OnEnter += ActivateBoss;
             _hp.OnHpChange += OnHpChange;
-            
+            _startPos = transform.position;
+            _target.OnPlayerDead += ResetBoss;
+
+
         }
         private void FixedUpdate()
         {
@@ -68,14 +71,22 @@ namespace Game.Controllers
 
             if (_movePointX == null)
             {
-                var dirX = GetRandomExcept(0, -1, 2) * UnityEngine.Random.Range(5, 10);
+                //var dist = Mathf.Abs( transform.position.x - _target.transform.position.x);
+                float dirX = UnityEngine.Random.Range(5, 10);
+                //bool targetIsRighter = _target.transform.position.x > transform.position.x;
+               // bool targetIsOutOfRange = dist > 5f;
+
+
                 //var randomPoint = (int)Random.Range(_target.transform.position.x, _target.transform.position.x + 10);
-                _movePointX = _target.transform.position.x < transform.position.x ? transform.position.x + dirX :// :
-                                                                                    transform.position.x - dirX; //* dirX;
+
+                
+
+                _movePointX = _target.transform.position.x < transform.position.x ? transform.position.x - dirX :// :
+                                                                                    transform.position.x + dirX; //* dirX;
                 _movePointX = Mathf.Clamp((float)_movePointX, minPosX, maxPosX);
                 
-                var animName = dirX > 0 ? "MoveBack" : "Move";
-                _animator.SetTrigger(animName);
+                //var animName = dirX < 0 ? "MoveBack" : "Move";
+                _animator.SetTrigger("Move");
             }
             else
             {
@@ -95,7 +106,8 @@ namespace Game.Controllers
         public BaseAmmunition _wavePrefab;
         public Transform waveLspawnPoint;
         public Transform waveRspawnPoint;
-
+        [Range(0, 50)]
+        public float JumpForce;
 
         
         void Jump()
@@ -107,13 +119,28 @@ namespace Game.Controllers
                 switch (_currentSate)
                 {
                     case BossState.One:
-                        _movementController.Jump(25);
+                        _movementController.Jump(JumpForce);
+
+                        
                         break;
                     case BossState.Two:
-                        _movementController.Jump(25);
+                        _movementController.Jump(JumpForce);
                         break;
                     case BossState.Three:
-                        _movementController.JumpTo(_target.transform.position, 75);
+                        var targetOnRight = transform.position.x < _target.transform.position.x;
+
+                        if (((transform.position.x<=  minPosX + 5) && (!targetOnRight)) ||
+                                (( transform.position.x  >= maxPosX-5 )&&(targetOnRight)))
+                        {
+                            _movementController.Jump(25);
+                        }
+                        else
+                        {
+                            var dir = transform.position.x < _target.transform.position.x ? 1 : -1;
+                            _movementController.JumpOnAngle(7, new Vector2(dir, 4));
+                            
+                        }
+                        
                         break;
                 }
                 _grounded = false;
@@ -157,11 +184,20 @@ namespace Game.Controllers
 
         void Xxx()
         {
+
             if (!_actionChoosed)
             {
-                _actionIndex = GetRandomExcept(lastIndex, 1, 4);
-                lastIndex = _actionIndex;
-                _actionChoosed = true;
+                if (Mathf.Abs(transform.position.x - _target.transform.position.x)>15)
+                {
+                    _actionIndex = 1;
+                }
+                else
+                {
+                    _actionIndex = GetRandomExcept(lastIndex, 1, 4);
+                    lastIndex = _actionIndex;
+                    _actionChoosed = true;
+                }
+                
 
             }
             switch (_actionIndex)
@@ -197,7 +233,7 @@ namespace Game.Controllers
             if (collision.transform.CompareTag("Ground"))
             {
                 _grounded = true;
-                if (_currentSate != BossState.One)
+                if (_currentSate == BossState.Two || _currentSate == BossState.Three)
                 {
                     DropBricks?.Invoke();
                 }
@@ -210,6 +246,15 @@ namespace Game.Controllers
             {
                 _grounded = false;
             }
+        }
+
+        private void ResetBoss()
+        {
+            _hp.ResetParams();
+            _currentSate = BossState.Sleeping;
+            transform.position = _startPos;
+            _movementController.Stop();
+            _animator.SetTrigger("Idle");
         }
         
     }

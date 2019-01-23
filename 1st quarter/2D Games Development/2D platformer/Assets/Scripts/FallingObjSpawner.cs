@@ -40,7 +40,7 @@ namespace Game
             for (int i = 0; i < _prefabsCount; i++)
             {
                 var x = Random.Range(transform.position.x - _spawnerSizeX / 2, transform.position.x + _spawnerSizeX / 2);
-                var y = Random.Range(transform.position.y - _spawnerSizeX / 2, transform.position.y + _spawnerSizeX / 2);
+                var y = Random.Range(transform.position.y - _spawnerSizeY / 2, transform.position.y + _spawnerSizeY / 2);
                 var spawnPos = new Vector2(x, y);
                 var brick = Instantiate(brickPrefab, spawnPos, Quaternion.identity);
                 Destroy(brick, 2f);

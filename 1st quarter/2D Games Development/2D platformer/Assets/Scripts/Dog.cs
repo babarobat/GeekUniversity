@@ -23,8 +23,9 @@ namespace Game.Controllers
         /// Продолжает гнаться после потери цели?
         /// </summary>
         bool keepFolowing = true;
+        float _currentRadious;
+        float _normalRadius;
 
-        
         private void FixedUpdate()
         {
             PatrollAndAttack();
@@ -66,7 +67,10 @@ namespace Game.Controllers
         {
             _targetPos.x = _target.transform.position.x;
             _targetPos.y = transform.position.y;
+            _currentRadious = Vector2.Distance(transform.position, _target.transform.position);
+            _fow.ViewRadius = _currentRadious;
             _fow.LookAtTarget(_target.transform);
+            
             if (transform.position.x < _targetPos.x)
             {
                 _movementController.Move( Speed * 2f *Time.fixedDeltaTime);
@@ -87,6 +91,7 @@ namespace Game.Controllers
             keepFolowing = false;
             yield return new WaitForSeconds(time);
             keepFolowing = true;
+            _fow.ViewRadius = _normalRadius;
             _fow.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
             //_fow.transform.rotation = Quaternion.Euler(_fow.transform.rotation.eulerAngles.x, _fow.transform.rotation.eulerAngles.y, 0);
             _isAngry = false;
@@ -119,6 +124,7 @@ namespace Game.Controllers
         protected override void Start()
         {
             base.Start();
+            _normalRadius = _fow.ViewRadius;
             _hp.OnHpChange += Angreed;
         }
         void Angreed(int value)

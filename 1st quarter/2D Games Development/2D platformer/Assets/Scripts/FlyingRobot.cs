@@ -78,7 +78,7 @@ namespace Game.Controllers
             
             yield return new WaitForSeconds(time);
             _fow.ViewRadius = _normalRadius;
-            print(_normalRadius);
+           
 
             keppFolowing = true;
             _isAngry = false;
@@ -104,8 +104,9 @@ namespace Game.Controllers
 
         public void LookAtTarget()
         {
-            _currentRadious = Vector2.Distance(transform.position, _target.transform.position);
+            
             _movementController.LookAtTarget(_target.transform);
+            _currentRadious = Vector2.Distance(transform.position, _target.transform.position);
             _fow.ViewRadius = _currentRadious;
             _fow.LookAtTarget(_target.transform);
         }

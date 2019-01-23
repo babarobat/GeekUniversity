@@ -25,6 +25,7 @@ namespace Game
                 item.OnEnter += SetLoadPos;
             }
             _player = FindObjectOfType<PlayerController>();
+            _player.OnPlayerDead += LoadFromChekPoint;
         }
         void SetLoadPos(TriggerEventArgs e)
         {

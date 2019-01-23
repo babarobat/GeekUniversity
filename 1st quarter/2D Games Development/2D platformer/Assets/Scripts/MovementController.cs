@@ -56,6 +56,11 @@ namespace Game.Controllers
 
             _rb.velocity = new Vector2(Mathf.Cos(radAngle) * v * dir.x, Mathf.Sin(radAngle) * v);
         }
+        public void JumpOnAngle(float power, Vector2 angle)
+        {
+
+            _rb.AddForce(angle * power, ForceMode2D.Impulse);
+        }
         /// <summary>
         /// Двигает персонажа к заданной позиции с заданной скоростью поворачивая лицом в по направлению движения
         /// </summary>

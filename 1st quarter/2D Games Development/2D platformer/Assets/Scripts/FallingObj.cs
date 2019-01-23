@@ -3,7 +3,7 @@
 namespace Game
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(Collider2D))]
     class FallingObj:MonoBehaviour
     {
         private Rigidbody2D _rb;
@@ -17,7 +17,7 @@ namespace Game
         {
             _rb = GetComponent<Rigidbody2D>();
             _renderer = GetComponentInChildren<SpriteRenderer>();
-           
+            //Destroy(gameObject,2);
         }
         
         public Sprite Sprite
@@ -40,6 +40,7 @@ namespace Game
                 Destroy(temp, 2);
             }
             Destroy(gameObject);
+            
         }
 
 

@@ -225,9 +225,7 @@ namespace Game.Controllers
             
             if (target != null)
             {
-                
-                transform.right = target.position - transform.position;
-
+                transform.right = target.transform.position - transform.position;
             }
             
             

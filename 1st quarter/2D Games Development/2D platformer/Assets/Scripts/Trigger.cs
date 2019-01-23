@@ -18,6 +18,8 @@ namespace Game
         bool _disableAfterEnter;
         [SerializeField]
         bool _disableAfterExit;
+        [SerializeField]
+        bool _activateAfterPlayerDead;
         public bool IsInteractble;
         public event Action<TriggerEventArgs> OnStay;
         public event Action<TriggerEventArgs> OnEnter;
@@ -32,9 +34,26 @@ namespace Game
             _args.Sender = this;
             GetComponent<Collider2D>().isTrigger = true;
             _animator = GetComponentInChildren<Animator>();
+            if (_activateAfterPlayerDead)
+            {
+                FindObjectOfType<PlayerController>().OnPlayerDead += Activate;
+            }
         }
 
-
+        void Activate()
+        {
+            foreach (var item in GetComponents<Collider2D>())
+            {
+                item.enabled = true;
+            }
+        }
+        void Deactivate()
+        {
+            foreach (var item in GetComponents<Collider2D>())
+            {
+                item.enabled = false;
+            }
+        }
         private void OnTriggerStay2D(Collider2D collision)
         {
             if (_triggerActivatorsTegs.Contains(collision.tag))
@@ -51,11 +70,9 @@ namespace Game
                     }
                     if (_disableAfterInterract)
                     {
-                        foreach (var item in GetComponents<Collider2D>())
-                        {
-                            item.enabled = false;
-                        }
-                        
+                        Deactivate();
+
+
                     }
                 }
             }
@@ -68,10 +85,7 @@ namespace Game
                 OnEnter?.Invoke(_args);
                 if (_disableAfterEnter)
                 {
-                    foreach (var item in GetComponents<Collider2D>())
-                    {
-                        item.enabled = false;
-                    }
+                    Deactivate();
                 }
             }
         }
@@ -82,13 +96,11 @@ namespace Game
                 OnExit?.Invoke(_args);
                 if (_disableAfterEnter)
                 {
-                    foreach (var item in GetComponents<Collider2D>())
-                    {
-                        item.enabled = false;
-                    }
+                    Deactivate();
                 }
             }
         }
+
         
     }
 }
