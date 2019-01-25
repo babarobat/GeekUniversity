@@ -142,13 +142,12 @@ namespace Game
             Collider2D[] collidrs = Physics2D.OverlapCircleAll(_groundCheck.position, groundedRadius, _whatIsGround);
             foreach (var col in collidrs)
             {
-                if (col.gameObject != gameObject)
-                {
+                
 
                     isGrounded = true;
                     _animator.SetBool("IsJumping", false);
                 }
-            }
+            
         }
         /// <summary>
         /// Стрельба

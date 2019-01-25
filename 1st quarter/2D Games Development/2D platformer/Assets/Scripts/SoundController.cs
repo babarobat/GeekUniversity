@@ -15,8 +15,11 @@ namespace Game.Controllers
         
         [SerializeField]
         private Sound[] _clips;
-        public Sound[] Clips
-        { get=> _clips; private set => _clips=value; }
+        public Sound[] Clips { get=> _clips; private set => _clips=value; }
+        [SerializeField]
+        
+
+
         protected override void Start()
         {
             foreach (var item in _clips)
@@ -34,9 +37,26 @@ namespace Game.Controllers
                 {
                     item.Source.Play();
                 } 
+
             }
+            
         }
-        
+        private void PlaySound(TriggerEventArgs e)
+        {
+            Sound sound = GetSound(e.stringMeta);
+            sound.Source.Play();
+        }
+        public void PlayRandomSound()
+        {
+            var r = UnityEngine.Random.Range(0, _clips.Length - 1);
+            Sound s = _clips[r];
+            s.Play();
+        }
+        public void PlaySound(string name)
+        {
+            Sound sound = GetSound(name);
+            sound.Source.Play();
+        }
         public void PlaySound(string name, bool loop)
         {
             Sound sound = GetSound(name);

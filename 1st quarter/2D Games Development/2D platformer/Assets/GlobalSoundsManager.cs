@@ -13,7 +13,7 @@ namespace Game
         [SerializeField]
         private SoundController _ambience;
 
-        int i = 0;
+        
         
 
 
@@ -25,11 +25,11 @@ namespace Game
             
             gl = GlobalGameManager.Instance;
             gl.OnStateChange += PlayStageMusic;  
-            StartCoroutine(Xer());
+            StartCoroutine(PlayStageMusCor());
         }
-        IEnumerator Xer()
+        IEnumerator PlayStageMusCor()
         {
-            i++;
+            
            yield return new WaitForFixedUpdate();
             PlayStageMusic(gl.CurrentState);
 

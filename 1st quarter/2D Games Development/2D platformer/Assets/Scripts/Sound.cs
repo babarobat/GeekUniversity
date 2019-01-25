@@ -31,6 +31,7 @@ namespace Game.Audio
             set => _volume = value < 0 ? 0 : value;
         }
         [SerializeField]
+        [Range(0,1)]
         private float _volume;
         public float SpetialBlend
         {

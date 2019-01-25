@@ -107,6 +107,11 @@ namespace Game.Controllers
             }
             if (_isAngry)
             {
+                if (!_soundController.SoundIsPlaying("Agro"))
+                {
+                    _soundController.PlaySound("Agro", true);
+                    _soundController.StopSound("Move");
+                }
                 MoveToTarget();
                 if (_fow.Target == null)
                 {
@@ -118,11 +123,18 @@ namespace Game.Controllers
             }
             else
             {
+                if (!_soundController.SoundIsPlaying("Move"))
+                {
+                    _soundController.StopSound("Agro");
+                    _soundController.PlaySound("Move", true);
+                }
                 Patrol();
             }
         }
+        SoundController _soundController;
         protected override void Start()
         {
+            _soundController = GetComponentInChildren<SoundController>();
             base.Start();
             _normalRadius = _fow.ViewRadius;
             _hp.OnHpChange += Angreed;

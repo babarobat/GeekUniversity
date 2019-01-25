@@ -106,7 +106,14 @@ MonoBehaviour:
     Out: {fileID: 243347891692174998, guid: 709f64cfc75886a40b7be84ee0218d02, type: 2}
     PlayOnAwake: 0
     Loop: 0
-    _volume: 0.5
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _maxDistance: 0
+    _volume: 0.4
     _specialBlend: 0
 --- !u!212 &212730733761874306
 SpriteRenderer:

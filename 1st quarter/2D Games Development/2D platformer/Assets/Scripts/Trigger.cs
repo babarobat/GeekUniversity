@@ -9,7 +9,7 @@ namespace Game
     {
         [SerializeField]
         private TriggerEventArgs _args;
-        
+        public TriggerEventArgs Args => _args;
         [SerializeField]
         private string[] _triggerActivatorsTegs;
         [SerializeField]
@@ -52,6 +52,7 @@ namespace Game
             foreach (var item in GetComponents<Collider2D>())
             {
                 item.enabled = false;
+
             }
         }
         private void OnTriggerStay2D(Collider2D collision)

@@ -27,7 +27,12 @@ namespace Game.Controllers
             _weaponController = GetComponentInChildren<WeaponController>();
             _soundController = GetComponentInChildren<SoundController>();
             _hp.OnHpChange += Attacked;
+            _target.OnPlayerDead += StopFollow;
            
+        }
+        void StopFollow()
+        {
+            _isAngry = false;
         }
         void Attacked(int hp)
         {
@@ -50,7 +55,8 @@ namespace Game.Controllers
                     _soundController.StopSound("Searching");
                 }
                 LookAtTarget();
-                GoToAttackPos();
+                goToAttack = true;
+                //GoToAttackPos();
                 Attack();
                 if (_fow.Target == null)
                 {
@@ -67,11 +73,25 @@ namespace Game.Controllers
                     _soundController.StopSound("Alarm");
                     _soundController.PlaySound("Searching", true);
                 }
-                
-                Patrol();
+                goToAttack = false;
+                //Patrol();
             }
         }
-        
+        bool goToAttack;
+        private void FixedUpdate()
+        {
+            if (goToAttack)
+            {
+                GoToAttackPos();
+            }
+            else
+            {
+                Patrol();
+            }
+            
+            
+            
+        }
         IEnumerator KeepFolowing(float time)
         {
             keppFolowing = false;

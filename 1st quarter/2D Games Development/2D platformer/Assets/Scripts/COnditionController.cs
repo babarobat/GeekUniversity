@@ -5,7 +5,7 @@ namespace Game
     /// <summary>
     /// Сожержит логику и параметры состояний игры
     /// </summary>
-    class COnditionController:Singleton<COnditionController>
+    class COnditionController:MonoBehaviour
     {
         /// <summary>
         /// Изменяет время
