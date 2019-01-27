@@ -2,7 +2,7 @@
 using UnityEngine;
 using Game.Controllers;
 using UnityEngine.SceneManagement;
-
+using Game.Audio;
 namespace Game
 {
     /// <summary>
@@ -54,7 +54,8 @@ namespace Game
         /// </summary>
         private WeaponController _weaponController;
         private HealthController _Hp;
-
+        [SerializeField]
+        private SoundComponent _stepsSound;
         private bool _isControllable = true;
 
         public event Action OnPlayerDead;
@@ -100,10 +101,6 @@ namespace Game
                 //Движение заднего фона карты. Прототип
                 _map.Translate(Vector2.right * -_controlParams.Horizontal * .3f * Time.deltaTime);
 
-
-                //Move();
-                //Jump();
-                //Fire();
             }
             
         }
@@ -173,6 +170,11 @@ namespace Game
         {
             _Hp.ResetParams();
             OnPlayerDead?.Invoke();
+        }
+
+        public void PlayStepsSound()
+        {
+            _stepsSound.PlayRandomSound();
         }
     }
 }
