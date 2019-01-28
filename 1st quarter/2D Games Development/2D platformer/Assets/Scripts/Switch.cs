@@ -5,22 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Game.Controllers;
+using Game.Audio;
 namespace Game
 {
     class Switch:MonoBehaviour
     {
-        SoundController soundController;
+        [SerializeField]
+        SoundComponent _sound;
         Trigger trigger;
         Animator anim;
 
         private void Start()
-        {
-            soundController = GetComponentInChildren<SoundController>();
+        {            
             trigger = GetComponentInChildren<Trigger>();
             anim = GetComponentInChildren<Animator>();
-
-
-
         }
         void OnInteract(TriggerEventArgs e)
         {

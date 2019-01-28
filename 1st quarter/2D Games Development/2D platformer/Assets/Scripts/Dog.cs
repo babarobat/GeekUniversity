@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Game.Audio;
 namespace Game.Controllers
 {
     /// <summary>
@@ -25,7 +25,8 @@ namespace Game.Controllers
         bool keepFolowing = true;
         float _currentRadious;
         float _normalRadius;
-
+        [SerializeField]
+        SoundComponent _sound;
         private void FixedUpdate()
         {
             PatrollAndAttack();
@@ -107,10 +108,10 @@ namespace Game.Controllers
             }
             if (_isAngry)
             {
-                if (!_soundController.SoundIsPlaying("Agro"))
+                if (!_sound.SoundIsPlaying("DogAgro"))
                 {
-                    _soundController.PlaySound("Agro", true);
-                    _soundController.StopSound("Move");
+                    _sound.Play("DogAgro");
+                    
                 }
                 MoveToTarget();
                 if (_fow.Target == null)
@@ -123,18 +124,18 @@ namespace Game.Controllers
             }
             else
             {
-                if (!_soundController.SoundIsPlaying("Move"))
+                if (!_sound.SoundIsPlaying("DogMove"))
                 {
-                    _soundController.StopSound("Agro");
-                    _soundController.PlaySound("Move", true);
+                    _sound.Play("DogMove");
+
                 }
                 Patrol();
             }
         }
-        SoundController _soundController;
+        
         protected override void Start()
         {
-            _soundController = GetComponentInChildren<SoundController>();
+            
             base.Start();
             _normalRadius = _fow.ViewRadius;
             _hp.OnHpChange += Angreed;

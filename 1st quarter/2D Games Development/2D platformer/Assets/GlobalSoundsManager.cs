@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.Audio;
 using Game.Controllers;
 using UnityEngine.UI;
+using Game.Audio;
 namespace Game
 {
     public class GlobalSoundsManager : Singleton<GlobalSoundsManager>
     {
         [SerializeField]
-        private SoundController _music;
+        private SoundComponent _music;
         [SerializeField]
-        private SoundController _ambience;
+        private SoundComponent _ambience;
 
         
         
@@ -39,12 +40,31 @@ namespace Game
         {
             if (!_music.SoundIsPlaying(themeName))
             {
-                _music.PlaySound(themeName, true);
+                _music.Play(themeName);
             }
         }
         void PlayStageMusic(GameStates state)
         {
-            PlayTheme(state.ToString());
+            switch (state)
+            {
+                case GameStates.MainMenu:
+                    break;
+                case GameStates.Pause:
+                    break;
+                case GameStates.GameNormal:
+                    PlayTheme("GameTheme");
+                    break;
+                    
+                case GameStates.GameFight:
+                    break;
+                case GameStates.GameBoss:
+                    break;
+                case GameStates.Death:
+                    break;
+                default:
+                    break;
+            }
+            
         }
         
     }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
-
+using Game.Audio;
 namespace Game.Controllers
 {
     class FlyingRobot:BaseEnemyController
@@ -16,8 +16,8 @@ namespace Game.Controllers
         private float _agroSpeed;
         float _normalRadius;
         float _currentRadious;
-        private SoundController _soundController;
-        
+        [SerializeField]
+        private SoundComponent _sound;
         protected override  void Start()
         {
             
@@ -25,7 +25,7 @@ namespace Game.Controllers
             _normalRadius = _fow.ViewRadius;
 
             _weaponController = GetComponentInChildren<WeaponController>();
-            _soundController = GetComponentInChildren<SoundController>();
+            
             _hp.OnHpChange += Attacked;
             _target.OnPlayerDead += StopFollow;
            
@@ -49,10 +49,10 @@ namespace Game.Controllers
             }
             if (_isAngry)
             {
-                if (!_soundController.SoundIsPlaying("Alarm"))
+                if (!_sound.SoundIsPlaying("FlyingRobotAlarm"))
                 {
-                    _soundController.PlaySound("Alarm", true);
-                    _soundController.StopSound("Searching");
+                    _sound.Play("FlyingRobotAlarm");
+                    
                 }
                 LookAtTarget();
                 goToAttack = true;
@@ -68,10 +68,10 @@ namespace Game.Controllers
             }
             else
             {
-                if (!_soundController.SoundIsPlaying("Searching"))
+                if (!_sound.SoundIsPlaying("FlyingRobotSearching"))
                 {
-                    _soundController.StopSound("Alarm");
-                    _soundController.PlaySound("Searching", true);
+
+                    _sound.Play("FlyingRobotSearching");
                 }
                 goToAttack = false;
                 //Patrol();
@@ -159,10 +159,7 @@ namespace Game.Controllers
                 _weaponController.Fire();
             }            
         }
-        public void PlaySound(string name)
-        {
-            _soundController.PlaySound(name, false);
-        }
+        
         
     }
 }
