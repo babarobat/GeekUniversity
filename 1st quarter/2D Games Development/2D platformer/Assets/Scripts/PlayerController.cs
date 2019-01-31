@@ -92,18 +92,7 @@ namespace Game
             
 
         }
-        void Update()
-        {
-            
-
-            if (_isControllable)
-            {
-                //Движение заднего фона карты. Прототип
-                _map.Translate(Vector2.right * -_controlParams.Horizontal * .3f * Time.deltaTime);
-
-            }
-            
-        }
+        
         private void FixedUpdate()
         {
             ChekCanJump();
@@ -169,6 +158,7 @@ namespace Game
         protected override void Dead()
         {
             _Hp.ResetParams();
+            GlobalGameManager.Instance.CurrentState = GameStates.GameNormal;
             OnPlayerDead?.Invoke();
         }
 

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Game.Controllers;
 
 
 namespace Game
@@ -33,19 +34,24 @@ namespace Game
 
         private void Start()
         {
-            FindObjectOfType<Game.Controllers.Boss>().Grounded += DropBriks;
+            FindObjectOfType<Boss>().Grounded += DropBriks;
         }
-        void DropBriks()
+        void DropBriks(GameObject gameObject)
         {
-            for (int i = 0; i < _prefabsCount; i++)
+            var s =gameObject.GetComponent<Boss>().State;
+            if (s == BossState.Two|| s == BossState.Three)
             {
-                var x = Random.Range(transform.position.x - _spawnerSizeX / 2, transform.position.x + _spawnerSizeX / 2);
-                var y = Random.Range(transform.position.y - _spawnerSizeY / 2, transform.position.y + _spawnerSizeY / 2);
-                var spawnPos = new Vector2(x, y);
-                var brick = Instantiate(brickPrefab, spawnPos, Quaternion.identity);
-                Destroy(brick, 2f);
+                for (int i = 0; i < _prefabsCount; i++)
+                {
+                    var x = Random.Range(transform.position.x - _spawnerSizeX / 2, transform.position.x + _spawnerSizeX / 2);
+                    var y = Random.Range(transform.position.y - _spawnerSizeY / 2, transform.position.y + _spawnerSizeY / 2);
+                    var spawnPos = new Vector2(x, y);
+                    var brick = Instantiate(brickPrefab, spawnPos, Quaternion.identity);
+                    Destroy(brick, 2f);
 
+                }
             }
+            
         }
         private void OnDrawGizmosSelected()
         {

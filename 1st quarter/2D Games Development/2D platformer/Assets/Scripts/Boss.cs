@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System;
 using UnityEngine;
+using Game.Audio;
 
 namespace Game.Controllers
 {
@@ -13,6 +14,8 @@ namespace Game.Controllers
         /// Текущая фаза босса
         /// </summary>
         private BossState _currentSate = BossState.Sleeping;
+        public BossState State => _currentSate;
+
         /// <summary>
         /// Ссылка на тригер, активирующий босса
         /// </summary>
@@ -55,7 +58,7 @@ namespace Game.Controllers
         /// <summary>
         /// Босс приземлился
         /// </summary>
-        public event Action Grounded;
+        public event Action<GameObject> Grounded;
         /// <summary>
         /// Начальая позиция босса
         /// </summary>
@@ -114,11 +117,21 @@ namespace Game.Controllers
         /// </summary>
         [Range(0, 50)]
         public float JumpForce;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        [SerializeField]
+        private SoundComponent _stepsSound;
+        /// <summary>
+        /// 
+        /// </summary>
+        [SerializeField]
+        private SoundComponent _GroundedSound;
         protected override void Start()
         {
             base.Start();
             _cam = FindObjectOfType<CameraController>();
+           
             _activasionTrigger.OnEnter += ActivateBoss;
             _hp.OnHpChange += ChangeStateBecauseHP;
             _startPos = transform.position;
@@ -126,14 +139,17 @@ namespace Game.Controllers
 
 
         }
-        private void Update()
+        private void FixedUpdate()
         {
+            print(_currentSate);
             if (_currentSate != BossState.Sleeping)
             {
                 MainActions();
             }
-
         }
+        
+        [SerializeField]
+        private float _activateTime;
         /// <summary>
         /// Запускает алгоритм активации босса
         /// </summary>
@@ -141,8 +157,11 @@ namespace Game.Controllers
         IEnumerator Activate()
         {
             _movementController.LookAtTarget(_target.transform);
-            yield return new WaitForSeconds(1);
+            GlobalGameManager.Instance.ChangeState(GameStates.GameBoss);
+            yield return new WaitForSeconds(_activateTime);
+            _wall.SetActive(false);
             _currentSate = BossState.One;
+            
         }
         /// <summary>
         /// Активирует босса
@@ -232,7 +251,7 @@ namespace Game.Controllers
 
                 _canJump = true;
                 _actionChoosed = false;
-                _cam?.ShakeCam(gameObject);
+                _cam.ShakeCam(gameObject);
 
             }
         }
@@ -307,10 +326,9 @@ namespace Game.Controllers
             if (collision.transform.CompareTag("Ground"))
             {
                 _grounded = true;
-                if (_currentSate == BossState.Two || _currentSate == BossState.Three)
-                {
-                    Grounded?.Invoke();
-                }               
+                _GroundedSound.Play("FX_RobotGrounded");
+                Grounded?.Invoke(gameObject);
+                              
             }
         }
         private void OnCollisionExit2D(Collision2D collision)
@@ -320,6 +338,8 @@ namespace Game.Controllers
                 _grounded = false;
             }
         }
+        [SerializeField]
+        protected GameObject _wall;
         /// <summary>
         /// Возвращает босса в стартовое положение
         /// </summary>
@@ -330,7 +350,13 @@ namespace Game.Controllers
             transform.position = _startPos;
             _movementController.Stop();
             _animator.SetTrigger("Idle");
+            _wall.SetActive(true); 
         }
+        public void PlaySteps()
+        {
+            _stepsSound.PlayRandomSound();
+        }
+       
         
     }
 }

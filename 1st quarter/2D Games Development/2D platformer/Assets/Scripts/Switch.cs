@@ -19,10 +19,19 @@ namespace Game
         {            
             trigger = GetComponentInChildren<Trigger>();
             anim = GetComponentInChildren<Animator>();
+            trigger.OnInteract += OnInteract;
         }
         void OnInteract(TriggerEventArgs e)
         {
-            anim.SetBool("On", e.boolMeta);
+            if (e.Sender.IsInteractble)
+            {
+                e.boolMeta = !e.boolMeta;
+                _sound.Play("FX_Switch");
+                anim.SetBool("On", e.boolMeta);
+                
+            }
+            
+           
         }
 
     }

@@ -48,10 +48,13 @@ namespace Game
         /// <summary>
         /// Может ли оружие стрелять
         /// </summary>
+        
+        
         public bool CanFire
         {
             get => (DateTime.Now - _lastShotTime).Milliseconds > _fireSpeed*1000;
         }
+        
         protected virtual void Start()
         {
             _lastShotTime = DateTime.Now;//.AddMilliseconds(-_fireSpeed*1000);
@@ -73,6 +76,7 @@ namespace Game
                 proj.Speed = _ammoSpeed;
                 proj.Damage = _damage;
                 proj.Dir = dir;
+                
                 
             }
         }

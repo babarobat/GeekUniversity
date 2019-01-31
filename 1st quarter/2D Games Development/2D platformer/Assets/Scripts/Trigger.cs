@@ -27,13 +27,13 @@ namespace Game
         public event Action<TriggerEventArgs> OnInteract;
 
 
-        Animator _animator;
+        //Animator _animator;
         
         private void Start()
         {
             _args.Sender = this;
             GetComponent<Collider2D>().isTrigger = true;
-            _animator = GetComponentInChildren<Animator>();
+            //_animator = GetComponentInChildren<Animator>();
             if (_activateAfterPlayerDead)
             {
                 FindObjectOfType<PlayerController>().OnPlayerDead += Activate;
@@ -64,16 +64,14 @@ namespace Game
                 if (Controllers.InputController.Instance.ControlParams.Interacting)    
                 {
                     OnInteract?.Invoke(_args);
-                    if (IsInteractble)
-                    {
-                        _args.boolMeta = !_args.boolMeta;
-                        _animator?.SetBool("On", _args.boolMeta);
-                    }
+                    //if (IsInteractble)
+                    //{
+                    //    //_args.boolMeta = !_args.boolMeta;
+                    //    //_animator?.SetBool("On", _args.boolMeta);
+                    //}
                     if (_disableAfterInterract)
                     {
                         Deactivate();
-
-
                     }
                 }
             }

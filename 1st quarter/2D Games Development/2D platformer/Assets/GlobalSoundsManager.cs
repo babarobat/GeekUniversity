@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
-using Game.Controllers;
-using UnityEngine.UI;
 using Game.Audio;
 namespace Game
 {
@@ -58,6 +55,7 @@ namespace Game
                 case GameStates.GameFight:
                     break;
                 case GameStates.GameBoss:
+                    PlayTheme("Music_BossFight");
                     break;
                 case GameStates.Death:
                     break;

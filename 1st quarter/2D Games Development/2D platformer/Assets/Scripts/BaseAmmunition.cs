@@ -35,10 +35,12 @@ namespace Game
         /// Направление движения снаряда
         /// </summary>
         public Vector2 Dir;
-
+        
         protected void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
+            
+            
             _rb.velocity = Dir * Speed;
             Destroy(gameObject, lifeTime);
             
@@ -53,7 +55,6 @@ namespace Game
                 Destroy(temp, 2);
             }
             Destroy(gameObject);
-
         }
         
 

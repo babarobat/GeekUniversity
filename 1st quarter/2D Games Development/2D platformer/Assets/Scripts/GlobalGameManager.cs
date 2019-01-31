@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game
@@ -16,9 +12,8 @@ namespace Game
             get => _currentGameState;
             set
             {
-                
                 _currentGameState = value;
-                OnStateChange?.Invoke(this._currentGameState);
+                OnStateChange?.Invoke(_currentGameState);
             }
             
         }
@@ -26,7 +21,7 @@ namespace Game
         private void Start()
         {
             
-            OnStateChange?.Invoke(this._currentGameState);
+            OnStateChange?.Invoke(_currentGameState);
         }
         public void ChangeState(GameStates s)
         {

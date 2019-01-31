@@ -69,7 +69,8 @@ namespace Game
         /// <summary>
         /// Расстояние, на котором будет проигрываться анимация шейккам
         /// </summary>
-        private const float maxDistanceToShakeCam = 10;
+        [SerializeField]
+        private float maxDistanceToShakeCam;
         /// <summary>
         /// Время, которое камера показывает обьект
         /// </summary>
