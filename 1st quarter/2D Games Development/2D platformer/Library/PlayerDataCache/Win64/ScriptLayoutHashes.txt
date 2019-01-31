@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-D:/Builds/2DPlatformer/20190128/2D platformer.exe
+D:/Builds/3/2D platformer.exe
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/Game.unity
@@ -24,8 +24,9 @@ c7dd12c15208b0447e101f80038706df UnityEngine.Timeline.dll:UnityEngine.Timeline.A
 eb60814524cb109259958d22a3572a7d Assembly-CSharp.dll:Game.Wave
 f6637497451c9a030c421de4a1ad5cdb Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 b64bdaa71247ea75bd7ad276c4c7a3fa Assembly-CSharp.dll:Game.GlobalGameManager
+793cdef7339a13d0a0644a2ad566f1c1 Assembly-CSharp.dll:Game.MapScroller
 b14b4630cc47b6e9ea8a644551a6a8cc Unity.TextMeshPro.dll:TMPro.TMP_Text
-f6d2c09aa5fa39b11a72b4dcf743518c Assembly-CSharp.dll:Game.Controllers.Boss
+e674fdb36a80e89875d1d767b8b0e762 Assembly-CSharp.dll:Game.Controllers.Boss
 53cefe5d98cadefbab750835e70b89c0 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 486cd95c82d8305219c352c06b776e1f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 da2091a04d360891450faf16cdf621f1 UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -134,7 +135,7 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 96f3ea9f23b6f08e60710ebb4af49174 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 8f6fe0b00351b119c03edeb31085c512 Assembly-CSharp.dll:Game.Controllers.ExplosionController
 114c6e0283660406e5cdb634a8a6d834 Assembly-CSharp.dll:Game.Lift
-7e6994af7189b135aa68f4617eabbc73 Assembly-CSharp.dll:Game.CameraController
+9baf4870a8101e6955a11c103098a3af Assembly-CSharp.dll:Game.CameraController
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 eb60814524cb109259958d22a3572a7d Assembly-CSharp.dll:Game.FireBall
 486cd95c82d8305219c352c06b776e1f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
@@ -160,10 +161,10 @@ da21fc3f8056b1f91c3dd09c7bf4f90a UnityEngine.Networking.dll:UnityEngine.Networki
 fc061f3ae8a876c0687e86378d4a447c UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 7ca56e063bd071986fff4f513cc4f477 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 72a8523b432c0a5317826b7a9e0a0e79 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
-e929f60c9582f753ba8d87946fb1d88e Assembly-CSharp.dll:Game.ToolTipMessage
+d83e6328621f189d1d673c25f5f38aa8 Assembly-CSharp.dll:Game.ToolTipMessage
 e53cc67d84060d628c7f03fc725766d8 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 392c5b921098bd4c139d9146d0efa6d7 Unity.TextMeshPro.dll:TMPro.TMP_Settings
-aadd9959580a6345a0b111cdd2c550b2 Assembly-CSharp.dll:Game.LoadManager
+a8bdf581474d48d0b800a78b5d252327 Assembly-CSharp.dll:Game.LoadManager
 486cd95c82d8305219c352c06b776e1f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 e033f131358cea5a0eabf9561e781deb UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 9d863b523b577f5c3d915351a74cd338 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender

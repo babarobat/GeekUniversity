@@ -13,8 +13,8 @@ namespace Game.Controllers
         /// <summary>
         /// Текущая фаза босса
         /// </summary>
-        private BossState _currentSate = BossState.Sleeping;
-        public BossState State => _currentSate;
+        private BossState _currentState = BossState.Sleeping;
+        public BossState State => _currentState;
 
         /// <summary>
         /// Ссылка на тригер, активирующий босса
@@ -122,6 +122,8 @@ namespace Game.Controllers
         /// </summary>
         [SerializeField]
         private SoundComponent _stepsSound;
+        [SerializeField]
+        private SoundComponent _movementSound;
         /// <summary>
         /// 
         /// </summary>
@@ -136,13 +138,13 @@ namespace Game.Controllers
             _hp.OnHpChange += ChangeStateBecauseHP;
             _startPos = transform.position;
             _target.OnPlayerDead += ResetBoss;
-
+            OnBossDead += FindObjectOfType<LoadManager>().EndGame;
 
         }
         private void FixedUpdate()
         {
-            print(_currentSate);
-            if (_currentSate != BossState.Sleeping)
+            print(_currentState);
+            if (_currentState != BossState.Sleeping)
             {
                 MainActions();
             }
@@ -160,7 +162,7 @@ namespace Game.Controllers
             GlobalGameManager.Instance.ChangeState(GameStates.GameBoss);
             yield return new WaitForSeconds(_activateTime);
             _wall.SetActive(false);
-            _currentSate = BossState.One;
+            _currentState = BossState.One;
             
         }
         /// <summary>
@@ -177,7 +179,18 @@ namespace Game.Controllers
         /// <param name="value"></param>
         void ChangeStateBecauseHP(int value)
         {
-            _currentSate = value > (_hp.StartHp / 3) * 2 ? BossState.One : value > (_hp.StartHp / 3) ? BossState.Two : BossState.Three;
+            if (value < _hp.StartHp*2 / 3 && _currentState == BossState.One)
+            {
+                StartCoroutine(ChangeState(4));
+            }
+            if (value < _hp.StartHp * 1 / 3 && _currentState == BossState.Two)
+            {
+                StartCoroutine(ChangeState(4));
+            }
+
+            //}
+
+            //_currentSate = value > (_hp.StartHp / 3) * 2 ? BossState.One : value > (_hp.StartHp / 3) ? BossState.Two : BossState.Three;
         }
 
         
@@ -192,12 +205,14 @@ namespace Game.Controllers
                 _movePointX = _target.transform.position.x < transform.position.x ? transform.position.x - dirX :
                                                                                     transform.position.x + dirX;
                 _movePointX = Mathf.Clamp((float)_movePointX, minPosX, maxPosX);
+                
                 _animator.SetTrigger("Move");
             }
             else
             {
                 if (Mathf.Abs((float)_movePointX - transform.position.x) > 1f)
                 {
+                   
                     var movePos = new Vector2((float)_movePointX, transform.position.y);
                     _movementController.MoveToTarget(movePos, _speed * Time.deltaTime, _target.transform);
                 }
@@ -218,7 +233,7 @@ namespace Game.Controllers
             if (_canJump)
             {
                 _animator.SetTrigger("Jump");
-                switch (_currentSate)
+                switch (_currentState)
                 {
                     case BossState.One:
                         _movementController.Jump(JumpForce);
@@ -304,7 +319,9 @@ namespace Game.Controllers
             {
                 case 1:
 
+                    
                     Move();
+
                     break;
                 case 2:
                     Jump();
@@ -343,20 +360,58 @@ namespace Game.Controllers
         /// <summary>
         /// Возвращает босса в стартовое положение
         /// </summary>
-        private void ResetBoss()
+        public void ResetBoss()
         {
+            StopAllCoroutines();
+            GlobalGameManager.Instance.CurrentState = GameStates.GameNormal;
             _hp.ResetParams();
-            _currentSate = BossState.Sleeping;
+            _currentState = BossState.Sleeping;
             transform.position = _startPos;
             _movementController.Stop();
             _animator.SetTrigger("Idle");
-            _wall.SetActive(true); 
+            _wall.transform.position = transform.position;
+            _wall.SetActive(true);
+            _grounded = true;
         }
         public void PlaySteps()
         {
             _stepsSound.PlayRandomSound();
         }
-       
-        
+        public void PlayMove()
+        {
+            _movementSound.PlayRandomSound();
+        }
+        IEnumerator ChangeState( float time)
+        {
+            _wall.transform.position = transform.position;
+            _wall.SetActive(true);
+            _animator.SetTrigger("Idle");
+            _movePointX = null;
+            BossState previousState = _currentState;
+            _currentState = BossState.Sleeping;
+            
+           yield return new WaitForSeconds(time);
+            _wall.SetActive(false);
+            switch (previousState)
+            {
+                
+                case BossState.One:
+                    _currentState = BossState.Two;   
+                    break;
+                case BossState.Two:
+                    _currentState = BossState.Three;
+                    break;
+                
+            }
+
+        }
+        public Action OnBossDead;
+        protected override void Dead()
+        {
+            base.Dead();
+            OnBossDead?.Invoke();
+        }
+
+
     }
 }

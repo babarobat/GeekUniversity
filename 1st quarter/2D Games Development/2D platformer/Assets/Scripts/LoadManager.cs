@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +14,8 @@ namespace Game
         Trigger[] _checkPoints;
         [SerializeField]
         Vector2 _loadPos;
+        [SerializeField]
+        Transform BossPoint;
         
         PlayerController _player;
 
@@ -48,6 +50,13 @@ namespace Game
 
 
         }
+        public void LoadNearBoss()
+        {
+            
+            _loadPos = BossPoint.position;
+            LoadFromChekPoint();
+
+        }
         public void LoadFromChekPoint()
         {
 
@@ -59,9 +68,20 @@ namespace Game
         }
         public void LoadScene(int sceneIndex)
         {
+            GlobalGameManager.Instance.ChangeState(GameStates.GameNormal);
             SceneManager.LoadScene(sceneIndex);
         }
-        
+        IEnumerator EndGameCor()
+        {
+            yield return new WaitForSeconds(6);
+            LoadScene(0);
+        }
+        public GameObject FadePannel;
+        public void EndGame()
+        {
+            FadePannel.SetActive(true);
+            StartCoroutine(EndGameCor());
+        }
         
     }
 }
