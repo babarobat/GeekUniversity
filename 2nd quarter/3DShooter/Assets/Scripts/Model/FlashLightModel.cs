@@ -33,12 +33,12 @@ namespace Game
             _light.enabled = value;
             if (!value) return;
             Transform.position = _follow.position + _offset;
-            Transform.rotation = _follow.rotation;
+            Transform.rotation = _follow.localRotation;
         }
         public void Rotate()
         {
             if (!_light) return;
-            print(_follow.position);
+            
             Transform.position = _follow.position + _offset;
             Transform.rotation = Quaternion.Lerp(transform.rotation, _follow.rotation, _moveSpeed * Time.deltaTime);
         }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game
@@ -17,10 +13,9 @@ namespace Game
         [Range (0,100)][SerializeField] private float _selectionDistance;
         private Camera _cam;
         private RaycastHit hit;
-        private ISelectable _selectedObj;
         private DateTime _lastSelectionTime;
+        ISelectable _selectedObj;
         
-
         protected override void Awake()
         {
             base.Awake();
@@ -28,20 +23,31 @@ namespace Game
             hit = new RaycastHit();
             _cam = FindObjectOfType<Camera>();
         }
-        public bool CanSelect => (DateTime.Now - _lastSelectionTime).Milliseconds > _selectionInterval * 1000;
+        private bool CanSelect => (DateTime.Now - _lastSelectionTime).Milliseconds > _selectionInterval * 1000;
             
         
         public ISelectable GetSelectedObj()
         {
-            if (Physics.Raycast(_rayStartpoint.position, Vector3.forward,out hit, _selectionDistance, _selectableLayer))
+            if (CanSelect)
             {
-                return hit.transform.GetComponent<ISelectable>();
+                if (Physics.Raycast(_rayStartpoint.position, transform.TransformDirection(Vector3.forward * _selectionDistance), out hit, _selectionDistance, _selectableLayer))
+                {
+
+                    _selectedObj?.OnSelectionChange();
+                    _selectedObj = hit.transform.GetComponent<ISelectable>();
+                    _selectedObj?.OnSelected();
+                    return _selectedObj;
+                }
+                else
+                {
+                    _selectedObj?.OnSelectionChange();
+                }              
             }
             return null;
         }
         private void OnDrawGizmosSelected()
         {
-            
+            Gizmos.DrawRay(_rayStartpoint.position, transform.TransformDirection( Vector3.forward* _selectionDistance));
         }
     }
 }

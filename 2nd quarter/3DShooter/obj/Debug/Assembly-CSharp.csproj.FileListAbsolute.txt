@@ -1,0 +1,2 @@
+D:\Git\GeekUniversity\2nd quarter\3DShooter\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+D:\Git\GeekUniversity\2nd quarter\3DShooter\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

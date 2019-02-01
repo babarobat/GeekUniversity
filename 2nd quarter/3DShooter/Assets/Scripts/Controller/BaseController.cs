@@ -1,6 +1,4 @@
-﻿
-
-namespace Game
+﻿namespace Game
 {
     public abstract class BaseController
     {

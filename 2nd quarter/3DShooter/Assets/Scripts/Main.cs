@@ -13,14 +13,19 @@ namespace Game
         private BaseController[] _controllers;
         protected override void Awake()
         {
+
             base.Awake();
+            //тест
+            Cursor.visible = false;
+
             GetInputController = new InputController();
             GetInputController.On();
             GetFlashLightController = new FlashLightController();
-            GetPlayerController = new PlayerController(new UnitMotor(FindObjectOfType<CharacterController>().transform));
+            GetPlayerController = new PlayerController();
             GetPlayerController.On();
             GetSelectionController = new SelectionController();
             GetSelectionController.On();
+
             _controllers = new BaseController[4];
             _controllers[0] = GetInputController;
             _controllers[1] = GetFlashLightController;

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public interface  ISelectable
+    public interface ISelectable
     {
         SelectableItemInfo Info { get; }
-         void OnSelected();
+        void OnSelected();
+        void OnSelectionChange();
+
     }
 }

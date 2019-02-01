@@ -11,7 +11,7 @@ namespace Game
     {
         public void ShowSelectedInfo(SelectableItemInfo info)
         {
-            print(info.Info);
+            print( $"selected item info: {info.Info}");
         }
     }
 }
