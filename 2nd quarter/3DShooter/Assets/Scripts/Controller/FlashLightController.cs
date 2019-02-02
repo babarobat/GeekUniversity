@@ -2,9 +2,18 @@
 
 namespace Game
 {
+    /// <summary>
+    /// Управление фонарем
+    /// </summary>
     class FlashLightController : BaseController
     {
+        /// <summary>
+        /// Параметры фонаря
+        /// </summary>
         private FlashLightModel _flashLightModel;
+        /// <summary>
+        /// Отображение параметров фонаря
+        /// </summary>
         private FlashLightView _flashLightView;
         public FlashLightController()
         {
@@ -13,7 +22,9 @@ namespace Game
             Main.Instance.GetInputController.FPressed += Switch;
             
         }
-        
+        /// <summary>
+        /// Выключение фонаря
+        /// </summary>
         public override void Off()
         {
 
@@ -22,7 +33,9 @@ namespace Game
             _flashLightModel?.Switch(false);
             
         }
-
+        /// <summary>
+        /// Включение фонаря
+        /// </summary>
         public override void On()
         {
             if (IsActive ) return;
@@ -31,7 +44,7 @@ namespace Game
             _flashLightModel?.Switch(true);
             
         }
-
+        
         public override void OnUpdate()
         {
             

@@ -7,11 +7,15 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Логика отображения информации о выделенном обьекте
+    /// </summary>
     class SelectionView:MonoBehaviour
     {
         public void ShowSelectedInfo(SelectableItemInfo info)
         {
             print( $"selected item info: {info.Info}");
         }
+
     }
 }

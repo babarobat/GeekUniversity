@@ -7,14 +7,33 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Контроллер для системы выбора обьектов игроком
+    /// </summary>
     class SelectionController : BaseController
     {
+        /// <summary>
+        /// Ссылка на модель системы выбора
+        /// </summary>
         private SelectionModel _selectionModel;
-        private SelectionView selectionView;
+        /// <summary>
+        /// Ссылка на отображене сисетмы выбора
+        /// </summary>
+        private SelectionView _selectionView;
+
+        /// <summary>
+        /// текущий выбранный предмет
+        /// </summary>
+        ISelectable _selectedObj;
+        /// <summary>
+        /// текущий выбранный предмет
+        /// </summary>
+        ISelectable SelectedObj =>_selectedObj;
+        
         public SelectionController()
         {
             _selectionModel = MonoBehaviour.FindObjectOfType<SelectionModel>();
-            selectionView = MonoBehaviour.FindObjectOfType<SelectionView>();
+            _selectionView = MonoBehaviour.FindObjectOfType<SelectionView>();
             Main.Instance.GetInputController.LMousePressed += Select;
         }
         public override void OnUpdate()
@@ -22,15 +41,22 @@ namespace Game
             if (!IsActive) return;
             
         }
+        /// <summary>
+        /// Получает выбранный предмет и отдает информацию о нем для отображения в _selectionView
+        /// </summary>
         void Select()
         {
             if (!IsActive) return;
             var selected = _selectionModel.GetSelectedObj();
-            if (selected!=null)
-            {
-                selectionView.ShowSelectedInfo(selected.Info);
-            }
+            if (selected != null && selected.Equals(_selectedObj)) return;
+            _selectedObj?.OnSelectionChange();
             
+            _selectedObj = selected;
+            if (selected == null) return;
+            _selectedObj?.OnSelected();
+            _selectionView.ShowSelectedInfo(selected.Info);
+
+
         }
 
     }

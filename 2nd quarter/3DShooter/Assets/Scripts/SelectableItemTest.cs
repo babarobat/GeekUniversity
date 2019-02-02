@@ -7,6 +7,10 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// ПРИМЕР. Не является частью программы. Реализует интерфейс Iselectable.
+    /// Для того что бы обьект мог быть выбран, на нем должен стоять соответсвующий слой.
+    /// </summary>
     class SelectableItemTest : BaseObjectScene, ISelectable
     {
         [SerializeField]
@@ -18,6 +22,7 @@ namespace Game
         protected override void Awake()
         {
             base.Awake();
+            Layer = 11;
             Renderer = GetComponent<Renderer>();
             _normalColor = Renderer.material.color;
         }
