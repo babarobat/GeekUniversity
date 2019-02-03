@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-D:/Builds/3/2D platformer.exe
+C:/Users/Koten/Documents/Builds/2DPlatformer/2D platformer.exe
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/Game.unity
@@ -204,3 +204,5 @@ e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 a7b3ef862f208e05dc977a65a22f80e4 Assembly-CSharp.dll:Game.Audio.SoundComponent
 0e01403525638397a9edbc0995b4e867 Assembly-CSharp.dll:Game.Controllers.WeaponController
 cf5906dfb0300e4d488c2f8bc4335ba7 Assembly-CSharp.dll:Game.UI.UIHealthController
+ddcae71b3f91386237efd012a9eef2be UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
+486cd95c82d8305219c352c06b776e1f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.TestResultRendererCallback
