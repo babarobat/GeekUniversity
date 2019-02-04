@@ -10,6 +10,7 @@ namespace Game
         /// Ссылка на контроллер пользовательского ввода
         /// </summary>
         public InputController GetInputController { get; private set; }
+        //public InputController GetInputController { get; private set; }
         /// <summary>
         /// Ссылка на контроллер фонарика
         /// </summary>

@@ -12,6 +12,10 @@ namespace Game
         /// </summary>
         private KeyCode _codeFlashLight = KeyCode.F;
         /// <summary>
+        /// Кнопка взаимодействия
+        /// </summary>
+        private KeyCode _interract = KeyCode.E;
+        /// <summary>
         /// Левая кнопка мыши. 1 - нажата, 0 - нет
         /// </summary>
         private int _leftMouseButton = 0;
@@ -34,26 +38,34 @@ namespace Game
         /// <summary>
         /// Событие нажатия на кнопку F
         /// </summary>
-        public event Action FPressed;
+        public event Action OnFPressed;
         /// <summary>
         /// Событие нажатия на ЛКМ
         /// </summary>
-        public event Action LMousePressed;
+        public event Action OnLeftMousePressed;
+        /// <summary>
+        /// Событие нажатия на ЛКМ
+        /// </summary>
+        public event Action OnEPressed;
 
 
-        public override void OnUpdate()
+        public override  void OnUpdate()
         {
             if (!IsActive) return;
             if (Input.GetKeyDown(_codeFlashLight))
             {
-                FPressed?.Invoke();
+                OnFPressed?.Invoke();
             }
             if (Input.GetMouseButtonDown(_leftMouseButton))
             {
-                LMousePressed?.Invoke();
+                OnLeftMousePressed?.Invoke();
+            }
+            if (Input.GetKeyDown(_interract))
+            {
+                OnEPressed?.Invoke();
             }
             Horizontal = Input.GetAxisRaw("Horizontal");
-            Vertical = Input.GetAxisRaw("Horizontal");
+            Vertical = Input.GetAxisRaw("Vertical");
             MouseX = Input.GetAxis("Mouse X");
             MouseY = Input.GetAxis("Mouse Y");
         }

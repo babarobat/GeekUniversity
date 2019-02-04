@@ -29,7 +29,7 @@ namespace Game
             {
                 if (value < 0||value>31)
                 {
-                    throw new System.Exception($"попатка присвоить обьъекту {name} недопустимое значение слоя");
+                    throw new System.Exception($"попатка присвоить объекту {name} недопустимое значение слоя");
                 }
                 else
                 {
@@ -57,6 +57,7 @@ namespace Game
             Transform = transform;
             Rigidbody = GetComponent<Rigidbody>();
         }
+        
 
     }
 }

@@ -19,7 +19,7 @@ namespace Game
         {
             _flashLightModel = MonoBehaviour.FindObjectOfType<FlashLightModel>();
             _flashLightView = MonoBehaviour.FindObjectOfType<FlashLightView>();
-            Main.Instance.GetInputController.FPressed += Switch;
+            Main.Instance.GetInputController.OnFPressed += Switch;
             
         }
         /// <summary>

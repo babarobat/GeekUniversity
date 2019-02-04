@@ -25,8 +25,8 @@ namespace Game
         {
             get
             {
-                _rotationVector.x = -_input.MouseY;
-                _rotationVector.y = _input.MouseX;
+                _rotationVector.x = _input.MouseX;
+                _rotationVector.y = _input.MouseY;
                 return _rotationVector;
             }
         }
@@ -41,7 +41,9 @@ namespace Game
 		public override void OnUpdate()
 		{
 			if (!IsActive) return;
-            _playerModel.RotateInTwoVectors(RotationVector);
+            _playerModel.Rotate(RotationVector);
+            
+            _playerModel.Move(_input.Horizontal, _input.Vertical);
 
         }
        

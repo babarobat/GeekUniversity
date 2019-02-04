@@ -34,12 +34,7 @@ namespace Game
         {
             _selectionModel = MonoBehaviour.FindObjectOfType<SelectionModel>();
             _selectionView = MonoBehaviour.FindObjectOfType<SelectionView>();
-            Main.Instance.GetInputController.LMousePressed += Select;
-        }
-        public override void OnUpdate()
-        {
-            if (!IsActive) return;
-            
+            Main.Instance.GetInputController.OnEPressed += Select;
         }
         /// <summary>
         /// Получает выбранный предмет и отдает информацию о нем для отображения в _selectionView
@@ -55,8 +50,11 @@ namespace Game
             if (selected == null) return;
             _selectedObj?.OnSelected();
             _selectionView.ShowSelectedInfo(selected.Info);
-
-
+        }
+        public override void OnUpdate()
+        {
+            if (!IsActive) return;
+            
         }
 
     }

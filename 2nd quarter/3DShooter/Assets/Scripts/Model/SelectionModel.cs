@@ -23,6 +23,7 @@ namespace Game
         /// <summary>
         /// Ссылка на камеру
         /// </summary>
+        
         private Camera _cam;
         /// <summary>
         /// Информация об обьекте, в который попал луч
@@ -55,16 +56,13 @@ namespace Game
         {
             if (CanSelect)
             {
-                if (Physics.Raycast(_cam.transform.position, transform.TransformDirection(Vector3.forward * _selectionDistance), out hit, _selectionDistance, _selectableLayer))
+                if (Physics.Raycast(_cam.transform.position, _cam.transform.TransformDirection(Vector3.forward * _selectionDistance), out hit, _selectionDistance, _selectableLayer))
                 {
                     return hit.transform.GetComponent<ISelectable>();
                 }
             }
             return null;
         }
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.DrawRay(_cam.transform.position, transform.TransformDirection( Vector3.forward* _selectionDistance));
-        }
+        
     }
 }
