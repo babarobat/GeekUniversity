@@ -4,8 +4,8 @@ namespace Game
     /// <summary>
     /// Определяет управление игроком
     /// </summary>
-	public class PlayerController : BaseController
-	{
+	public class PlayerController : BaseController, IUpdate
+    {
         /// <summary>
         /// Текущий поворот по X
         /// </summary>
@@ -69,7 +69,7 @@ namespace Game
             _strafeMovement = new Vector3();
         }
 
-		public override void OnUpdate()
+		public void OnUpdate()
 		{
 			if (!IsActive) return;
             Rotate(RotationVector);

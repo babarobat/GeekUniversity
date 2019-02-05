@@ -61,10 +61,7 @@ namespace Game
             _selectedObj?.OnSelected();
             _selectionView.ShowSelectedInfo(selected.Info);
         }
-        public override void OnUpdate()
-        {
-            if (!IsActive) return;            
-        }
+        
         /// <summary>
         /// Выбранный обьект
         /// </summary>

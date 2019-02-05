@@ -6,6 +6,6 @@
     public interface IUpdate
     {
         void OnUpdate();
-        void FixedUpdate();
+        
     }
 }

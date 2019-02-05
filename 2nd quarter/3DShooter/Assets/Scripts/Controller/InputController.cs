@@ -5,7 +5,7 @@ namespace Game
     /// <summary>
     /// Параметры пользовательского ввода
     /// </summary>
-    public class InputController : BaseController
+    public class InputController : BaseController,IUpdate
     {
         /// <summary>
         /// Кнопка активации или деактивации фонарика
@@ -49,7 +49,7 @@ namespace Game
         public event Action OnEPressed;
 
 
-        public override  void OnUpdate()
+        public void OnUpdate()
         {
             if (!IsActive) return;
             if (Input.GetKeyDown(_codeFlashLight))

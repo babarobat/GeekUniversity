@@ -5,7 +5,7 @@ namespace Game
     /// <summary>
     /// Управление фонарем
     /// </summary>
-    class FlashLightController : BaseController
+    class FlashLightController : BaseController, IUpdate
     {
         /// <summary>
         /// Трансформ, за которым слудует фонарь
@@ -53,7 +53,7 @@ namespace Game
             
         }
         
-        public override void OnUpdate()
+        public void OnUpdate()
         {
             
             if (_flashLightModel == null) return;

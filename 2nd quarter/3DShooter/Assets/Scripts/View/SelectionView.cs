@@ -16,6 +16,5 @@ namespace Game
         {
             print( $"selected item info: {info.Info}");
         }
-
     }
 }

@@ -46,6 +46,6 @@
                 On();
             }
         }
-        public abstract void OnUpdate();
+        
     }
 }

@@ -27,7 +27,7 @@ namespace Game
         /// <summary>
         /// Список всех котроллеров
         /// </summary>
-        private BaseController[] _controllers;
+        private IUpdate[] _controllers;
         protected override void Awake()
         {
 
@@ -43,11 +43,11 @@ namespace Game
             GetSelectionController = new SelectionController();
             GetSelectionController.On();
 
-            _controllers = new BaseController[4];
+            _controllers = new IUpdate[3];
             _controllers[0] = GetInputController;
             _controllers[1] = GetFlashLightController;
             _controllers[2] = GetPlayerController;
-            _controllers[3] = GetSelectionController;
+            
 
 
         }
