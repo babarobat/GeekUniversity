@@ -29,11 +29,21 @@ namespace Game
         /// текущий выбранный предмет
         /// </summary>
         ISelectable SelectedObj =>_selectedObj;
-        
+        /// <summary>
+        /// Ссылка на камеру
+        /// </summary>
+        private Camera _cam;
+        /// <summary>
+        /// Информация об обьекте, в который попал луч
+        /// </summary>
+        private RaycastHit hit;
         public SelectionController()
         {
             _selectionModel = MonoBehaviour.FindObjectOfType<SelectionModel>();
             _selectionView = MonoBehaviour.FindObjectOfType<SelectionView>();
+            _cam = MonoBehaviour.FindObjectOfType<Camera>();
+            hit = new RaycastHit();
+            
             Main.Instance.GetInputController.OnEPressed += Select;
         }
         /// <summary>
@@ -42,7 +52,7 @@ namespace Game
         void Select()
         {
             if (!IsActive) return;
-            var selected = _selectionModel.GetSelectedObj();
+            var selected = GetSelectedObj();
             if (selected != null && selected.Equals(_selectedObj)) return;
             _selectedObj?.OnSelectionChange();
             
@@ -53,8 +63,26 @@ namespace Game
         }
         public override void OnUpdate()
         {
-            if (!IsActive) return;
-            
+            if (!IsActive) return;            
+        }
+        /// <summary>
+        /// Выбранный обьект
+        /// </summary>
+        /// <returns></returns>
+        private ISelectable GetSelectedObj()
+        {
+            if (_selectionModel.CanSelect)
+            {
+                if (Physics.Raycast(_cam.transform.position,
+                                    _cam.transform.TransformDirection(Vector3.forward * _selectionModel.SelectionDistance),
+                                    out hit,
+                                    _selectionModel.SelectionDistance,
+                                    _selectionModel.SelectableLayer))
+                {
+                    return hit.transform.GetComponent<ISelectable>();
+                }
+            }
+            return null;
         }
 
     }

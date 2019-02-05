@@ -29,7 +29,7 @@ namespace Game
             {
                 if (value < 0||value>31)
                 {
-                    throw new System.Exception($"попатка присвоить объекту {name} недопустимое значение слоя");
+                    throw new System.Exception($"Попытка присвоить объекту {name} недопустимое значение слоя");
                 }
                 else
                 {
