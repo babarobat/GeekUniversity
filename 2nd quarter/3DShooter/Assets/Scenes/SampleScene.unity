@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.450193, g: 0.49778712, b: 0.56227106, a: 1}
+  m_IndirectSpecularColor: {r: 0.4501928, g: 0.49778646, b: 0.56226975, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -860,10 +860,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 489893483}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15, y: -0.49999994, z: 0.27}
+  m_LocalPosition: {x: 0.15, y: 0.21000004, z: 0.27}
   m_LocalScale: {x: 0.17, y: 0.37, z: 1.39}
   m_Children: []
-  m_Father: {fileID: 1447173879}
+  m_Father: {fileID: 1142546452}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &489893485
@@ -1570,8 +1570,6 @@ GameObject:
   - component: {fileID: 1142546452}
   - component: {fileID: 1142546451}
   - component: {fileID: 1142546450}
-  - component: {fileID: 1142546449}
-  - component: {fileID: 1142546448}
   - component: {fileID: 1142546453}
   m_Layer: 0
   m_Name: Player
@@ -1580,34 +1578,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &1142546448
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1142546447}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!136 &1142546449
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1142546447}
-  m_Material: {fileID: 13400000, guid: dd20563fc385ad34e8cd2920087c69f4, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1142546450
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1660,6 +1630,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 489893484}
   - {fileID: 1447173879}
   - {fileID: 1496578452}
   m_Father: {fileID: 0}
@@ -1673,14 +1644,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1142546447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f0f687cd2a2a1498e273ac9103d90e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ef858720b8f3164385a4756d794e3e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensivity: 98.5
-  _vertAxisMovementSpeed: 1600
-  _strafeSpeed: 1600
-  _maxVertAxisMoveentSpeed: 4
-  _maxStrafeSpeed: 4
+  _mouseSensivity: 147
+  _forwrdSpeed: 10
+  _strafeSpeed: 10
+  _jumpPower: 10
 --- !u!1 &1223121035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,10 +2004,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 489893484}
+  m_Children: []
   m_Father: {fileID: 1142546452}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &1447173880
 AudioListener:
@@ -2281,7 +2250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1142546452}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1496578453
 MonoBehaviour:

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Game.Interfaces;
 
 namespace Game
 {
@@ -22,12 +23,17 @@ namespace Game
         /// Отображение параметров фонаря
         /// </summary>
         private FlashLightView _flashLightView;
-        public FlashLightController()
+        /// <summary>
+        /// Параметры пользовательского ввода
+        /// </summary>
+        private IInput _input;
+        public FlashLightController(IInput input)
         {
             _follow = MonoBehaviour.FindObjectOfType<Camera>().transform;
             _flashLightModel = MonoBehaviour.FindObjectOfType<FlashLightModel>();
             _flashLightView = MonoBehaviour.FindObjectOfType<FlashLightView>();
-            Main.Instance.GetInputController.OnFPressed += Switch;
+            _input = input;
+            _input.OnFlashLight += Switch;
             
         }
         /// <summary>

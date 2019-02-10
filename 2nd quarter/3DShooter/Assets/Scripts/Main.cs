@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Game.Interfaces;
 namespace Game
 {
     /// <summary>
@@ -9,20 +10,20 @@ namespace Game
         /// <summary>
         /// Ссылка на контроллер пользовательского ввода
         /// </summary>
-        public InputController GetInputController { get; private set; }
+        public InputController InputController { get; private set; }
         //public InputController GetInputController { get; private set; }
         /// <summary>
         /// Ссылка на контроллер фонарика
         /// </summary>
-        public FlashLightController GetFlashLightController { get; private set; }
+        public FlashLightController FlashLightController { get; private set; }
         /// <summary>
         /// Ссылка на контроллер управления игроком
         /// </summary>
-        public PlayerController GetPlayerController { get; private set; }
+        public PlayerController PlayerController { get; private set; }
         /// <summary>
         /// Ссылка на контроллер выбора игроком обьектов на сцене
         /// </summary>
-        public SelectionController GetSelectionController { get; private set; }
+        public SelectionController SelectionController { get; private set; }
 
         /// <summary>
         /// Список всех котроллеров
@@ -35,18 +36,18 @@ namespace Game
             //тест
             Cursor.visible = false;
             //конец теста
-            GetInputController = new InputController();
-            GetInputController.On();
-            GetFlashLightController = new FlashLightController();
-            GetPlayerController = new PlayerController();
-            GetPlayerController.On();
-            GetSelectionController = new SelectionController();
-            GetSelectionController.On();
+            InputController = new InputController();
+            InputController.On();
+            FlashLightController = new FlashLightController(InputController);
+            PlayerController = InitPlayerController();
+            PlayerController.On();
+            SelectionController = new SelectionController(InputController);
+            SelectionController.On();
 
             _controllers = new IUpdate[3];
-            _controllers[0] = GetInputController;
-            _controllers[1] = GetFlashLightController;
-            _controllers[2] = GetPlayerController;
+            _controllers[0] = InputController;
+            _controllers[1] = FlashLightController;
+            _controllers[2] = PlayerController;
             
 
 
@@ -59,5 +60,13 @@ namespace Game
             }            
         }
 
+        private PlayerController InitPlayerController()
+        {
+            PlayerMoveModel playerMoveModel = FindObjectOfType<PlayerMoveModel>();
+            CharacterController charController = playerMoveModel.gameObject.AddComponent<CharacterController>();
+            Camera head = FindObjectOfType<Camera>();
+            IMove playerMovementController = new PlayerMoveController(charController, playerMoveModel, head, InputController);
+            return new PlayerController(playerMovementController);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Game
+﻿namespace Game.Interfaces
 {
     /// <summary>
     /// Поведение обьекта в апдейте

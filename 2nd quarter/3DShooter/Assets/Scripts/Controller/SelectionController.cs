@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Game.Interfaces;
 using UnityEngine;
 
 namespace Game
@@ -37,14 +33,16 @@ namespace Game
         /// Информация об обьекте, в который попал луч
         /// </summary>
         private RaycastHit hit;
-        public SelectionController()
+
+        private IInput _input;
+        public SelectionController(IInput input)
         {
             _selectionModel = MonoBehaviour.FindObjectOfType<SelectionModel>();
             _selectionView = MonoBehaviour.FindObjectOfType<SelectionView>();
             _cam = MonoBehaviour.FindObjectOfType<Camera>();
             hit = new RaycastHit();
-            
-            Main.Instance.GetInputController.OnEPressed += Select;
+            _input = input;
+            _input.OnEnterract += Select;
         }
         /// <summary>
         /// Получает выбранный предмет и отдает информацию о нем для отображения в _selectionView
