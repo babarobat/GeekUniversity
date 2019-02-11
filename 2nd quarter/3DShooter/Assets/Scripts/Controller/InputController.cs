@@ -60,5 +60,9 @@ namespace Game
         {
             return Input.GetKey(KeyCode.Space);
         }
+        public float GetScrollWheel()
+        {
+            return Input.GetAxis("Mouse ScrollWheel");
+        }
     }
 }

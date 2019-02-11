@@ -8,13 +8,15 @@ namespace Game
         [SerializeField]
         protected Transform _firePoint;
         [SerializeField]
+        protected float _reloadTime;
+        [SerializeField]
         protected float _fireRate;
         [SerializeField]
         protected float _damage;
         [SerializeField]
         protected int _maxClipCount;
         protected int _currentClipCount;
-        [SerializeField]
+       
         protected int _maxBulletsInClip;
         protected Clip _clip;
         protected bool _canFire;

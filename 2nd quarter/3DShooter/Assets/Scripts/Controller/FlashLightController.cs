@@ -12,9 +12,6 @@ namespace Game
         /// Трансформ, за которым слудует фонарь
         /// </summary>
         private Transform _follow;
-
-       
-
         /// <summary>
         /// Параметры фонаря
         /// </summary>

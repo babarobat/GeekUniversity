@@ -14,6 +14,8 @@ namespace Game.Interfaces
         
         float GetMosueY();
 
+        float GetScrollWheel();
+
         bool GetJump();
 
         event Action OnEnterract;

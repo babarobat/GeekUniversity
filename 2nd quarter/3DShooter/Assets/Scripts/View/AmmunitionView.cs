@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
     class AmmunitionView:MonoBehaviour
     {
-        public void ShowAmmo(AmmunitionInfo info)
+        [SerializeField]
+        private Text _clipBulletsCount;
+        public void SetClipBullets(int clips, int bullets)
         {
-            print(info);
+            _clipBulletsCount.text = $"{clips}/{bullets}";
         }
     }
 }

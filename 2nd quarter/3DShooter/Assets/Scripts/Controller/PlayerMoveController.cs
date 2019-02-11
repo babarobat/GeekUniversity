@@ -65,10 +65,11 @@ namespace Game
         }
 
         
-        public PlayerMoveController(CharacterController CharController, PlayerMoveModel model, Camera head, IInput input)
+        public PlayerMoveController( Camera head, IInput input)
         {
-            _characterController = CharController;
-            _playerMovementModel = model;
+            
+            _playerMovementModel = MonoBehaviour.FindObjectOfType<PlayerMoveModel>();
+            _characterController = _playerMovementModel.gameObject.AddComponent<CharacterController>();
             _head = head;
             _input = input;
             _moveDirection = new Vector3();

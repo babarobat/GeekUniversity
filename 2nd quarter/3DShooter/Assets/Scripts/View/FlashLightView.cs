@@ -21,7 +21,7 @@ namespace Game
         /// </summary>
         public float Text
         {
-            set => _text.text = $"{ value:0.0}";
+            set => _text.text = $"Charge:{ value:0.0}";
         }
         /// <summary>
         /// Выключает обьект, отображающий заряд фонарика

@@ -24,7 +24,10 @@ namespace Game
         /// Ссылка на контроллер выбора игроком обьектов на сцене
         /// </summary>
         public SelectionController SelectionController { get; private set; }
+
         public WeaponController WeaponController { get; private set; }
+
+        private Camera _mainCamera;
 
         /// <summary>
         /// Список всех котроллеров
@@ -32,7 +35,7 @@ namespace Game
         private IUpdate[] _controllers;
         protected override void Awake()
         {
-
+            _mainCamera = FindObjectOfType<Camera>();
             base.Awake();
             //тест
             Cursor.visible = false;
@@ -40,18 +43,19 @@ namespace Game
             InputController = new InputController();
             InputController.On();
             FlashLightController = new FlashLightController(InputController);
-            PlayerController = InitPlayerController();
+            PlayerController = new PlayerController(new PlayerMoveController(_mainCamera, InputController));
             PlayerController.On();
             SelectionController = new SelectionController(InputController);
             SelectionController.On();
-            WeaponController = new WeaponController(InputController, FindObjectOfType<ArsenalModel>());
+            WeaponController = new WeaponController(InputController);
             WeaponController.On();
 
-            _controllers = new IUpdate[3];
+            _controllers = new IUpdate[4];
             _controllers[0] = InputController;
             _controllers[1] = FlashLightController;
             _controllers[2] = PlayerController;
-            
+            _controllers[3] = WeaponController;
+
 
 
         }
@@ -63,13 +67,6 @@ namespace Game
             }            
         }
 
-        private PlayerController InitPlayerController()
-        {
-            PlayerMoveModel playerMoveModel = FindObjectOfType<PlayerMoveModel>();
-            CharacterController charController = playerMoveModel.gameObject.AddComponent<CharacterController>();
-            Camera head = FindObjectOfType<Camera>();
-            IMove playerMovementController = new PlayerMoveController(charController, playerMoveModel, head, InputController);
-            return new PlayerController(playerMovementController);
-        }
+        
     }
 }
