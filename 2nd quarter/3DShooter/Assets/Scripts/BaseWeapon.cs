@@ -4,6 +4,9 @@ namespace Game
 {
     public abstract class BaseWeapon:BaseObjectScene
     {
+
+        [SerializeField]
+        protected Transform _firePoint;
         [SerializeField]
         protected float _fireRate;
         [SerializeField]
@@ -15,8 +18,16 @@ namespace Game
         protected int _maxBulletsInClip;
         protected Clip _clip;
         protected bool _canFire;
-        public bool Selected;
-        protected Transform _firePoint;
+        private bool _selected;
+        public bool Selected
+        { get => _selected;
+          set
+            {
+                _canFire = value;
+                IsVisible = value;
+            }
+        }
+        
         protected override void Awake()
         {
             base.Awake();

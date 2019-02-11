@@ -24,6 +24,7 @@ namespace Game
         /// Ссылка на контроллер выбора игроком обьектов на сцене
         /// </summary>
         public SelectionController SelectionController { get; private set; }
+        public WeaponController WeaponController { get; private set; }
 
         /// <summary>
         /// Список всех котроллеров
@@ -43,6 +44,8 @@ namespace Game
             PlayerController.On();
             SelectionController = new SelectionController(InputController);
             SelectionController.On();
+            WeaponController = new WeaponController(InputController, FindObjectOfType<ArsenalModel>());
+            WeaponController.On();
 
             _controllers = new IUpdate[3];
             _controllers[0] = InputController;

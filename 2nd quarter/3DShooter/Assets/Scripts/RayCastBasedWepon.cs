@@ -11,16 +11,32 @@ namespace Game
         {
             base.Awake();
             _hit = new RaycastHit();
+            _canFire = true;
         }
         public override void Fire()
         {
-            if (Physics.Raycast(_firePoint.position,
+            
+            if (_canFire)
+            {
+                
+                if (Physics.Raycast(_firePoint.position,
                                 _firePoint.transform.TransformDirection(Vector3.forward * shotDistance),
                                 out _hit))
 
-            {
-                print(_hit.transform.GetComponent<ISelectable>().Info);
+                {
+                    //_canFire = false;
+                    print(_hit.transform.name);
+                    print(_hit.transform.GetComponent<ISelectable>()?.Info.Info);
+                    Invoke(nameof(Reload), _fireRate);
+                }
             }
+            
         }
+        void Reload()
+        {
+            _canFire = true;
+        }
+        
     }
+    
 }

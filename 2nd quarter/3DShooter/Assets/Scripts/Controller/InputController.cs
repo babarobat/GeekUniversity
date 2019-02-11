@@ -23,8 +23,9 @@ namespace Game
             {
                 OnFlashLight?.Invoke();
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
+                
                 OnLeftMouseDown?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.E))
@@ -57,7 +58,7 @@ namespace Game
         }
         public bool GetJump()
         {
-            return Input.GetKeyDown(KeyCode.Space);
+            return Input.GetKey(KeyCode.Space);
         }
     }
 }

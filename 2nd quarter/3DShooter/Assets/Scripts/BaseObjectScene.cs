@@ -7,24 +7,17 @@ namespace Game
     /// </summary>
     public abstract class BaseObjectScene : MonoBehaviour
     {
-        /// <summary>
-        /// Слой обьекта
-        /// </summary>
-        private int _layer;
+        
         /// <summary>
         /// Позиция, поворот и размер обьекта
         /// </summary>
         public Transform Transform { get; private set; }
         /// <summary>
-        /// Физика твердого тела обьекта
-        /// </summary>
-        public Rigidbody Rigidbody { get; private set; }
-        /// <summary>
         /// Слой обьекта. От 0 до 31
         /// </summary>
         public int Layer
         {
-            get => _layer;
+            get => gameObject.layer;
             set
             {
                 if (value < 0||value>31)
@@ -33,8 +26,8 @@ namespace Game
                 }
                 else
                 {
-                    _layer = value;
-                    ChangeLayerForAllChildren(transform, _layer);
+                    
+                    ChangeLayerForAllChildren(transform, value);
                 }
             }
         }
@@ -55,7 +48,29 @@ namespace Game
         protected virtual void Awake()
         {
             Transform = transform;
-            Rigidbody = GetComponent<Rigidbody>();
+            
+        }
+
+        void ChangeVisibilityForAllChildren(Transform obj, bool value)
+        {
+            var r =  obj.gameObject.GetComponent<Renderer>();
+            if (r != null)
+            {
+                r.enabled = value;
+            }
+            if (obj.childCount <= 0) return;
+            foreach (Transform item in obj)
+            {
+                ChangeVisibilityForAllChildren(item, value);
+            }
+        }
+        public bool IsVisible
+        {
+            get => gameObject.GetComponent<Renderer>().enabled;
+            set
+            {
+                ChangeVisibilityForAllChildren(transform, value);
+            }
         }
         
 
