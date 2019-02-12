@@ -6,21 +6,32 @@ namespace Game
     {
         private ArsenalModel _weaponsModel;
         private AmmunitionView _weaponsView;
-
         private int _activeWeaponIndex;
-        
-        
         private IInput _input;
+
         public WeaponController(IInput input)
         {
-            _weaponsModel = MonoBehaviour.FindObjectOfType<ArsenalModel>();
-            
+            _weaponsModel = MonoBehaviour.FindObjectOfType<ArsenalModel>();          
             _weaponsView = MonoBehaviour.FindObjectOfType<AmmunitionView>();
             _input = input;
+
+            BaseWeapon.OnAmmoChange += _weaponsView.UpdateWeaponsView;
+            BaseWeapon.OnReload += _weaponsView.ShowReloadMessage;
+            BaseWeapon.NoBullets += _weaponsView.ShowNoBulletsMess;
+            BaseWeapon.NoClips += _weaponsView.ShowNoClipsMessage;
+
+            _input.OnLeftMouseDown += Fire;
+            _input.OnReload += Reload;
+
             HideAllWeapons();
             ActiveWeopnIndex = 0;
             ShowWeapon(ActiveWeopnIndex);
-            _input.OnLeftMouseDown += Fire;
+            
+            
+        }
+        void Reload()
+        {
+            _weaponsModel?.Weapons[ActiveWeopnIndex].Reload();
         }
         private void HideAllWeapons()
         {
@@ -29,21 +40,28 @@ namespace Game
                 item.Selected = false;
             }
         }
-        private void HideWeapon(int index)
+        void CheckIndex(int index)
         {
             if (index < 0 || index >= _weaponsModel.Weapons.Length) throw new System.Exception("Неверный индекс оружия оружия");
-            
-            _weaponsModel.Weapons[index].IsVisible = false;
+        }
+        private void HideWeapon(int index)
+        {
+            CheckIndex(index);
+            _weaponsModel.Weapons[index].Selected = false;
         }
         private void ShowWeapon(int index)
         {
-            if (index < 0 || index >= _weaponsModel.Weapons.Length) throw new System.Exception("Неверный индекс оружия оружия");
-            _weaponsModel.Weapons[index].IsVisible = true;
+            CheckIndex(index);
+            _weaponsModel.Weapons[index].Selected = true;
         }
         public void Fire()
         {
-            _weaponsModel?.Weapons[ActiveWeopnIndex].Fire();
+            if (_weaponsModel.Weapons[ActiveWeopnIndex].CanFire)
+            {
+                _weaponsModel?.Weapons[ActiveWeopnIndex].Fire();
+            }
         }
+        
         void ChooseNextWeapon()
         {
             HideWeapon(_activeWeaponIndex);
@@ -63,7 +81,6 @@ namespace Game
                                         value > _weaponsModel.Weapons.Length - 1 ? 0 :
                                         value;
         }
-        
 
         public void OnUpdate()
         {

@@ -15,6 +15,7 @@ namespace Game
         
         public event Action OnLeftMouseDown;
         public event Action OnFlashLight;
+        public event Action OnReload;
 
         public void OnUpdate()
         {
@@ -32,8 +33,12 @@ namespace Game
             {
                 OnEnterract?.Invoke();
             }
-            
-            
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                OnReload?.Invoke();
+            }
+
+
         }
         
 

@@ -21,6 +21,7 @@ namespace Game.Interfaces
         event Action OnEnterract;
         event Action OnLeftMouseDown;
         event Action OnFlashLight;
+        event Action OnReload;
 
     }
 }
