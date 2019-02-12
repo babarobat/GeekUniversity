@@ -5,15 +5,28 @@ using Game.Interfaces;
 
 namespace Game
 {
+    /// <summary>
+    /// Оружие, основанное на RayCast
+    /// </summary>
     class RayCastBasedWepon : BaseWeapon
     {
+        /// <summary>
+        /// Информация о попадании луча
+        /// </summary>
         private RaycastHit _hit;
+        /// <summary>
+        /// дальгность стрельбы
+        /// </summary>
         private const float shotDistance = 100;
+
         protected override void Awake()
         {
             base.Awake();
             _hit = new RaycastHit();   
         }
+        /// <summary>
+        /// Выстрелить
+        /// </summary>
         public override void Fire()
         {
             if (_canFire)
@@ -29,15 +42,23 @@ namespace Game
                 }
             }
         }
+        /// <summary>
+        /// разрешить стрелять
+        /// </summary>
         void AllowFire()
         {
             _canFire = true;
         }
-        
+        /// <summary>
+        /// Ждать и потом разрешить стрелять
+        /// </summary>
         void WaitToFire()
         {
             Invoke(nameof(AllowFire), _fireRate);
         }
+        /// <summary>
+        /// Сделать выстрел
+        /// </summary>
         void Shot()
         {
             if (_currentBulletsInClip>0)

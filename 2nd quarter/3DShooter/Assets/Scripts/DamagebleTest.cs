@@ -2,7 +2,9 @@
     using UnityEngine;
 
 namespace Game
-{
+{ /// <summary>
+  /// ПРИМЕР. Не является частью программы. Реализует интерфейс IDamageble.
+  /// </summary>
     class DamagebleTest : MonoBehaviour, IDamageble
     {
         private float currentHealth = 100;

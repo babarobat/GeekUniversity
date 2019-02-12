@@ -3,8 +3,12 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    /// <summary>
+    /// отвечает за визуальное отображение элементов, связанных с амуницией игрока
+    /// </summary>
     class AmmunitionView:MonoBehaviour
     {
+        
         [SerializeField]
         private Text _name;
         [SerializeField]

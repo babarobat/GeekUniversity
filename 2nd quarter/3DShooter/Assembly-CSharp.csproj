@@ -72,7 +72,6 @@
     <Compile Include="Assets\Scripts\Extensions\SelectableItemInfo.cs" />
     <Compile Include="Assets\Scripts\Extensions\SingltonMono.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamage.cs" />
-    <Compile Include="Assets\Scripts\Interface\IFire.cs" />
     <Compile Include="Assets\Scripts\Interface\IInput.cs" />
     <Compile Include="Assets\Scripts\Interface\IMove.cs" />
     <Compile Include="Assets\Scripts\Interface\ISelectable.cs" />

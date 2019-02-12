@@ -24,9 +24,13 @@ namespace Game
         /// Ссылка на контроллер выбора игроком обьектов на сцене
         /// </summary>
         public SelectionController SelectionController { get; private set; }
-
+        /// <summary>
+        /// Ссылка на контроллер оружия
+        /// </summary>
         public WeaponController WeaponController { get; private set; }
-
+        /// <summary>
+        /// Ссылка на главную камеру
+        /// </summary>
         private Camera _mainCamera;
 
         /// <summary>

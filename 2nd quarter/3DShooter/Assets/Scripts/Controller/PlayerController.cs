@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using Game.Interfaces;
+﻿using Game.Interfaces;
 namespace Game
 {
     /// <summary>
@@ -7,8 +6,11 @@ namespace Game
     /// </summary>
 	public class PlayerController : BaseController, IUpdate
     {
-
+        /// <summary>
+        /// Ссылка на контроллер двидения игрока
+        /// </summary>
         IMove _playerMovementController;
+
         public PlayerController (IMove movementController)
         {
             _playerMovementController = movementController;

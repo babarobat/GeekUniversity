@@ -50,7 +50,11 @@ namespace Game
             Transform = transform;
             
         }
-
+        /// <summary>
+        /// Изменить видимость для всех пацанят
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
         void ChangeVisibilityForAllChildren(Transform obj, bool value)
         {
             var r =  obj.gameObject.GetComponent<Renderer>();
@@ -64,6 +68,9 @@ namespace Game
                 ChangeVisibilityForAllChildren(item, value);
             }
         }
+        /// <summary>
+        /// Обьект видим? Вкл/выкл Renderer
+        /// </summary>
         public bool IsVisible
         {
             get => gameObject.GetComponent<Renderer>().enabled;
