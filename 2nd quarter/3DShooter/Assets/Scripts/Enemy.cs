@@ -16,47 +16,53 @@ namespace Game
             _health = GetComponent<HealthComponent>();
             _health.OnDead += Dead;
             
+
         }
 
         void Dead()
         {
+            _agent.enabled = false;
             Crazy(transform);
+            foreach (var item in tmp)
+            {
+                item.parent = null;
+                Destroy(item.gameObject, 30);
+            }
             Destroy(gameObject, 30);
         }
+        System.Collections.Generic.List<Transform> tmp = new System.Collections.Generic.List<Transform>();
         void Crazy(Transform x)
         {
-            //if (GetComponent<MeshRenderer>()!=null)
-            //{
-            //    print(x.name);
-            //}
+            #region MyRegion
 
-            var anim = GetComponentInChildren<Animator>();
-            _agent.enabled = false;
+
+
+            var anim = x.GetComponent<Animator>();
+
             if (anim != null)
             {
                 Destroy(anim);
             }
 
-            if (GetComponent<Rigidbody>() == null)
+            if (x.GetComponent<Rigidbody>() == null && x.GetComponent<Renderer>() != null)
             {
-                
-                
                 var r = x.gameObject.AddComponent<Rigidbody>();
-                r.velocity = Vector3.zero;
+                //r.velocity = Vector3.zero;
             }
-            if (GetComponent<Collider>() != null)
+            if (x.GetComponent<Collider>() == null && x.GetComponent<Renderer>() != null)
             {
                 x.gameObject.AddComponent<CapsuleCollider>();
+                x.gameObject.AddComponent<SimpleHeatbleObj>();
             }
 
-            x.gameObject.AddComponent<SimpleHeatbleObj>();
-
-            if (x.childCount <= 0) return;
+            #endregion
+            tmp.Add(x);
+            if (x.childCount == 0) return;
             foreach (Transform item in x.transform)
             {
                 Crazy(item);
             }
-            x.SetParent(transform.root);
+            
         }
 
     }

@@ -32,6 +32,7 @@ namespace Game
         /// Ссылка на главную камеру
         /// </summary>
         private Camera _mainCamera;
+        public Camera MainCamera => _mainCamera;
 
         /// <summary>
         /// Список всех котроллеров

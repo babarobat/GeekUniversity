@@ -19,10 +19,15 @@ namespace Game
         /// </summary>
         private const float shotDistance = 100;
 
+        new Vector3 _firePoint;
+        Camera _head;
+
         protected override void Awake()
         {
             base.Awake();
-            _hit = new RaycastHit();   
+            _hit = new RaycastHit();
+            _firePoint = new Vector3(.5f, .5f,0);
+            _head = Main.Instance.MainCamera;
         }
         /// <summary>
         /// Выстрелить
@@ -67,17 +72,19 @@ namespace Game
                 _currentBulletsInClip--;
                 CallOnAmmoChange();
 
-
-                if (Physics.Raycast(_firePoint.position,
-                                       _firePoint.transform.TransformDirection(Vector3.forward * shotDistance),
+                var center =_head.ViewportToWorldPoint(_firePoint);
+                if (Physics.Raycast(center,
+                                       _head.transform.forward*100,
                                        out _hit))
 
                 {
+                   
                     var target = _hit.transform.GetComponent<IDamageble>();
                     if (target != null)
                     {
+
                         _damageInfo.Damage = _damage;
-                        _damageInfo.From = Transform.position;
+                        _damageInfo.From = transform.position;
                         target.GetDamage(_damageInfo);
                     }
                    
@@ -88,6 +95,11 @@ namespace Game
                 CallNoBullets();
             }  
         }
+        private void OnDrawGizmos()
+        {
+            Debug.DrawLine(FindObjectOfType<Camera>().ViewportToWorldPoint(new Vector3(.5f, .5f, 0)), FindObjectOfType<Camera>().transform.forward*100);
+        }
+
     }
 }
     

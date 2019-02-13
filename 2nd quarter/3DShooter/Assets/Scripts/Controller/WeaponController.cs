@@ -127,7 +127,9 @@ namespace Game
 
         public void OnUpdate()
         {
+
             if (!IsActive) return;
+            
             if (_input.GetScrollWheel()>0)
             {
                 ChooseNextWeapon();
