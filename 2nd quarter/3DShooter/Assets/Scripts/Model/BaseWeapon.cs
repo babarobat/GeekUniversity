@@ -114,7 +114,7 @@ namespace Game
         protected override void Awake()
         {
             base.Awake();
-            _damageInfo = new DamageInfo(_damage);
+            _damageInfo = new DamageInfo();
             _currentClipCount = _maxClipCount;
             _currentBulletsInClip = _maxBulletsInClip;
             if (Selected)

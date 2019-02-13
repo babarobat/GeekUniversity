@@ -73,7 +73,14 @@ namespace Game
                                        out _hit))
 
                 {
-                   _hit.transform.GetComponent<IDamageble>()?.GetDamage(_damageInfo);
+                    var target = _hit.transform.GetComponent<IDamageble>();
+                    if (target != null)
+                    {
+                        _damageInfo.Damage = _damage;
+                        _damageInfo.From = Transform.position;
+                        target.GetDamage(_damageInfo);
+                    }
+                   
                 }
             }
             else
