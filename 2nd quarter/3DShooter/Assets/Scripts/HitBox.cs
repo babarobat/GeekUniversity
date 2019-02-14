@@ -14,8 +14,7 @@ namespace Game.Components
         public void GetDamage(DamageInfo damageInfo)
         {
             var currentDamage = damageInfo.Damage * _damageMultiplyer;
-            OnHit?.Invoke(currentDamage);
-            
+            OnHit?.Invoke(currentDamage); 
         }
     }
 }
