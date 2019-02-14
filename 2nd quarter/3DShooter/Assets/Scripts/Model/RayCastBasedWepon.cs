@@ -19,14 +19,14 @@ namespace Game
         /// </summary>
         private const float shotDistance = 100;
 
-        new Vector3 _firePoint;
+        private Vector3 _crossHairPoint;
         Camera _head;
 
         protected override void Awake()
         {
             base.Awake();
             _hit = new RaycastHit();
-            _firePoint = new Vector3(.5f, .5f,0);
+            _crossHairPoint = new Vector3(.5f, .5f,0);
             _head = Main.Instance.MainCamera;
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Game
                 _currentBulletsInClip--;
                 CallOnAmmoChange();
 
-                var center =_head.ViewportToWorldPoint(_firePoint);
+                var center =_head.ViewportToWorldPoint(_crossHairPoint);
                 if (Physics.Raycast(center,
                                        _head.transform.forward*100,
                                        out _hit))
@@ -95,10 +95,7 @@ namespace Game
                 CallNoBullets();
             }  
         }
-        private void OnDrawGizmos()
-        {
-            Debug.DrawLine(FindObjectOfType<Camera>().ViewportToWorldPoint(new Vector3(.5f, .5f, 0)), FindObjectOfType<Camera>().transform.forward*100);
-        }
+       
 
     }
 }

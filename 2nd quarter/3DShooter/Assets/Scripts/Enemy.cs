@@ -47,6 +47,7 @@ namespace Game
             if (x.GetComponent<Rigidbody>() == null && x.GetComponent<Renderer>() != null)
             {
                 var r = x.gameObject.AddComponent<Rigidbody>();
+                r.AddForce(Vector3.up * 50);
                 //r.velocity = Vector3.zero;
             }
             if (x.GetComponent<Collider>() == null && x.GetComponent<Renderer>() != null)
