@@ -10,23 +10,20 @@ namespace Game
     /// </summary>
     class RayCastBasedWepon : BaseWeapon
     {
-        /// <summary>
-        /// Информация о попадании луча
-        /// </summary>
-        private RaycastHit _hit;
+       
         /// <summary>
         /// дальгность стрельбы
         /// </summary>
         private const float shotDistance = 100;
 
-        private Vector3 _crossHairPoint;
+        private Vector2 _crossHairPoint;
         Camera _head;
 
         protected override void Awake()
         {
             base.Awake();
-            _hit = new RaycastHit();
-            _crossHairPoint = new Vector3(.5f, .5f,0);
+            
+            _crossHairPoint = new Vector3(Screen.width/2, Screen.height/2);
             _head = Main.Instance.MainCamera;
         }
         /// <summary>
@@ -72,22 +69,20 @@ namespace Game
                 _currentBulletsInClip--;
                 CallOnAmmoChange();
 
-                var center =_head.ViewportToWorldPoint(_crossHairPoint);
-                if (Physics.Raycast(center,
-                                       _head.transform.forward*100,
-                                       out _hit))
-
+                var center =_head.ScreenToWorldPoint(_crossHairPoint);
+                RaycastHit hit; 
+                if (Physics.Raycast(center, _head.transform.forward*100
+                                       ,
+                                       out hit))
                 {
-                   
-                    var target = _hit.transform.GetComponent<IDamageble>();
+                    print(hit.transform.name);
+                    var target = hit.transform.GetComponent<IDamageble>();
                     if (target != null)
                     {
-
                         _damageInfo.Damage = _damage;
                         _damageInfo.From = transform.position;
                         target.GetDamage(_damageInfo);
-                    }
-                   
+                    }                   
                 }
             }
             else
@@ -95,8 +90,11 @@ namespace Game
                 CallNoBullets();
             }  
         }
-       
-
+        private void OnDrawGizmos()
+        {
+            var center = FindObjectOfType<Camera>().ScreenToWorldPoint(_crossHairPoint);
+            Debug.DrawRay(center, FindObjectOfType<Camera>().transform.forward*100);
+        }
     }
 }
     

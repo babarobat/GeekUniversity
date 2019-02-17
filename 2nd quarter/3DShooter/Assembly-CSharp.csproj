@@ -78,8 +78,10 @@
     <Compile Include="Assets\Scripts\DamagebleTest.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Extensions\DamageInfo.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Extensions.cs" />
     <Compile Include="Assets\Scripts\Extensions\SelectableItemInfo.cs" />
     <Compile Include="Assets\Scripts\Extensions\SingltonMono.cs" />
+    <Compile Include="Assets\Scripts\Extensions\WeaponType.cs" />
     <Compile Include="Assets\Scripts\HealthComponent.cs" />
     <Compile Include="Assets\Scripts\HitBox.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamage.cs" />
@@ -87,12 +89,13 @@
     <Compile Include="Assets\Scripts\Interface\IMove.cs" />
     <Compile Include="Assets\Scripts\Interface\ISelectable.cs" />
     <Compile Include="Assets\Scripts\Interface\IUpdate.cs" />
+    <Compile Include="Assets\Scripts\Interface\IVision.cs" />
     <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\Scripts\Model\ArsenalModel.cs" />
     <Compile Include="Assets\Scripts\Model\BaseObjectScene.cs" />
     <Compile Include="Assets\Scripts\Model\BaseWeapon.cs" />
+    <Compile Include="Assets\Scripts\Model\EnemyVision.cs" />
     <Compile Include="Assets\Scripts\Model\FlashLightModel.cs" />
-    <Compile Include="Assets\Scripts\Model\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerMoveModel.cs" />
     <Compile Include="Assets\Scripts\Model\RayCastBasedWepon.cs" />
     <Compile Include="Assets\Scripts\Model\SelectionModel.cs" />

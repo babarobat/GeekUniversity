@@ -8,7 +8,8 @@ namespace Game
     /// </summary>
     public abstract class BaseWeapon:BaseObjectScene
     {
-     
+        [SerializeField]
+        protected WeaponType _type;
         /// <summary>
         /// Точка стрельбы
         /// </summary>
@@ -115,6 +116,7 @@ namespace Game
         {
             base.Awake();
             _damageInfo = new DamageInfo();
+            _damageInfo.Type = _type;
             _currentClipCount = _maxClipCount;
             _currentBulletsInClip = _maxBulletsInClip;
             if (Selected)

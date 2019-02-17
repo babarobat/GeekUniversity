@@ -13,6 +13,7 @@ namespace Game.Components
         private float _damageMultiplyer;
         public void GetDamage(DamageInfo damageInfo)
         {
+            print($"{name} takes {damageInfo.Damage} damage from {damageInfo.Type}. Damage was multiply by {_damageMultiplyer}");
             var currentDamage = damageInfo.Damage * _damageMultiplyer;
             OnHit?.Invoke(currentDamage); 
         }

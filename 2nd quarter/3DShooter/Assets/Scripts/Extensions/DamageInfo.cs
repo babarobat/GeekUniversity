@@ -11,6 +11,7 @@ namespace Game
         /// </summary>
         public float Damage;
         public Vector3 From;
+        public WeaponType Type;
         
        
     }
