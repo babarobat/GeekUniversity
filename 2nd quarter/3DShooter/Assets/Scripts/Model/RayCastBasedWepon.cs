@@ -75,7 +75,7 @@ namespace Game
                                        ,
                                        out hit))
                 {
-                    print(hit.transform.name);
+                    
                     var target = hit.transform.GetComponent<IDamageble>();
                     if (target != null)
                     {

@@ -30,8 +30,8 @@ namespace Game
         {
             base.Awake();
             PlayerMoveModel target = FindObjectOfType<PlayerMoveModel>();
-            print(target);
-            _vision = new EnemyVision(target, _agroRange);
+            
+            _vision = new EnemyVision(target.Transform, _agroRange, _viewAngle);
             _isDead = false;
             _agent = GetComponent<NavMeshAgent>();
             _health = GetComponent<HealthComponent>();
@@ -41,15 +41,14 @@ namespace Game
         
         private void Update()
         {
-            print(_vision.GetTarget(Transform.position)?.position);
+            print(_vision.GetTarget(Transform)?.name);
             Patrol();
         }
         void Patrol()
         {
-           
-            if (!_agent.hasPath&&!_isDead)
+
+            if (!_agent.hasPath && !_isDead)
             {
-                print(1);
                 _agent.SetDestination(GetNewRandomPoint());
             }
         }
@@ -94,18 +93,7 @@ namespace Game
             {
                 CrazyDeath(item);
             }
-        }
-        //private void OnDrawGizmos()
-        //{
-        //    var radA = (-_viewAngle / 2 + transform.eulerAngles.y) * Mathf.Deg2Rad;
-        //    var radB = (_viewAngle / 2 + transform.eulerAngles.y )* Mathf.Deg2Rad;
-
-        //    var angA = new Vector3(Mathf.Sin(radA), 0, Mathf.Cos(radA));
-        //    var angB = new Vector3(Mathf.Sin(radB), 0, Mathf.Cos(radB));
-
-        //    Gizmos.DrawLine(transform.position, transform.position + angA * _agroRange);
-        //    Gizmos.DrawLine(transform.position, transform.position + angB * _agroRange);
-        //}
+        } 
     }
 }
 
