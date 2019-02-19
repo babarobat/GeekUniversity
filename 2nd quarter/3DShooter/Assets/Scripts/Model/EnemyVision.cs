@@ -2,8 +2,6 @@
 using Game.Interfaces;
 using UnityEngine;
 
-
-
 namespace Game
 {
     class EnemyVision : IVision

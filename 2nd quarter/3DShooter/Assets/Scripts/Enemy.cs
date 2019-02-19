@@ -23,33 +23,48 @@ namespace Game
         private Transform [] _patrolPoints;
         
         private bool _isDead;
-
+        
         IVision _vision;
+        [SerializeField]
+        private BaseWeapon _weapon;
 
         protected override void Awake()
         {
             base.Awake();
             PlayerMoveModel target = FindObjectOfType<PlayerMoveModel>();
-            
+            _weapon.Selected = true;
             _vision = new EnemyVision(target.Transform, _agroRange, _viewAngle);
             _isDead = false;
             _agent = GetComponent<NavMeshAgent>();
             _health = GetComponent<HealthComponent>();
             _health.OnDead += Dead;
-            
+        }
+        private void FixedUpdate()
+        {
+            if (_isDead) return;
+
+            var target = _vision.GetTarget(Transform);
+            if (target)
+            {
+                Stop();
+                LookAtTarget(target.position);
+                Attack();
+            }
+            else
+            {
+                Patrol();
+            }
         }
         
-        private void Update()
-        {
-            print(_vision.GetTarget(Transform)?.name);
-            Patrol();
-        }
         void Patrol()
         {
-
-            if (!_agent.hasPath && !_isDead)
+            if (_agent.isStopped)
             {
-                _agent.SetDestination(GetNewRandomPoint());
+                _agent.isStopped = false;
+            }
+            if (!_agent.hasPath)
+            {
+                MoveToTarget(GetNewRandomPoint());
             }
         }
         Vector3 GetNewRandomPoint()
@@ -60,40 +75,31 @@ namespace Game
         {
             _isDead = true;
             _agent.enabled = false;
-            CrazyDeath(transform);
-            foreach (var item in tmp)
-            {
-                item.parent = null;
-                Destroy(item.gameObject, 30);
-            }
             Destroy(gameObject, 30);
-        }
-        System.Collections.Generic.List<Transform> tmp = new System.Collections.Generic.List<Transform>();
-        
-
-        void CrazyDeath(Transform x)
-        {
-            var anim = x.GetComponent<Animator>();
-            if (anim != null)
-            {
-                Destroy(anim);
-            }
-            if (x.GetComponent<Rigidbody>() == null && x.GetComponent<Renderer>() != null)
-            {
-                var r = x.gameObject.AddComponent<Rigidbody>();
-                r.AddForce(Vector3.up * 50);
-                
-                x.gameObject.AddComponent<SimpleHeatbleObj>();
-                //r.velocity = Vector3.zero;
-            }
             
-            tmp.Add(x);
-            if (x.childCount == 0) return;
-            foreach (Transform item in x.transform)
+        }
+        void Attack()
+        {
+            if (_weapon.CanFire)
             {
-                CrazyDeath(item);
+                _weapon.Fire();
             }
-        } 
+        }
+        void MoveToTarget(Vector3 target)
+        {
+            _agent.SetDestination(target);
+        }
+        void Stop()
+        {
+            _agent.isStopped = true;
+        }
+        void LookAtTarget(Vector3 target)
+        {
+
+            Transform.LookAt(new Vector3(target.x, Transform.position.y, target.z));
+        }
+        
+  
     }
 }
 

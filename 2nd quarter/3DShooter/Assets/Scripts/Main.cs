@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Game.Interfaces;
+using Game.Data;
 namespace Game
 {
     /// <summary>
@@ -62,6 +63,8 @@ namespace Game
             _controllers[3] = WeaponController;
 
 
+            ///
+            LoadStartPos();
 
         }
         private void Update()
@@ -72,6 +75,23 @@ namespace Game
             }            
         }
 
-        
+        void LoadStartPos()
+        {
+            IData<DataContainer> data = new JsonData<DataContainer>();
+            DataReposetory datarepo = new DataReposetory(data, "Data","PlayerData");
+            FindObjectOfType<PlayerMoveModel>().transform.position = datarepo.Load().Position;
+        }
+
+        private void OnApplicationQuit()
+        {
+            IData<DataContainer> data = new JsonData<DataContainer>();
+            DataReposetory datarepo = new DataReposetory(data, "Data", "PlayerData");
+            DataContainer container = new DataContainer();
+            container.Position = FindObjectOfType<PlayerMoveModel>().transform.position;
+            datarepo.Save(container);
+
+
+        }
+
     }
 }

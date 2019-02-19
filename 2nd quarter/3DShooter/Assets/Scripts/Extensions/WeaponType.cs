@@ -4,6 +4,7 @@
     {
         Ak,
         Glock,
-        Famas
+        Famas,
+        Projectile
     }
 }

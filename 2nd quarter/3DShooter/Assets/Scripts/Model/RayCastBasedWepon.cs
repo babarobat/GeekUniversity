@@ -26,42 +26,12 @@ namespace Game
             _crossHairPoint = new Vector3(Screen.width/2, Screen.height/2);
             _head = Main.Instance.MainCamera;
         }
-        /// <summary>
-        /// Выстрелить
-        /// </summary>
-        public override void Fire()
-        {
-            if (_canFire)
-            {
-                Shot();
-                if (_currentBulletsInClip<1)
-                {
-                    Reload();
-                }
-                else
-                {
-                    WaitToFire();
-                }
-            }
-        }
-        /// <summary>
-        /// разрешить стрелять
-        /// </summary>
-        void AllowFire()
-        {
-            _canFire = true;
-        }
-        /// <summary>
-        /// Ждать и потом разрешить стрелять
-        /// </summary>
-        void WaitToFire()
-        {
-            Invoke(nameof(AllowFire), _fireRate);
-        }
+
+
         /// <summary>
         /// Сделать выстрел
         /// </summary>
-        void Shot()
+        protected override void Shot()
         {
             if (_currentBulletsInClip>0)
             {
@@ -71,11 +41,8 @@ namespace Game
 
                 var center =_head.ScreenToWorldPoint(_crossHairPoint);
                 RaycastHit hit; 
-                if (Physics.Raycast(center, _head.transform.forward*100
-                                       ,
-                                       out hit))
+                if (Physics.Raycast(center, _head.transform.forward*100, out hit))
                 {
-                    
                     var target = hit.transform.GetComponent<IDamageble>();
                     if (target != null)
                     {
@@ -90,7 +57,7 @@ namespace Game
                 CallNoBullets();
             }  
         }
-        private void OnDrawGizmos()
+        private  void OnDrawGizmos()
         {
             var center = FindObjectOfType<Camera>().ScreenToWorldPoint(_crossHairPoint);
             Debug.DrawRay(center, FindObjectOfType<Camera>().transform.forward*100);

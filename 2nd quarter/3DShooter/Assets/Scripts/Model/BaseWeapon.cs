@@ -127,7 +127,22 @@ namespace Game
         /// <summary>
         /// Выстрелить
         /// </summary>
-        public abstract void Fire();
+        public virtual void Fire()
+        {
+            if (_canFire)
+            {
+                Shot();
+                if (_currentBulletsInClip < 1)
+                {
+                    Reload();
+                }
+                else
+                {
+                    WaitToFire();
+                }
+            }
+        }
+        protected abstract void Shot();
         /// <summary>
         /// Перезарядка
         /// </summary>
@@ -135,7 +150,20 @@ namespace Game
         {
              StartCoroutine(ReloadCor());
         }
-
+        /// <summary>
+        /// разрешить стрелять
+        /// </summary>
+        protected virtual void AllowFire()
+        {
+            _canFire = true;
+        }
+        /// <summary>
+        /// Ждать и потом разрешить стрелять
+        /// </summary>
+        protected virtual void WaitToFire()
+        {
+            Invoke(nameof(AllowFire), _fireRate);
+        }
         /// <summary>
         /// Вызывает событие отсутсвия патронов
         /// </summary>
