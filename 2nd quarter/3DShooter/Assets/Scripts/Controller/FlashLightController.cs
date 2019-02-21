@@ -81,6 +81,7 @@ namespace Game
         /// <param name="value"></param>
         public void Switch(bool value)
         {
+           
             _flashLightModel.Light.enabled = value;
             if (!value) return;
             _flashLightModel.Transform.position = _follow.position; //+ _offset;

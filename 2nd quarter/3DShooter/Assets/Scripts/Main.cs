@@ -70,7 +70,7 @@ namespace Game
             InputController = new InputController();
             InputController.On();
             FlashLightController = new FlashLightController(InputController);
-            FlashLightController.On();
+            //FlashLightController.On();
             PlayerController = new PlayerController(new PlayerMoveController(_mainCamera, InputController));
             PlayerController.On();
             SelectionController = new SelectionController(InputController);

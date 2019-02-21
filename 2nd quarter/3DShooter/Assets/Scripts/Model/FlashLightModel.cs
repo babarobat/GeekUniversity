@@ -67,6 +67,7 @@ namespace Game
         protected override void Awake()
         {
             base.Awake();
+            
             _light = GetComponent<Light>();
             BatteryChargeCurrent = _batteryChargeMax;
         }
