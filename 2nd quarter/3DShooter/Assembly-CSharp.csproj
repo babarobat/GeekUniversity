@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\DamagebleTest.cs" />
     <Compile Include="Assets\Scripts\DataContainer.cs" />
     <Compile Include="Assets\Scripts\DataReposetory.cs" />
+    <Compile Include="Assets\Scripts\DatatController.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Extensions\DamageInfo.cs" />
     <Compile Include="Assets\Scripts\Extensions\Extensions.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\Scripts\Interface\ISelectable.cs" />
     <Compile Include="Assets\Scripts\Interface\IUpdate.cs" />
     <Compile Include="Assets\Scripts\Interface\IVision.cs" />
+    <Compile Include="Assets\Scripts\IPickble.cs" />
     <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\Scripts\Model\ArsenalModel.cs" />
     <Compile Include="Assets\Scripts\Model\BaseObjectScene.cs" />
@@ -105,6 +107,10 @@
     <Compile Include="Assets\Scripts\Model\RayCastBasedWepon.cs" />
     <Compile Include="Assets\Scripts\Model\Rocket.cs" />
     <Compile Include="Assets\Scripts\Model\SelectionModel.cs" />
+    <Compile Include="Assets\Scripts\PickbleItemInfo.cs" />
+    <Compile Include="Assets\Scripts\PickbleItemType.cs" />
+    <Compile Include="Assets\Scripts\PickbleObj.cs" />
+    <Compile Include="Assets\Scripts\PickUpController.cs" />
     <Compile Include="Assets\Scripts\SaveData\IData.cs" />
     <Compile Include="Assets\Scripts\SaveData\JsonData.cs" />
     <Compile Include="Assets\Scripts\SelectableItemTest.cs" />

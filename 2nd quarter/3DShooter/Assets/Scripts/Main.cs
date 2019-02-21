@@ -35,36 +35,25 @@ namespace Game
         private Camera _mainCamera;
         public Camera MainCamera => _mainCamera;
 
+        public DatatController DataController { get; private set; }
+
+
         /// <summary>
         /// Список всех котроллеров
         /// </summary>
         private IUpdate[] _controllers;
         protected override void Awake()
         {
-            _mainCamera = FindObjectOfType<Camera>();
+            
             base.Awake();
+
             //тест
             Cursor.visible = false;
             //конец теста
-            InputController = new InputController();
-            InputController.On();
-            FlashLightController = new FlashLightController(InputController);
-            PlayerController = new PlayerController(new PlayerMoveController(_mainCamera, InputController));
-            PlayerController.On();
-            SelectionController = new SelectionController(InputController);
-            SelectionController.On();
-            WeaponController = new WeaponController(InputController);
-            WeaponController.On();
 
-            _controllers = new IUpdate[4];
-            _controllers[0] = InputController;
-            _controllers[1] = FlashLightController;
-            _controllers[2] = PlayerController;
-            _controllers[3] = WeaponController;
-
-
-            ///
-            LoadStartPos();
+            _mainCamera = FindObjectOfType<Camera>();
+            LoadControllers();
+            LoadGameData();
 
         }
         private void Update()
@@ -75,22 +64,32 @@ namespace Game
             }            
         }
 
-        void LoadStartPos()
+        void LoadControllers()
         {
-            IData<DataContainer> data = new JsonData<DataContainer>();
-            DataReposetory datarepo = new DataReposetory(data, "Data","PlayerData");
-            FindObjectOfType<PlayerMoveModel>().transform.position = datarepo.Load().Position;
+            
+            InputController = new InputController();
+            InputController.On();
+            FlashLightController = new FlashLightController(InputController);
+            FlashLightController.On();
+            PlayerController = new PlayerController(new PlayerMoveController(_mainCamera, InputController));
+            PlayerController.On();
+            SelectionController = new SelectionController(InputController);
+            SelectionController.On();
+            WeaponController = new WeaponController(InputController);
+            WeaponController.On();
+            DataController = new DatatController(InputController);
+            DataController.On(); 
+
+            _controllers = new IUpdate[4];
+            _controllers[0] = InputController;
+            _controllers[1] = FlashLightController;
+            _controllers[2] = PlayerController;
+            _controllers[3] = WeaponController;
         }
 
-        private void OnApplicationQuit()
+        void LoadGameData()
         {
-            IData<DataContainer> data = new JsonData<DataContainer>();
-            DataReposetory datarepo = new DataReposetory(data, "Data", "PlayerData");
-            DataContainer container = new DataContainer();
-            container.Position = FindObjectOfType<PlayerMoveModel>().transform.position;
-            datarepo.Save(container);
-
-
+            DataController.Load();
         }
 
     }

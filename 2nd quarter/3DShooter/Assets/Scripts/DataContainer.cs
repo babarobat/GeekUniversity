@@ -3,7 +3,7 @@ using System;
 namespace Game.Data
 {
     [System.Serializable]
-    class DataContainer
+    public class DataContainer
     {
         public Vector3 Position;
     }

@@ -140,5 +140,9 @@ namespace Game
             }
             
         }
+        public void ActivateWeapon(WeaponType type)
+        {
+
+        }
     }
 }

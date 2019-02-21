@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Data;
 namespace Game.Interfaces
 {
     /// <summary>
@@ -16,6 +17,8 @@ namespace Game.Interfaces
         event Action OnLeftMouseDown;
         event Action OnFlashLight;
         event Action OnReload;
+        event Action OnSave;
+        event Action OnLoad;
 
     }
 }

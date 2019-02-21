@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using Game.Interfaces;
+using Game.Data;
 namespace Game
 {
     /// <summary>
@@ -25,6 +26,8 @@ namespace Game
         /// </summary>
         public event Action OnReload;
 
+        public event Action OnSave;
+        public event Action OnLoad;
         public void OnUpdate()
         {
             if (!IsActive) return;
@@ -44,6 +47,14 @@ namespace Game
             if (Input.GetKeyDown(KeyCode.R))
             {
                 OnReload?.Invoke();
+            }
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                OnSave?.Invoke();
+            }
+            if (Input.GetKeyDown(KeyCode.F6))
+            {
+                OnLoad?.Invoke();
             }
         }
 

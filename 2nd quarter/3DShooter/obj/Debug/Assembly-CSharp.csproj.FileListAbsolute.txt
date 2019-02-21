@@ -272,3 +272,7 @@ D:\Git\GeekUniversity\2nd quarter\3DShooter\Temp\bin\Debug\UnityEngine.SpatialTr
 D:\Git\GeekUniversity\2nd quarter\3DShooter\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\Git\GeekUniversity\2nd quarter\3DShooter\obj\Debug\Assembly-CSharp.dll
 D:\Git\GeekUniversity\2nd quarter\3DShooter\obj\Debug\Assembly-CSharp.pdb
+Z:\Work\_Unity\GeekUniversity\2nd quarter\3DShooter\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+Z:\Work\_Unity\GeekUniversity\2nd quarter\3DShooter\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+Z:\Work\_Unity\GeekUniversity\2nd quarter\3DShooter\obj\Debug\Assembly-CSharp.dll
+Z:\Work\_Unity\GeekUniversity\2nd quarter\3DShooter\obj\Debug\Assembly-CSharp.pdb
