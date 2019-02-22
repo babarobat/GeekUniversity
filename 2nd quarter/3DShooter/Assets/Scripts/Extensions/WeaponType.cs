@@ -2,9 +2,9 @@
 {
     public enum WeaponType
     {
-        Ak,
-        Glock,
-        Famas,
-        Projectile
+        Knife,
+        Pistol,
+        Riffle,
+        Granade
     }
 }

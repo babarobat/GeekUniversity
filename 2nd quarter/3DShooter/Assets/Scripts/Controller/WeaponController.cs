@@ -7,6 +7,14 @@ namespace Game
     /// </summary>
     class WeaponController:BaseController,IUpdate
     {
+
+        //BaseWeapon[] _inventoryWeapons; 
+        //BaseWeapon knife;
+        //BaseWeapon pistol;
+        //BaseWeapon mainWeapon;
+        //BaseWeapon 
+
+
         /// <summary>
         /// Ссылка на параметры арсенала
         /// </summary>
@@ -47,6 +55,7 @@ namespace Game
         /// </summary>
         void Reload()
         {
+            if (!IsActive) return;
             _weaponsModel?.Weapons[ActiveWeopnIndex].Reload();
         }
 
@@ -91,6 +100,7 @@ namespace Game
         /// </summary>
         public void Fire()
         {
+            if (!IsActive) return;
             if (_weaponsModel.Weapons[ActiveWeopnIndex].CanFire)
             {
                 _weaponsModel?.Weapons[ActiveWeopnIndex].Fire();
@@ -140,9 +150,6 @@ namespace Game
             }
             
         }
-        public void ActivateWeapon(WeaponType type)
-        {
-
-        }
+        
     }
 }

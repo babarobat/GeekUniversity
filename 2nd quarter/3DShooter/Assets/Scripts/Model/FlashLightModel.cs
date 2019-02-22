@@ -8,14 +8,10 @@ namespace Game
     [RequireComponent(typeof(Light))]
     public sealed class FlashLightModel : BaseObjectScene
     {
-        /// <summary>
-        /// Ссылка на компонент Light
-        /// </summary>
-        private Light _light;
-        /// <summary>
-        /// Компонент Light
-        /// </summary>
-        public Light Light => _light;
+        [SerializeField]
+        Vector3 _offset;
+        public Vector3 Offset => _offset;
+        
         /// <summary>
         /// Текущий заряд батареи
         /// </summary>
@@ -63,12 +59,18 @@ namespace Game
         /// Скорость зарядки
         /// </summary>
         public float ChargeSpeed => _chargeSpeed;
-
+        /// <summary>
+        /// Ссылка на компонент Light
+        /// </summary>
+        private Light _light;
+        /// <summary>
+        /// Компонент Light
+        /// </summary>
+        public Light Light => _light;
         protected override void Awake()
         {
-            base.Awake();
-            
-            _light = GetComponent<Light>();
+            base.Awake(); 
+            _light =GetComponent<Light>();
             BatteryChargeCurrent = _batteryChargeMax;
         }
         /// <summary>

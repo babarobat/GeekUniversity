@@ -15,6 +15,7 @@ namespace Game
         }
         public void Save()
         {
+            if (!IsActive) return;
             MonoBehaviour.print("Game Saved");
             IData<DataContainer> data = new JsonData<DataContainer>();
             DataReposetory datarepo = new DataReposetory(data, "Data", "PlayerData");
@@ -24,6 +25,7 @@ namespace Game
         }
         public void Load()
         {
+            if (!IsActive) return;
             MonoBehaviour.print("Game Loaded");
             IData<DataContainer> data = new JsonData<DataContainer>();
             DataReposetory datarepo = new DataReposetory(data, "Data", "PlayerData");

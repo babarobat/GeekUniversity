@@ -22,5 +22,6 @@ namespace Game
             if (!IsActive) return;
             _playerMovementController.Move();
         }
+        
     }
 }

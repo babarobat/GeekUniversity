@@ -12,7 +12,7 @@ namespace Game
         /// Ссылка на контроллер пользовательского ввода
         /// </summary>
         public InputController InputController { get; private set; }
-        //public InputController GetInputController { get; private set; }
+        
         /// <summary>
         /// Ссылка на контроллер фонарика
         /// </summary>
@@ -52,9 +52,19 @@ namespace Game
             //конец теста
 
             _mainCamera = FindObjectOfType<Camera>();
+
             LoadControllers();
             LoadGameData();
 
+        }
+        private void Start()
+        {
+            InputController.On();
+            FlashLightController.On();
+            PlayerController.On();
+            SelectionController.On();
+            WeaponController.On();
+            DataController.On();
         }
         private void Update()
         {
@@ -66,19 +76,12 @@ namespace Game
 
         void LoadControllers()
         {
-            
             InputController = new InputController();
-            InputController.On();
             FlashLightController = new FlashLightController(InputController);
-            //FlashLightController.On();
             PlayerController = new PlayerController(new PlayerMoveController(_mainCamera, InputController));
-            PlayerController.On();
             SelectionController = new SelectionController(InputController);
-            SelectionController.On();
             WeaponController = new WeaponController(InputController);
-            WeaponController.On();
             DataController = new DatatController(InputController);
-            DataController.On(); 
 
             _controllers = new IUpdate[4];
             _controllers[0] = InputController;

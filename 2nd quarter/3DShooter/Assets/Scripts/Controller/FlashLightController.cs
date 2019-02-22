@@ -8,14 +8,12 @@ namespace Game
     /// </summary>
     class FlashLightController : BaseController, IUpdate
     {
+        
         /// <summary>
         /// Трансформ, за которым слудует фонарь
         /// </summary>
         private Transform _follow;
-        /// <summary>
-        /// Параметры фонаря
-        /// </summary>
-        private FlashLightModel _flashLightModel;
+        
         /// <summary>
         /// Отображение параметров фонаря
         /// </summary>
@@ -24,13 +22,21 @@ namespace Game
         /// Параметры пользовательского ввода
         /// </summary>
         private IInput _input;
+        /// <summary>
+        /// Параметры фонаря
+        /// </summary>
+        private FlashLightModel _flashLightModel;
         public FlashLightController(IInput input)
         {
+         
             _follow = MonoBehaviour.FindObjectOfType<Camera>().transform;
+          
             _flashLightModel = MonoBehaviour.FindObjectOfType<FlashLightModel>();
+            
             _flashLightView = MonoBehaviour.FindObjectOfType<FlashLightView>();
             _input = input;
             _input.OnFlashLight += Switch;
+            
             
         }
         /// <summary>
@@ -81,11 +87,16 @@ namespace Game
         /// <param name="value"></param>
         public void Switch(bool value)
         {
+            
+            if (_flashLightModel.Light != null)
+            {
+                _flashLightModel.Light.enabled = value;
+            }
            
-            _flashLightModel.Light.enabled = value;
             if (!value) return;
-            _flashLightModel.Transform.position = _follow.position; //+ _offset;
-            _flashLightModel.Transform.rotation = _follow.localRotation;
+            
+            _flashLightModel.transform.position = _follow.position + _flashLightModel.Offset;
+            _flashLightModel.transform.rotation = _follow.localRotation;
         }
         /// <summary>
         /// Поворачивает фонарь вместе с камерой, если он включен
@@ -94,7 +105,7 @@ namespace Game
         {
             if (!_flashLightModel.Light) return;
 
-            _flashLightModel.Transform.position = _follow.position;
+            _flashLightModel.Transform.position = _follow.position + _flashLightModel.Offset;
             _flashLightModel.Transform.rotation = Quaternion.Lerp(_flashLightModel.transform.rotation,
                                                                   _follow.rotation,
                                                                   _flashLightModel.FollowSpeed * Time.deltaTime);
