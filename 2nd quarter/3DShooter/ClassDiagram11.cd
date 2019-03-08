@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UnityStandardAssets._2D.Camera2DFollow" Collapsed="true">
+    <Position X="24" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAAACAAAgQAIAIAABAAAAQAIAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\2D\Scripts\Camera2DFollow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets._2D.CameraFollow" Collapsed="true">
+    <Position X="25.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAACIAAAAAAAAAEEAAAAAAABAAAAAAEAAAAYAEQ=</HashCode>
+      <FileName>Assets\Standard Assets\2D\Scripts\CameraFollow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets._2D.Platformer2DUserControl" Collapsed="true">
+    <Position X="22.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAUA=</HashCode>
+      <FileName>Assets\Standard Assets\2D\Scripts\Platformer2DUserControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets._2D.PlatformerCharacter2D" Collapsed="true">
+    <Position X="24" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAohAAAAAKAAAAAEAAAAgAAAYQCCAAAEAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets._2D.Restarter" Collapsed="true">
+    <Position X="13.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\2D\Scripts\Restarter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Cameras.AbstractTargetFollower" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAACAqAAABAAAAAAICAAAAAAAUAAAABAAAAAAAI=</HashCode>
+      <FileName>Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Cameras.AutoCam" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAIAAAAACMgAAAAAAAgAABAAAAAAAAAQAAAQAAACAUA=</HashCode>
+      <FileName>Assets\Standard Assets\Cameras\Scripts\AutoCam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Cameras.FreeLookCam" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAEAEAIQBAAAmAAAAAAIAAAAAAIAJAAAAAAACAGA=</HashCode>
+      <FileName>Assets\Standard Assets\Cameras\Scripts\FreeLookCam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Cameras.HandHeldCam" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIQAAAAAAAAAAAAEACAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Cameras\Scripts\HandHeldCam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Cameras.LookatTarget" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAQAKAAAAAAAAgAAAAgAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Cameras\Scripts\LookatTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Cameras.PivotBasedCameraRig" Collapsed="true">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAgAAAAAAAABAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Cameras\Scripts\PivotBasedCameraRig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Cameras.ProtectCameraFromWallClip" Collapsed="true">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECAAAwACADAAgAAA4AAAIAAAAAAAAAAQACCIAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Cameras\Scripts\ProtectCameraFromWallClip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Cameras.TargetFieldOfView" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAEOACAAAAAAAAAAAAQAAgAAAAAAAAAAAABAI=</HashCode>
+      <FileName>Assets\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Characters.FirstPerson.FirstPersonController" Collapsed="true">
+    <Position X="22.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kQQChBAKAiAUMMQAAAwiSAAAAQAigAAUGCIAQAgBAQA=</HashCode>
+      <FileName>Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Characters.FirstPerson.HeadBob" Collapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAEQICAAACAAAAQgAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Characters.FirstPerson.MouseLook" Collapsed="true">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAGACABAAAIAAAAAAggBEQAIAAAgEACACAACAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController" Collapsed="true">
+    <Position X="15.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAhAIgEiAIAEAAgAAgAEACAAACgAIIEAAAAAAUIQA=</HashCode>
+      <FileName>Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Ball.Ball" Collapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKAAAQAAgAAAAAIACABAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Characters\RollerBall\Scripts\Ball.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Ball.BallUserControl" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQChAAAAgAgAACAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Characters\RollerBall\Scripts\BallUserControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Characters.ThirdPerson.AICharacterControl" Collapsed="true">
+    <Position X="25.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAAAQAAIAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter" Collapsed="true">
+    <Position X="11.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AISoCQAkAKAQAAACBAIAAEIAAgBBgAIARAKAIAAEgAg=</HashCode>
+      <FileName>Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl" Collapsed="true">
+    <Position X="13.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAAiAAAAAgQAAAAAAAQAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.AxisTouchButton" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgAAAAAAAIAQAAAJAAAQAAAAAAAAIIABAAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.ButtonHandler" Collapsed="true">
+    <Position X="22.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAABAACAAAACQAAAAAAAAAAAIAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.CrossPlatformInputManager" Collapsed="true">
+    <Position X="20.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>mAICAgAAgBKAAwAAAAAAAAAAAAIBAAgAFIAAAABASAQ=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.InputAxisScrollbar" Collapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.Joystick" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IECAAAAAACEIAAAAAABAAAAAAAAAIACIAAQAEAAAaAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.MobileControlRig" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAEACQAAAAAAAAAAAAAAAAAAAAIAAAABAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\MobileControlRig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.TiltInput" Collapsed="true">
+    <Position X="15.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQACAAAAAEAAAAAAQAAAgAAAAAAAAAIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.TouchPad" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IGSABAAAACgIAAAAAAAAAAAEAAAAIBSIABQAEACAaAI=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.VirtualInput" Collapsed="true">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAACAAAAgBKAAwAAAAAABAAAAEIAAAgIEIABAABCSAQ=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.PlatformSpecific.MobileInput" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAABCAAwAAAAAAAAAAAAAAAAgAAIAAAIAiSAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.PlatformSpecific.StandaloneInput" Collapsed="true">
+    <Position X="2.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAABCAAwAAAAAAAAAAAAAAAAgAAIAAAAACSAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.Inspector.TiltInputAxisStylePropertyDrawer" Collapsed="true">
+    <Position X="17" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.Displace" Collapsed="true">
+    <Position X="5.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACEA=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water\Water\Scripts\Displace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.GerstnerDisplace" Collapsed="true">
+    <Position X="5.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water\Water\Scripts\GerstnerDisplace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.MeshContainer" Collapsed="true">
+    <Position X="25.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAABAAAAAAAAAAAAARAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water\Water\Scripts\MeshContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.PlanarReflection" Collapsed="true">
+    <Position X="20.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQgAAAAkDAAgAEAAAAEIAEASgMAgBAMAAAAABAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water\Water\Scripts\PlanarReflection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.SpecularLighting" Collapsed="true">
+    <Position X="25.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAABAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water\Water\Scripts\SpecularLighting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.Water" Collapsed="true">
+    <Position X="24" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQkACAAARCAgAAAAgCAIAIAgAAIEAAIAAAEABEAAAQ=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water\Water\Scripts\Water.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.WaterBase" Collapsed="true">
+    <Position X="25.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAIAAAAAAAAAAAAAAAEAQAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.WaterTile" Collapsed="true">
+    <Position X="13.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAAACAAAAAAAAAAAAAAICAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water\Water\Scripts\WaterTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.WaterBasic" Collapsed="true">
+    <Position X="10" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water (Basic)\Scripts\WaterBasic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.AfterburnerPhysicsForce" Collapsed="true">
+    <Position X="24" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAAAAiIAAAAAAAAAAAAAIAAAAACAAAAgAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\AfterburnerPhysicsForce.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.ExplosionFireAndDebris" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIABAEABAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\ExplosionFireAndDebris.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.ExplosionPhysicsForce" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\ExplosionPhysicsForce.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.Explosive" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACICBACAAACAAAAAAAAAAAAIAgAAAIAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\Explosive.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.ExtinguishableParticleSystem" Collapsed="true">
+    <Position X="18.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAQAAAEAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\ExtinguishableParticleSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.FireLight" Collapsed="true">
+    <Position X="20.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAEAAQAAAAQAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\FireLight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.Hose" Collapsed="true">
+    <Position X="15.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAAUAAEAAAAAAAAAAABAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\Hose.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.ParticleSystemMultiplier" Collapsed="true">
+    <Position X="18.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\ParticleSystemMultiplier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.SmokeParticles" Collapsed="true">
+    <Position X="22.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\SmokeParticles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Effects.WaterHoseParticles" Collapsed="true">
+    <Position X="11.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAAAACAAAAAAAAAAAAAQgAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ParticleSystems\Scripts\WaterHoseParticles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.ActivateTrigger" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAgIAIAAAAAAgAAAAAAAARAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\ActivateTrigger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.AutoMobileShaderSwitch" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\AutoMobileShaderSwitch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.AutoMoveAndRotate" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAAiAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\AutoMoveAndRotate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.CameraRefocus" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAACACAAIAAAAAAQAAAAAAABAAAAAgACAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\CameraRefocus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.CurveControlledBob" Collapsed="true">
+    <Position X="22.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAACAAAAAAAAASAwAAAAABASAAAABAABAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\CurveControlledBob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.DragRigidbody" Collapsed="true">
+    <Position X="24" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAACQAACAAAAAAAAAAIAAgAgAAAAAAAAiAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\DragRigidbody.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.DynamicShadowSettings" Collapsed="true">
+    <Position X="25.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQQAAFAACAAAEAAAAAACAAAIAAAAAgBAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\DynamicShadowSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.FollowTarget" Collapsed="true">
+    <Position X="24" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAIAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\FollowTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.FOVKick" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACQAAACAAAAAAAAAACAAABAIBAAgAAAAgAAAAEAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\FOVKick.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.FPSCounter" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAACAAAhAAAAgAAAAAAAEQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\FPSCounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.LerpControlledBob" Collapsed="true">
+    <Position X="24" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAABIgAAAAAAAAAAgAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\LerpControlledBob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.ObjectResetter" Collapsed="true">
+    <Position X="15.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAAAAAABAAAAAAAAAAAAACAAAAAABAACCA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\ObjectResetter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.ParticleSystemDestroyer" Collapsed="true">
+    <Position X="17" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACAAAAAAAAAAAAAAAAAAQAIAIAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\ParticleSystemDestroyer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.PlatformSpecificContent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAIAEAgAAQAAAAAAAAAAAAAAAAAAYBACAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\PlatformSpecificContent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.SimpleActivatorMenu" Collapsed="true">
+    <Position X="17" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAEQAAAAIAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\SimpleActivatorMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.SimpleMouseRotator" Collapsed="true">
+    <Position X="18.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAYACAAAAAQAAgAAAAACACAAAIAgABgAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\SimpleMouseRotator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.SmoothFollow" Collapsed="true">
+    <Position X="24" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAUAIAAAIAAAAEIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\SmoothFollow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.TimedObjectActivator" Collapsed="true">
+    <Position X="18.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAABAAAAgAIAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\TimedObjectActivator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.TimedObjectDestructor" Collapsed="true">
+    <Position X="20.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIIAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\TimedObjectDestructor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.WaypointCircuit" Collapsed="true">
+    <Position X="15.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgAEAAqAAIIAAAEAABAAAwBAAEGAQAhAoAAAQAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\WaypointCircuit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.WaypointProgressTracker" Collapsed="true">
+    <Position X="18.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEgAAAACEABAAAIAQAAAEABAAIAQAIAAwAAAAAICo=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\WaypointProgressTracker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlphaButtonClickMask" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\AlphaButtonClickMask.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EventSystemChecker" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\EventSystemChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ForcedReset" Collapsed="true">
+    <Position X="25.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\ForcedReset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.Inspector.ReplacementListDrawer" Collapsed="true">
+    <Position X="11.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAACAAAEAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\AutoMobileShaderSwitch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.Inspector.EntriesDrawer" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAACAAAEAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\TimedObjectActivator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.Inspector.WaypointListDrawer" Collapsed="true">
+    <Position X="17" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAACAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\WaypointCircuit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Aeroplane.AeroplaneAiControl" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAIgIAAAAgAABIAAgAAAABgAAAAEAQACAAAAAAAAAEI=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneAiControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Aeroplane.AeroplaneAudio" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAADAABAAAEAAAAACAIBAAAQAAAIISAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Aeroplane.AeroplaneController" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAQMGAAAKIuBA0SBQBIgEJAEABAEBAAAAEABtAoAAg=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Aeroplane.AeroplaneControlSurfaceAnimator" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQABACAAAAAAAAAAAAAAAAAAAAAAAgACAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneControlSurfaceAnimator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Aeroplane.AeroplanePropellerAnimator" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAABAAAAAEAAAEAAAAAABAhkAAAAAAAAAAAIAFA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Aircraft\Scripts\AeroplanePropellerAnimator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Aeroplane.AeroplaneUserControl2Axis" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAgAAAAAAAAAAAAAAAAAgAAIAAAAAAEAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneUserControl2Axis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Aeroplane.AeroplaneUserControl4Axis" Collapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAgAAAAAAAAAAAAAAAAAgAQIAAAAAIEAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneUserControl4Axis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Aeroplane.JetParticleEffect" Collapsed="true">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAAAQAAAAAIAACABAAAAAAAAACAAAABAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Aircraft\Scripts\JetParticleEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Aeroplane.LandingGear" Collapsed="true">
+    <Position X="22.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQABBCABAAAAAAAAAAIAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Aircraft\Scripts\LandingGear.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.BrakeLight" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\BrakeLight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.CarAIControl" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kCUAIgQAEhAAAEQAAAAAAAIQEAAAAREGAAQgAAABAEI=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\CarAIControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.CarAudio" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QVQAABCAgMACABAEAgQAABIQEAAAAAABAAEAAAkAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\CarAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.CarController" Collapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YQAAFAhACLAkIQRAiUAEAAIQkFSRIJEEAQEkIAACgEI=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\CarController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.CarSelfRighting" Collapsed="true">
+    <Position X="17" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAEAAAAAAJAAAAAAAAEAAABAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\CarSelfRighting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.CarUserControl" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\CarUserControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.Mudguard" Collapsed="true">
+    <Position X="13.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAQAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\Mudguard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.SkidTrail" Collapsed="true">
+    <Position X="20.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\SkidTrail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.Suspension" Collapsed="true">
+    <Position X="10" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAQAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\Suspension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Vehicles.Car.WheelEffects" Collapsed="true">
+    <Position X="20.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAIAAAgACAIAAAIAAAAAAJAAAAAAIAACAgAEAAQAIA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="UnityStandardAssets.Water.WaterQuality" Collapsed="true">
+    <Position X="13.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UnityStandardAssets.Vehicles.Car.CarDriveType" Collapsed="true">
+    <Position X="10" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\CarController.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UnityStandardAssets.Vehicles.Car.SpeedType" Collapsed="true">
+    <Position X="11.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Vehicles\Car\Scripts\CarController.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
