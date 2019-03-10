@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{E443312D-6D3A-AAC6-A31B-86DBB429F2F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -122,9 +121,6 @@
     <Compile Include="Assets\Scripts\View\FlashLightView.cs" />
     <Compile Include="Assets\Scripts\View\SelectionView.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ClassDiagram3.cd" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Git/GeekUniversity/2nd quarter/3DShooter/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
